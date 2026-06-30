@@ -326,7 +326,23 @@ void HAL_RNG_ReadyDataCallback(RNG_HandleTypeDef *hrng, uint32_t random32bit)
   */
 void HAL_RNG_ErrorCallback(RNG_HandleTypeDef *hrng)
 {
-  Error_Handler();
+  /* handle seed error recovery */
+  if(HAL_RNG_GetError(hrng) == HAL_RNG_ERROR_SEED)
+  {
+    if(HAL_RNGEx_RecoverSeedError(hrng) != HAL_OK)
+    {
+      Error_Handler();
+    }
+    /* Restart RNG interrupt process */
+    if(HAL_RNG_GenerateRandomNumber_IT(hrng) != HAL_OK)
+    {
+      Error_Handler();
+    }
+  }
+  else
+  {
+    Error_Handler();
+  }
 }
 /* USER CODE END 4 */
 

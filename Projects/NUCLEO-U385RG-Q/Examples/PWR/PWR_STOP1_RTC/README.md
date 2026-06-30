@@ -1,6 +1,6 @@
 ﻿## <b>PWR_STOP1_RTC Example Description</b>
 
-How to enter the STOP1 mode and wake-up from this mode by using the RTC wakeup timer.
+How to enter the Stop 1 mode and wake-up from this mode by using the RTC wakeup timer.
 
 
 In the associated software, the system clock is set to 96 MHz and the SysTick is
@@ -8,9 +8,9 @@ programmed to generate an interrupt each 1 ms.
 The Low Speed Internal (LSI) clock is used as RTC clock source by default.
 RTC interrupt is internally connected to the RTC Wakeup event.
 
-The system automatically enters STOP1 mode 5 sec. after start-up. The RTC wake-up
+The system automatically enters Stop 1 mode 5 sec. after start-up. The RTC wake-up
 is configured to generate an interrupt on rising edge about 33 sec sec. afterwards.
-Current consumption in STOP1 mode with RTC feature enabled can be measured during that time.
+Current consumption in Stop 1 mode with RTC feature enabled can be measured during that time.
 More than half a minute is chosen to ensure current convergence to its lowest operating point.
 
 
@@ -18,13 +18,13 @@ LD2 is used to monitor the system state as follows:
 
  - LD2 toggling: system in Run mode
 
- - LD2 off : system in STOP1 mode
+ - LD2 off : system in Stop 1 mode
 
 These steps are repeated in an infinite loop.
 
 #### <b>Notes</b>
 
-1- To measure the current consumption in STOP 1 mode, remove JP4 jumper
+1- To measure the current consumption in Stop 1 mode, remove JP4 jumper
       and connect an amperemeter to JP4 to measure IDD current.
 
 2- This example can not be used in DEBUG mode due to the fact
@@ -49,9 +49,13 @@ These steps are repeated in an infinite loop.
      the STLink (unplugged). To fix this leakage, you can configure the pin PA13 as Analog, however, the
      connection with the debugger is lost.
 
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption (Stop 1 + RTC) - 53.54 uA
+- Current Consumption during RUN Mode - 1990 uA
+
 ### <b>Keywords</b>
 
-Power, PWR, STOP 1 mode, Interrupt, EXTI, Wakeup, Low Power, RTC, LSI,
+Power, PWR, Stop 1 mode, Interrupt, EXTI, Wakeup, Low Power, RTC, LSI,
 
 ### <b>Directory contents</b>
 

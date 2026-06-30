@@ -7,11 +7,16 @@ A data buffer transmission/reception via SPI using DMA wakes up slave board from
     MISO Pin: PA.06 (Arduino D12 CN5 pin 5, Morpho CN10 pin13)
     MOSI Pin: PA.07 (Arduino D11 CN5 pin 4, Morpho CN10 pin15)
 
+HAL architecture allows user to easily change code to move to Polling or IT
+mode. To see others communication modes please check following examples:
+
+- SPI_FullDuplex_ComPolling_Master and SPI_FullDuplex_ComPolling_Slave
+- SPI_FullDuplex_ComIT_Master and SPI_FullDuplex_ComIT_Slave
 
 At the beginning of the main program the HAL_Init() function is called to reset
 all the peripherals, initialize the Flash interface and the systick.
 Then the SystemClock_Config() function is used to configure the system
-clock (SYSCLK) to run at 96 MHz.
+clock (SYSCLK) to run at 24 MHz.
 
 The SPI peripheral configuration is ensured by the HAL_SPI_Init() function.
 This later is calling the HAL_SPI_MspInit()function which core is implementing
@@ -26,21 +31,22 @@ If the Slave board is used, the project SPI_FullDuplex_ComDMA_LowPower_Slave mus
 
 For this example the aTxBuffer is predefined and the aRxBuffer size is same as aTxBuffer.
 
-In a first step, both slave and master board enter in low power mode.
-RTC is configured to wake up master board after 5 seconds. Then SPI Master starts the
-communication by sending aTxBuffer and receiving aRxBuffer through
-HAL_SPI_TransmitReceive_DMA(), at the same time, initiating the transfer triggers the awakening of SPI Slave from low power and the Slave will transmit aTxBuffer
-and receives aRxBuffer through HAL_SPI_TransmitReceive_DMA().
-The callback functions (HAL_SPI_TxRxCpltCallback and HAL_SPI_ErrorCallbackand) update
+In a first step, both the slave and master boards initialize, but do not start, a bi-directional SPI transfer using DMA.
+Then the two MCU enter low power mode (STOP1).
+On master board, RTC is configured to trigger the transfer from master board after 5 seconds. Once the time has elapsed, the DMA transfer is triggered by sending aTxBuffer and receiving aRxBuffer while both MCU remain in low power mode. When the transfer is complete, both systems wake up.
+The callback functions (HAL_SPI_TxRxCpltCallback and HAL_SPI_ErrorCallback) update
 the variable wTransferState used in the main function to check the transfer status.
 Finally, aRxBuffer and aTxBuffer are compared through Buffercmp() in order to
 check buffers correctness.
 
 STM32 board's LEDs can be used to monitor the transfer status:
 
- - LED1 is OFF on master board waiting RTC interrupt wakes up the system and trigger the transfer after 5 seconds.
- - LED1 turns ON when the transmission/reception process is complete.
- - LED2 toggles when there is an error in transmission/reception process.
+ - LED2 is OFF until the DMA transfer is complete. It is turned ON afterwards.
+ - LED2 toggle when there is an error in transmission/reception process.
+
+### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during STOP1 mode - 71.43 uA
+- Current Consumption during RUN mode - 695.2 uA
 
 ### <b>Notes</b>
  1. You need to perform a reset on Slave board, then perform it on Master board

@@ -532,6 +532,9 @@
 #endif /* !defined(MCUBOOT_OVERWRITE_ONLY) && (MCUBOOT_S_DATA_IMAGE_NUMBER == 1) */
 #define FLASH_DEV_NAME                             Driver_FLASH0
 
+#if (MCUBOOT_APP_IMAGE_NUMBER == 1) && (FLASH_NS_PARTITION_SIZE > 0)
+#error "Config not supported"
+#endif /* (MCUBOOT_APP_IMAGE_NUMBER=1) && (FLASH_NS_PARTITION_SIZE>0) */
 
 /* BL2 NV Counters definitions  */
 #define BL2_NV_COUNTERS_AREA_ADDR       FLASH_BL2_NVCNT_AREA_OFFSET

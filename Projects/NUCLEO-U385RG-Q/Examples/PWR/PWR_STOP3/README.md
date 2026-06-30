@@ -1,28 +1,28 @@
 ## <b>PWR_STOP3 Example Description</b>
 
-This example shows how to enter the system in STOP 3 mode and wake-up from this
+This example shows how to enter the system in Stop 3 mode and wake-up from this
 mode using external RESET or wake-up interrupt.
 
 In the associated software, the system clock is set to 96 MHz, an EXTI line
 is connected to the user button through PC.02 and configured to generate an
 interrupt on falling edge upon key press.
 The SysTick is programmed to generate an interrupt each 1 ms and in the SysTick
-interrupt handler, LD2 is toggled in order to indicate whether the MCU is in STOP 3 mode
+interrupt handler, LD2 is toggled in order to indicate whether the MCU is in Stop 3 mode
 or RUN mode.
 
-5 seconds after start-up, the system automatically enters STOP 3 mode and
+5 seconds after start-up, the system automatically enters Stop 3 mode and
 LD2 stops toggling.
 
 The User push-button can be pressed at any time to wake-up the system.
-The software then comes back in RUN mode for 5 sec. before automatically entering STOP 3 mode again.
+The software then comes back in RUN mode for 5 sec. before automatically entering Stop 3 mode again.
 
 LD2 is used to monitor the system state as follows:
  - LD2 toggling: system in RUN mode
- - LD2 off : system in STOP 3 mode
+ - LD2 off : system in Stop 3 mode
 
 These steps are repeated in an infinite loop.
 
-**Note:** To measure the current consumption in STOP 3 mode, remove JP4 jumper
+**Note:** To measure the current consumption in Stop 3 mode, remove JP4 jumper
       and connect an amperemeter to JP4 to measure IDD current.
 
 **Note:** This example can not be used in DEBUG mode due to the fact
@@ -40,7 +40,7 @@ These steps are repeated in an infinite loop.
 
 ### <b>Keywords</b>
 
-Power, PWR, STOP 3 mode, Interrupt, EXTI, Wakeup, Low Power, RTC, External reset
+Power, PWR, Stop 3 mode, Interrupt, EXTI, Wakeup, Low Power, RTC, External reset
 
  1. Care must be taken when using HAL_Delay(), this function provides accurate delay (in milliseconds)
     based on variable incremented in SysTick ISR. This implies that if HAL_Delay() is called from
@@ -51,9 +51,13 @@ Power, PWR, STOP 3 mode, Interrupt, EXTI, Wakeup, Low Power, RTC, External reset
  2. The application needs to ensure that the SysTick time base is always set to 1 millisecond
     to have correct HAL operation.
 
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption (Stop 3) - 2.33 uA
+- Current Consumption during RUN Mode - 1890 uA
+
 ### <b>Keywords</b>
 
-Power, PWR, Stop mode, Interrupt, EXTI, Wakeup, Low Power
+Power, PWR, Stop 3 mode, Interrupt, EXTI, Wakeup, Low Power
 
 ### <b>Directory contents</b>
 

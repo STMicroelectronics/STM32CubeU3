@@ -1,12 +1,12 @@
 ## <b>LPTIM_PulseCounter Example Description</b>
 
-How to configure and use, through the LPTIM HAL API, the LPTIM peripheral 
+How to configure and use, through the LPTIM HAL API, the LPTIM peripheral
 to count pulses.
 
-To reduce power consumption, MCU enters stop mode after starting counting. Each
+To reduce power consumption, MCU enters Stop 1 mode after starting counting. Each
 time the counter reaches the maximum value (Period/Autoreload), an interruption
-is generated, the MCU is woke up from stop mode and LD2 toggles the last state.
-  
+is generated, the MCU is woken up from Stop 1 mode and LD2 toggles the last state.
+
 In this example Period value is set to 1000, so each time the counter counts
 (1000 + 1) rising edges on LPTIM Input pin PC0, an interrupt is generated and LD2
 toggles.
@@ -25,25 +25,33 @@ present example).
 
  2. Care must be taken when using HAL_Delay(), this function provides accurate
     delay (in milliseconds) based on variable incremented in SysTick ISR. This
-    implies that if HAL_Delay() is called from a peripheral ISR process, then 
+    implies that if HAL_Delay() is called from a peripheral ISR process, then
     the SysTick interrupt must have higher priority (numerically lower)
     than the peripheral interrupt. Otherwise the caller ISR process will be blocked.
     To change the SysTick interrupt priority you have to use HAL_NVIC_SetPriority() function.
-      
+
  3. This example needs to ensure that the SysTick time base is always set to 1 millisecond
     to have correct HAL operation.
+
+ 4. In this example SMPS is turned on for power supply.
+
+#### <b>Current Consumption</b>
+
+    Board@3.3V
+  - Current Consumption during Stop 1 Mode: 88 uA.
+  - Current Consumption during Run mode: 690 uA.
 
 
 ### <b>Keywords</b>
 
-Timer, Low Power, Pulse Counter, Stop mode, Interrupt
+Timer, Low Power, Pulse Counter, Stop 1 mode, Interrupt
 
 ### <b>Directory contents</b>
 
   - LPTIM/LPTIM_PulseCounter/Inc/stm32u3xx_nucleo_conf.h BSP configuration file
   - LPTIM/LPTIM_PulseCounter/Inc/stm32u3xx_hal_conf.h    HAL configuration file
   - LPTIM/LPTIM_PulseCounter/Inc/stm32u3xx_it.h          Interrupt handlers header file
-  - LPTIM/LPTIM_PulseCounter/Inc/main.h                   Header for main.c module  
+  - LPTIM/LPTIM_PulseCounter/Inc/main.h                   Header for main.c module
   - LPTIM/LPTIM_PulseCounter/Src/stm32u3xx_it.c          Interrupt handlers
   - LPTIM/LPTIM_PulseCounter/Src/main.c                   Main program
   - LPTIM/LPTIM_PulseCounter/Src/stm32u3xx_hal_msp.c     HAL MSP module
@@ -53,7 +61,7 @@ Timer, Low Power, Pulse Counter, Stop mode, Interrupt
 ### <b>Hardware and Software environment</b>
 
   - This example runs on STM32U385RGTxQ devices.
-    
+
   - This example has been tested with STMicroelectronics NUCLEO-U385RG-Q
     board and can be easily tailored to any other supported device
     and development board.
@@ -64,7 +72,7 @@ Timer, Low Power, Pulse Counter, Stop mode, Interrupt
 
 In order to make the program work, you must do the following :
 
- - Open your preferred tool chain 
+ - Open your preferred tool chain
  - Rebuild all files and load your image into target memory
  - Run the example
 

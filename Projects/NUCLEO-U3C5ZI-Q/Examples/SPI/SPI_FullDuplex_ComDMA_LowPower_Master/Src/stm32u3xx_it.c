@@ -55,7 +55,6 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern RTC_HandleTypeDef hrtc;
 extern DMA_HandleTypeDef handle_GPDMA1_Channel11;
 extern DMA_HandleTypeDef handle_GPDMA1_Channel10;
 extern SPI_HandleTypeDef hspi1;
@@ -215,20 +214,6 @@ void SysTick_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32u3xx.s).                    */
 /******************************************************************************/
-
-/**
-  * @brief This function handles RTC non-secure interrupt.
-  */
-void RTC_IRQHandler(void)
-{
-  /* USER CODE BEGIN RTC_IRQn 0 */
-
-  /* USER CODE END RTC_IRQn 0 */
-  HAL_RTCEx_WakeUpTimerIRQHandler(&hrtc);
-  /* USER CODE BEGIN RTC_IRQn 1 */
-
-  /* USER CODE END RTC_IRQn 1 */
-}
 
 /**
   * @brief This function handles SPI1 global interrupt.

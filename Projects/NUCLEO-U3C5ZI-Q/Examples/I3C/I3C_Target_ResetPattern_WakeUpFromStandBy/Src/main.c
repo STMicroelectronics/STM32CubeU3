@@ -145,6 +145,9 @@ int main(void)
     /* Enable the wake up line 10 for I3C2 */
     HAL_PWR_EnableWakeUpLine(PWR_WAKEUP_LINE10, PWR_WAKEUP_SELECT_0, PWR_WAKEUP_POLARITY_LOW);
 
+    /* Enable ULPMEN bit for lower consumption */
+    HAL_PWREx_EnableUltraLowPowerMode();
+
     /* Enable I3C pull-up */
     HAL_PWREx_EnableI3CPullUp(PWR_I3CPU_PB6);
     HAL_PWREx_EnableI3CPullUp(PWR_I3CPU_PB7);

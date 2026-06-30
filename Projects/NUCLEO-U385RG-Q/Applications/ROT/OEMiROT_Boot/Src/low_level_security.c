@@ -980,7 +980,7 @@ static void active_tamper(void)
     /* enable write access to backup domain */
     __HAL_RCC_PWR_CLK_ENABLE();
     HAL_PWR_EnableBkUpAccess();
-#if (OEMIROT_TAMPER_ENABLE == ALL_TAMPER)    
+#if (OEMIROT_TAMPER_ENABLE == ALL_TAMPER)
    /* RTC Init */
     RTCHandle.Instance = RTC;
     RTCHandle.Init.HourFormat     = RTC_HOURFORMAT_12;

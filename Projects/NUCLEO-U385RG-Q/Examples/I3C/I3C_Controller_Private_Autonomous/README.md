@@ -49,7 +49,7 @@ Then the I3C Controller prepare the communication to send a aTxBuffer through HA
 thanks to the autonomous mode, the TX transfer will be start only when a trigger is detected on I3C side.
 On this example the trigger is an RTC alarm event.
 
-To prevent wakeup, the I3C controller disable all interrupts I3C and DMA. Then Controller goes to Low Power Mode (STOP Mode).
+To prevent wakeup, the I3C controller disables all interrupts I3C and DMA. Then Controller goes to Low Power Mode (Stop 0 Mode).
 
 During the low power mode, the TX transfer triggered by the RTC_Alarm can be performed without waking up the system.
 
@@ -69,6 +69,10 @@ NUCLEO-U385RG's LEDs can be used to monitor the transfer status:
 
   2. The application need to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during Stop 0 Mode - 281 uA
+- Current Consumption during RUN Mode - 1780 uA
 
 ### <b>Keywords</b>
 

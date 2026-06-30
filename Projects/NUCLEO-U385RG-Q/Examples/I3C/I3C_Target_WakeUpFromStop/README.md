@@ -1,7 +1,7 @@
 ## <b>I3C_Target_WakeUpFromStop Example Description</b>
 
 How to handle an I3C as a Target to perform data buffer transmission/reception between two boards,
-using an interrupt, when the Target is in Stop mode.
+using an interrupt, when the Target is in Stop 1 mode.
 
       - Board: NUCLEO-U385RG-Q (embeds a STM32U3xx device)
       - SDA Pin: PA6 (Arduino D12 CN5 pin 5, Morpho CN10 pin13)
@@ -41,7 +41,7 @@ For this example the aTxBuffer is predefined and the aRxBuffer size is same as a
 
 In a first step the Target wait the assignation of a proper associated Dynamic Address from the Controller.
 
-Then Target goes to Low power Stop Mode through HAL_PWR_EnterSTOPMode().
+Then Target goes to Low power Stop 1 Mode through HAL_PWR_EnterSTOPMode().
 
 The second step starts when the user press the User push-button on the Controller Board,
 
@@ -49,7 +49,7 @@ the I3C Controller continue the communication by sending aTxBuffer through HAL_I
 
 to I3C Target which is in Low power mode.
 
-Target wakeup from Stop mode, and then treat and receives aRxBuffer through HAL_I3C_Tgt_Receive_IT().
+Target wakes up from Stop 1 mode, and then treats and receives aRxBuffer through HAL_I3C_Tgt_Receive_IT().
 
 The third step starts when the user press the User push-button on the Controller Board,
 
@@ -79,6 +79,10 @@ NUCLEO-U385RG-Q's LEDs can be used to monitor the transfer status:
 
   2. The application need to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during (Stop 1) - 108 uA
+- Current Consumption during RUN Mode - 712 uA
 
 ### <b>Keywords</b>
 

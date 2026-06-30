@@ -30,6 +30,9 @@ LD2 is used to monitor the system state as following:
  2. The application needs to ensure that the SysTick time base is always set to 1 millisecond
     to have correct HAL operation.
 
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+Current Consumption during RUN Mode - 1890 uA
+
 ### <b>Keywords</b>
 
 Power, PWR, SMPS, LDO, Voltage range

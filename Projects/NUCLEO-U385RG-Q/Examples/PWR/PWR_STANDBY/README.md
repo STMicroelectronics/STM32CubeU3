@@ -7,6 +7,7 @@ is connected to the pin PC.13 and configured to generate an
 interrupt on rising edge.
 The SysTick is programmed to generate an interrupt each 1 ms and in the SysTick
 interrupt handler, LD2 is toggled in order to indicate whether the MCU is in Standby or Run mode.
+Ultralow-power mode (ULPMEN) is also enabled to further reduce power consumption.
 
 When a rising edge is detected on the EXTI line, an interrupt is generated and the system wakes up
 the program then checks and clears the standby flag.
@@ -18,6 +19,10 @@ Next, the user can wake-up the system in pressing the User push-button which is 
 to the wake-up pin PWR_WAKEUP_LINE2.The software then comes back in run mode for 5 sec.
 A rising edge on WKUP pin will wake-up the system from Standby.
 Alternatively, an external RESET of the board will lead to a system wake-up as well.The application needs to ensure that the SysTick
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during STANDBY Mode - 0.265 uA
+- Current Consumption during RUN Mode - 1890 uA
 
 After wake-up from Standby mode, program execution restarts in the same way as after
 a RESET and LD2 restarts toggling.

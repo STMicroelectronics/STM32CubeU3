@@ -1,0 +1,3 @@
+[Groups]
+Drivers/BSP/w25q128j=../LevelX/Target/w25q128j.c
+Doc=../README.md;

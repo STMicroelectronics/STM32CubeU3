@@ -18,11 +18,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "app_usbx_host.h"
+#include "app_usbx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "app_usbx_host.h"
 #include "stdio.h"
 #if defined(__ICCARM__)
 #include <LowLevelIOInterface.h>
@@ -108,7 +107,7 @@ int main(void)
   MX_GPIO_Init();
   MX_ICACHE_Init();
   MX_USART1_UART_Init();
-  MX_USBX_Host_Init();
+  MX_USBX_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -186,7 +185,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /** configure PLL mode
+  /** Configure MSI PLL mode
   */
   RCC_MSIRCxPLLStruct.State = RCC_MSIRCx_PLL_ON;
   RCC_MSIRCxPLLStruct.InputSrce = RCC_MSIRCx_PLL_INPUT_LSE;

@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>STM32U385RGTxQ</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32U3xx_DFP.1.2.0-A02</PackID>
+          <PackID>Keil.STM32U3xx_DFP.1.3.0-A01</PackID>
           <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00040000) IROM(0x08000000,0x00100000) CPUTYPE("Cortex-M33") FPU3(SFPU) DSP TZ CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -550,6 +550,11 @@
               <FileName>s_data.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/s_data.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32u3xx_hal_icache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\STM32U3xx_HAL_Driver\Src\stm32u3xx_hal_icache.c</FilePath>
             </File>
           </Files>
         </Group>

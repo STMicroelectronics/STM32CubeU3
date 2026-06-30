@@ -43,6 +43,10 @@ LD2 is used to monitor the system state as follows:
     the STLink (unplugged). To fix this leakage, you can configure the pin PA13 as Analog, however, the
     connection with the debugger is lost.
 
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during SLEEP Mode - 135 uA
+- Current Consumption during RUN Mode - 1890 uA
+
 ### <b>Keywords</b>
 
 Power, PWR, EXTI, Sleep mode, Interrupt, Wakeup, External reset

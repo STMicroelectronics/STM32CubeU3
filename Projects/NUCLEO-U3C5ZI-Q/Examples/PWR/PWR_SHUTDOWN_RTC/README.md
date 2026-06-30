@@ -23,6 +23,10 @@ Two leds LD1 and LD2 are used to monitor the system state as following:
 
 These steps are repeated in an infinite loop.
 
+### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption  during (Shutdown + RTC) - 0.85 uA
+- Current Consumption during run mode - 2160 uA
+
 **Note:** To measure the current consumption in SHUTDOWN mode, please refer to
       @subpage PWR_CurrentConsumption example.
 

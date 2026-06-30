@@ -20,7 +20,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "app_usbx_device.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -33,7 +32,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define USB_PLUGGED   1u
+#define USB_UNPLUGGED 0u
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -43,20 +43,17 @@
 
 /* Private variables ---------------------------------------------------------*/
 
-/* USER CODE BEGIN UX_Device_Memory_Buffer */
-
-/* USER CODE END UX_Device_Memory_Buffer */
-#if defined ( __ICCARM__ )
-#pragma data_alignment=4
-#endif
-__ALIGN_BEGIN static UCHAR ux_device_byte_pool_buffer[UX_DEVICE_APP_MEM_POOL_SIZE] __ALIGN_END;
-
 static ULONG hid_mouse_interface_number;
 static ULONG hid_mouse_configuration_number;
 static UX_SLAVE_CLASS_HID_PARAMETER hid_mouse_parameter;
+extern PCD_HandleTypeDef           hpcd_USB_DRD_FS;
 
 /* USER CODE BEGIN PV */
 extern uint8_t User_Button_State;
+
+/* State machine for VBUS monitoring */
+__IO Device_State device_state = Device_VBUS_SENSING;
+uint32_t vbus_on = 1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,6 +71,54 @@ static UINT USBD_ChangeFunction(ULONG Device_State);
 UINT MX_USBX_Device_Init(VOID)
 {
   UINT ret = UX_SUCCESS;
+  /* USER CODE BEGIN MX_USBX_Device_Init 0 */
+  GPIO_PinState level;
+
+  /* Initialize the device controller HAL driver */
+  MX_USB_PCD_Init();
+  /* USER CODE END MX_USBX_Device_Init 0 */
+
+  /* Initialize the Stack USB Device*/
+  if (MX_USBX_Device_Stack_Init() != UX_SUCCESS)
+  {
+    /* USER CODE BEGIN MAIN_INITIALIZE_STACK_ERROR */
+    return UX_ERROR;
+    /* USER CODE END MAIN_INITIALIZE_STACK_ERROR */
+  }
+
+  /* USER CODE BEGIN MX_USBX_Device_Init 1 */
+
+  level = HAL_GPIO_ReadPin(USBC_DETECT_GPIO_Port, USBC_DETECT_Pin);
+
+  if (level == GPIO_PIN_SET)
+  {
+    USBC_Detect_Process(USB_PLUGGED);
+  }
+
+  else
+  {
+    USBC_Detect_Process(USB_UNPLUGGED);
+  }
+
+  /* USER CODE END MX_USBX_Device_Init 1 */
+
+  /* USER CODE BEGIN MX_USBX_Device_Init 2 */
+  /* USER CODE END MX_USBX_Device_Init 2 */
+
+  return ret;
+}
+
+/**
+  * @brief  MX_USBX_Device_Stack_Init
+  *         Intialization of USB Device.
+  *         Initialize the device stack, register of device class stack
+  *         Register of the usb device controller
+  * @param  None
+  * @retval ret
+  */
+UINT MX_USBX_Device_Stack_Init(void)
+{
+  UINT ret = UX_SUCCESS;
   UCHAR *device_framework_high_speed;
   UCHAR *device_framework_full_speed;
   ULONG device_framework_hs_length;
@@ -83,21 +128,9 @@ UINT MX_USBX_Device_Init(VOID)
   UCHAR *string_framework;
   UCHAR *language_id_framework;
 
-  UCHAR *pointer;
+  /* USER CODE BEGIN MX_USBX_Device_Stack_Init 0 */
 
-  /* USER CODE BEGIN MX_USBX_Device_Init0 */
-
-  /* USER CODE END MX_USBX_Device_Init0 */
-  pointer = ux_device_byte_pool_buffer;
-
-  /* Initialize USBX Memory */
-  if (ux_system_initialize(pointer, USBX_DEVICE_MEMORY_STACK_SIZE, UX_NULL, 0) != UX_SUCCESS)
-  {
-    /* USER CODE BEGIN USBX_SYSTEM_INITIALIZE_ERROR */
-    return UX_ERROR;
-    /* USER CODE END USBX_SYSTEM_INITIALIZE_ERROR */
-  }
-
+  /* USER CODE END MX_USBX_Device_Stack_Init 0 */
   /* Get Device Framework High Speed and get the length */
   device_framework_high_speed = USBD_Get_Device_Framework_Speed(USBD_HIGH_SPEED,
                                                                 &device_framework_hs_length);
@@ -159,62 +192,59 @@ UINT MX_USBX_Device_Init(VOID)
     /* USER CODE END USBX_DEVICE_HID_MOUSE_REGISTER_ERROR */
   }
 
-  /* USER CODE BEGIN MX_USBX_Device_Init1 */
+  /* Initialize and link controller HAL driver */
+  ux_dcd_stm32_initialize((ULONG)USB_DRD_FS, (ULONG)&hpcd_USB_DRD_FS);
+  /* USER CODE BEGIN MX_USBX_Device_Stack_Init_PostTreatment */
+  /* USER CODE END MX_USBX_Device_Stack_Init_PostTreatment */
 
-  /* Initialization of USB device */
-  USBX_APP_Device_Init();
+  /* USER CODE BEGIN MX_USBX_Device_Stack_Init 1 */
 
-  /* USER CODE END MX_USBX_Device_Init1 */
+  /* USER CODE END MX_USBX_Device_Stack_Init 1 */
 
   return ret;
 }
 
 /**
-  * @brief  _ux_utility_interrupt_disable
-  *         USB utility interrupt disable.
-  * @param  none
-  * @retval none
+  * @brief  MX_USBX_Device_Stack_DeInit
+  *         Unitialization of USB Device.
+  *         uninitialize the device stack, unregister of device class stack
+  *         unregister of the usb device controller
+  * @retval ret
   */
-ALIGN_TYPE _ux_utility_interrupt_disable(VOID)
+UINT MX_USBX_Device_Stack_DeInit(void)
 {
-  UINT interrupt_save;
-  /* USER CODE BEGIN _ux_utility_interrupt_disable */
-  interrupt_save = __get_PRIMASK();
-  __disable_irq();
-  /* USER CODE END _ux_utility_interrupt_disable */
+  UINT ret = UX_SUCCESS;
 
-  return interrupt_save;
-}
+  /* USER CODE BEGIN MX_USBX_Device_Stack_DeInit_PreTreatment_0 */
+  /* USER CODE END MX_USBX_Device_Stack_DeInit_PreTreatment_0 */
 
-/**
-  * @brief  _ux_utility_interrupt_restore
-  *         USB utility interrupt restore.
-  * @param  flags
-  * @retval none
-  */
-VOID _ux_utility_interrupt_restore(ALIGN_TYPE flags)
-{
+  /* Unregister USB device controller. */
 
-  /* USER CODE BEGIN _ux_utility_interrupt_restore */
-  __set_PRIMASK(flags);
-  /* USER CODE END _ux_utility_interrupt_restore */
-}
+  if (ux_dcd_stm32_uninitialize((ULONG)USB_DRD_FS, (ULONG)&hpcd_USB_DRD_FS) != UX_SUCCESS)
+  {
+    return UX_ERROR;
+  }
 
-/**
-  * @brief  _ux_utility_time_get
-  *         Get Time Tick for host timing.
-  * @param  none
-  * @retval time tick
-  */
-ULONG _ux_utility_time_get(VOID)
-{
-  ULONG time_tick = 0U;
+/* Unregister hid class. */
+  if (ux_device_stack_class_unregister(_ux_system_slave_class_hid_name,
+                                       ux_device_class_hid_entry) != UX_SUCCESS)
+  {
+    return UX_ERROR;
+  }
 
-  /* USER CODE BEGIN _ux_utility_time_get */
-  time_tick = HAL_GetTick();
-  /* USER CODE END _ux_utility_time_get */
+  /* The code below is required for uninstalling the device portion of USBX.  */
+  if (ux_device_stack_uninitialize() != UX_SUCCESS)
+  {
+    return UX_ERROR;
+  }
 
-  return time_tick;
+  /* USER CODE BEGIN MX_USBX_Device_Stack_DeInit_PreTreatment_1 */
+  /* USER CODE END MX_USBX_Device_Stack_DeInit_PreTreatment_1 */
+
+  /* USER CODE BEGIN MX_USBX_Device_Stack_DeInit_PostTreatment */
+  /* USER CODE END MX_USBX_Device_Stack_DeInit_PostTreatment */
+
+  return ret;
 }
 
 /**
@@ -320,35 +350,48 @@ VOID USBX_Device_Process(VOID *arg)
 }
 
 /**
-  * @brief  USBX_APP_Device_Init
-  *         Initialization of USB device.
-  * @param  none
+  * @brief  USBC_Detect_Process
+  *         Handles USB device attach/detach state transitions based on PA1 (USBC_DETECT) digital level.
+  *         Starts or stops the USB device.
+  * @param  raw: VBUS sense value (1 = attach, 0 = detach) sampled from USBC_DETECT pin.
   * @retval none
   */
-VOID USBX_APP_Device_Init(VOID)
+VOID USBC_Detect_Process(uint32_t raw)
 {
-  /* USER CODE BEGIN USB_Device_Init_PreTreatment_0 */
-  /* USER CODE END USB_Device_Init_PreTreatment_0 */
+  switch (device_state)
+  {
+    case Device_VBUS_SENSING:
+    if (raw == USB_PLUGGED)
+    {
+       if (vbus_on == 1)
+       {
+         if (HAL_PCD_Start(&hpcd_USB_DRD_FS) != HAL_OK)
+         {
+            Error_Handler();
+         }
+         vbus_on = 0;
+       }
+    }
 
-  /* Initialize the device controller HAL driver */
-  MX_USB_PCD_Init();
+    else
+    {
+      if (vbus_on == 0)
+      {
+         ux_device_stack_disconnect();
+         if (HAL_PCD_Stop(&hpcd_USB_DRD_FS) != HAL_OK)
+         {
+           Error_Handler();
+         }
+         vbus_on = 1;
+      }
+    }
 
-  /* USER CODE BEGIN USB_Device_Init_PreTreatment_1 */
-  HAL_PCDEx_PMAConfig(&hpcd_USB_DRD_FS, 0x00, PCD_SNG_BUF, 0x0C);
-  HAL_PCDEx_PMAConfig(&hpcd_USB_DRD_FS, 0x80, PCD_SNG_BUF, 0x4C);
-  HAL_PCDEx_PMAConfig(&hpcd_USB_DRD_FS, 0x81, PCD_SNG_BUF, 0x8C);
+    break;
 
-  /* USER CODE END USB_Device_Init_PreTreatment_1 */
-
-  /* Initialize and link controller HAL driver */
-  ux_dcd_stm32_initialize((ULONG)USB_DRD_FS, (ULONG)&hpcd_USB_DRD_FS);
-
-  /* Start the USB device */
-  HAL_PCD_Start(&hpcd_USB_DRD_FS);
-
-  /* USER CODE BEGIN USB_Device_Init_PostTreatment */
-
-  /* USER CODE END USB_Device_Init_PostTreatment */
+    default:
+    device_state = Device_VBUS_SENSING;
+    break;
+  }
 }
 
 /**
@@ -363,6 +406,26 @@ void HAL_GPIO_EXTI_Rising_Callback(uint16_t GPIO_Pin)
   if (GPIO_Pin == GPIO_PIN_13)
   {
     User_Button_State ^= 1U;
+  }
+
+  if (GPIO_Pin == USBC_DETECT_Pin)
+  {
+      USBC_Detect_Process(USB_PLUGGED);
+  }
+}
+
+/**
+  * @brief  GPIO EXTI Callback function
+  *         Handles USB attach/detach events triggered by USBC_DETECT pin falling edge.
+  *         Invokes USB state machine to process device unplug (detach).
+  * @param  GPIO_Pin
+  * @retval None
+  */
+void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin)
+{
+  if (GPIO_Pin == USBC_DETECT_Pin)
+  {
+      USBC_Detect_Process(USB_UNPLUGGED);
   }
 }
 

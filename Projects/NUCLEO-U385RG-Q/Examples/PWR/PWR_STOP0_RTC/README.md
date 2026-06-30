@@ -2,7 +2,7 @@
 
 This example shows how to enter Stop 0 mode and wake up from this mode using
 an interrupt from RTC Wake-up Timer.
-It allows to measure the current consumption in STOP 0 mode with RTC enabled.
+It allows to measure the current consumption in Stop 0 mode with RTC enabled.
 
 In the associated software, the system clock is set to 96 MHz and the SysTick is
 programmed to generate an interrupt each 1 ms.
@@ -11,23 +11,23 @@ The Low Speed Internal (LSI) clock is used as RTC clock source by default.
 RTC interrupt is internally connected to the RTC Wakeup event.
 
 
-The system automatically enters STOP 0 mode 5 sec. after start-up.
+The system automatically enters Stop 0 mode 5 sec. after start-up.
 The RTC wake-up is configured to generate an interrupt on rising edge about 33 sec. afterwards.
-Current consumption in STOP 0 mode with RTC feature enabled can be measured during that time.
+Current consumption in Stop 0 mode with RTC feature enabled can be measured during that time.
 More than half a minute is chosen to ensure current convergence to its lowest operating point.
 
-After wake-up from STOP 0 mode, program execution is resumed.
+After wake-up from Stop 0 mode, program execution is resumed.
 
 LD2 is used to monitor the system state as follows:
 
  - LD2 toggling: system in RUN mode
- - LD2 off : system in STOP 0 mode
+ - LD2 off : system in Stop 0 mode
 
 These steps are repeated in an infinite loop.
 
 #### <b>Notes</b>
 
-1- To measure the current consumption in STOP 0 mode, remove JP4 jumper
+1- To measure the current consumption in Stop 0 mode, remove JP4 jumper
       and connect an amperemeter to JP4 to measure IDD current.
 
 2- This example can not be used in DEBUG mode due to the fact
@@ -46,6 +46,10 @@ These steps are repeated in an infinite loop.
 5- A current leakage can be observed while supplying the MCU from an external source and not supplying
       the STLink (unplugged). To fix this leakage, you can configure the pin PA13 as Analog, however, the
       connection with the debugger is lost.
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during (Stop 0 + RTC) - 211.4 uA
+- Current Consumption during RUN Mode - 1890 uA
 
 ### <b>Keywords</b>
 

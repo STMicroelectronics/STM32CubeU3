@@ -1127,6 +1127,9 @@
             <name>$PROJ_DIR$\..\USBX\App\app_usbx_host.c</name>
           </file>
           <file>
+            <name>$PROJ_DIR$/../USBX/App/app_usbx.c</name>
+          </file>
+          <file>
             <name>$PROJ_DIR$\..\USBX\App\ux_host_cdc_acm.c</name>
           </file>
         </group>

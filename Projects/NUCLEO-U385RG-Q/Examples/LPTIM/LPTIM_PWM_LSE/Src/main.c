@@ -279,7 +279,6 @@ static void MX_LPTIM1_Init(void)
   hlptim1.Init.UpdateMode = LPTIM_UPDATE_IMMEDIATE;
   hlptim1.Init.CounterSource = LPTIM_COUNTERSOURCE_INTERNAL;
   hlptim1.Init.Input1Source = LPTIM_INPUT1SOURCE_GPIO;
-  hlptim1.Init.Input2Source = LPTIM_INPUT2SOURCE_GPIO;
   hlptim1.Init.RepetitionCounter = 0;
   if (HAL_LPTIM_Init(&hlptim1) != HAL_OK)
   {

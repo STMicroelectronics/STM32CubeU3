@@ -253,7 +253,7 @@
    is 2048 bytes but can be reduced in memory constrained environments. For cd-rom support in the storage
    class, this value cannot be less than 2048.  */
 
-/* #define UX_SLAVE_REQUEST_DATA_MAX_LENGTH                    2048 */
+/* #define UX_SLAVE_REQUEST_DATA_MAX_LENGTH                 2048 */
 
 /* Defined, this enables processing of Get String Descriptor requests with zero Language ID.
    The first language ID in the language ID framework will be used if the request has a zero
@@ -383,8 +383,7 @@
 /* Defined, this value represents the the maximum length of HID reports on the
    device.
  */
-
-/* #define UX_DEVICE_CLASS_HID_EVENT_BUFFER_LENGTH          64 */
+/* #define UX_DEVICE_CLASS_HID_EVENT_BUFFER_LENGTH          32 */
 
 /* Defined, this value represents the the maximum number of HID events/reports
    that can be queued at once.

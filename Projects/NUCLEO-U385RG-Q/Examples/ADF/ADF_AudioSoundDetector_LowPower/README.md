@@ -1,6 +1,6 @@
 ## <b>ADF_AudioSoundDetector_LowPower Example Description</b>
 
-  This project demonstrates how to configure ADF to perform audio sound detection in low power STOP1 mode.
+  This project demonstrates how to configure ADF to perform audio sound detection in low power Stop 1 mode.
 
   One digital microphone of X-NUCLEO-CCA02M2 (digital mems microphone expansion board) is used on this example.
   X-NUCLEO-CCA02M2 is connected but not plugged on NUCLEO-U385RG-Q board.
@@ -25,7 +25,7 @@
   If error occurs during previous steps, green led toggles slowly.
 
   In order to reduce power consumption, the system clock frequency is set to 12Mhz.
-  CPU enters in STOP1 mode until and after voice activity detections.
+  CPU enters in Stop 1 mode until and after voice activity detections.
   In addition, SMPS regulator is enabled and SysTick interrupt is disabled to avoid wake-up each millisecond.
 
   With ADF_AudioSoundDetector example, power consumption is around 4,9mA.

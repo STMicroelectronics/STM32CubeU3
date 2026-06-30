@@ -402,7 +402,7 @@ void ClockConfig(void)
   HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
   /* LSI clock redirected to MCO2 */
-  HAL_RCC_MCOConfig(RCC_MCO2, RCC_MCO2SOURCE_LSI, RCC_MCODIV_1);
+  HAL_RCC_MCOConfig(RCC_MCO2, RCC_MCO2SOURCE_LSI, RCC_MCO2DIV_1);
 }
 
 /**

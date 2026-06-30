@@ -188,7 +188,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /** configure PLL mode
+  /** Configure MSI PLL mode
   */
   RCC_MSIRCxPLLStruct.State = RCC_MSIRCx_PLL_ON;
   RCC_MSIRCxPLLStruct.InputSrce = RCC_MSIRCx_PLL_INPUT_LSE;
@@ -337,14 +337,14 @@ void MX_USB_HCD_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */

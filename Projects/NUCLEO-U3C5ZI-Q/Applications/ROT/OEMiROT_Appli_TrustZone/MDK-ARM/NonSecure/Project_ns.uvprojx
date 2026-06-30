@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>STM32U3C5ZITx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32U3xx_DFP.1.1.0-A01</PackID>
+          <PackID>Keil.STM32U3xx_DFP.1.5.0-A01</PackID>
           <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>CLOCK(8000000) FPU3(SFPU) CPUTYPE("Cortex-M33") ELITTLE TZ</Cpu>
           <FlashUtilSpec></FlashUtilSpec>

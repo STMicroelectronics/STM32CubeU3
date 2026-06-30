@@ -1,23 +1,23 @@
 ﻿## <b>LPUART_WakeUpFromStop Example Description</b>
 
-Configuration of an LPUART to wake up the MCU from Stop mode
+Configuration of an LPUART to wake up the MCU from Stop 2 mode
 when a given stimulus is received.
 
   - Board:  NUCLEO-U3C5ZI-Q (embeds a STM32U3C5ZITxQ device)
   - Tx Pin: PA2 : pin 18 of CN10 connector
   - Rx Pin: PA3 : pin 34 of CN10 connector
-  
-Board 1 enters STOP mode and is awakened by Board 2, which sends "RXNE wake-up" data to trigger the wake-up event. Upon recognizing the wake-up event, the RXNE interrupt is activated, waking up Board 1.
+
+Board 1 enters Stop 2 mode and is awakened by Board 2, which sends "RXNE wake-up" data to trigger the wake-up event. Upon recognizing the wake-up event, the RXNE interrupt is activated, waking up Board 1.
 To confirm its wake-up, Board 1 sends the received buffer back to Board 2, which then verifies if it is the expected message.
 
 WARNING: as both boards do not behave the same way, "BOARD_IN_STOP_MODE"
 compilation switch is defined in UART/LPUART_WakeUpFromStop/Src/main.c and must
 be enabled at compilation time before loading the executable in board 1 (that
-which is set in STOP mode).
+which is set in Stop 2 mode).
 The stimuli-transmitting board (board 2) needs to be loaded with an executable
 software obtained with BOARD_IN_STOP_MODE disabled.
 
-- Initially, Board 1's LD1 is turned on for 2 seconds. During this time, the LPUART is prepared to wake up from Stop Mode : reception process is started in interrupt mode using HAL_UART_Receive_IT, LD1 is turned off, and Board 1 enters Stop Mode. On first received character from Board 2, Board 1 will exit from stop mode and reception goes on till the expected length is received, then the HAL_UART_RxCpltCallback() callback is triggered.
+- Initially, Board 1's LD1 is turned on for 2 seconds. During this time, the LPUART is prepared to wake up from Stop Mode : reception process is started in interrupt mode using HAL_UART_Receive_IT, LD1 is turned off, and Board 1 enters Stop 2 Mode. On first received character from Board 2, Board 1 will exit from Stop 2 mode and reception goes on till the expected length is received, then the HAL_UART_RxCpltCallback() callback is triggered.
 
 - Meanwhile, Board 2's LD1 blinks rapidly with a 100 ms period. The user should wait for Board 1's LD1 to turn off and then press Board 2's User push-button to send a wake-up signal to Board 1. Upon receiving the first character, Board 1's MCU wakes up due to the LPUART RXNE interrupt, and LD1 turns on to indicate the wake-up. Board 1 then transmits the received buffer back to Board 2, which verifies if it is the expected message. If the test passes, LD1 on both boards turns on.
 
@@ -25,9 +25,11 @@ software obtained with BOARD_IN_STOP_MODE disabled.
 
 At the beginning of the main program the HAL_Init() function is called to reset
 all the peripherals, initialize the Flash interface and the systick.
-Then the SystemClock_Config() function is used to configure the system 
+
+Then the SystemClock_Config() function is used to configure the system
 (SYSCLK) to run at the maximum frequency with HSI as source clock.
-Additionally the HSI is enabled to demonstrate LPUART wake-up capabilities.
+Additionally, MSIK is enabled as kernel clock source for LPUART1 (about 6 MHz)
+to demonstrate LPUART wake-up capabilities.
 Each time board 1 is awoken, the system clock (SYSCLK) is restored.
 
 The LPUART is configured as follows:
@@ -56,6 +58,14 @@ The LPUART is configured as follows:
       HAL_NVIC_SetPriority() function.
   3. The application needs to ensure that the SysTick time base is always set
       to 1 millisecond to have correct HAL operation.
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+1. Board1 with Stop 2 mode(@3.3V)
+- Current Consumption during Stop 2 mode ~26–27 µA
+- Current Consumption during run mode 620 uA
+
+2. Board2(@3.3V)
+- Current consumption during run mode 620 uA
 
 ### <b>Keywords</b>
 

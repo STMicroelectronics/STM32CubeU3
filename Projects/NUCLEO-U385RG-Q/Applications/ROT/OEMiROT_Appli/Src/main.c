@@ -59,6 +59,7 @@ static uint32_t SecureInitIODone = 0;
 /* Private function prototypes -----------------------------------------------*/
 static void MX_GPIO_Init(void);
 static void MX_GTZC_Init(void);
+static void MX_ICACHE_Init(void);
 void FW_APP_PrintMainMenu(void);
 void FW_APP_Run(void);
 
@@ -130,6 +131,17 @@ size_t __write(int file, unsigned char const *ptr, size_t len)
   */
 int main(void)
 {
+ /*
+  * When OEMIROT_FAST_WAKE_UP is enabled, the OEMiRoT relies on the hardware SBF (standby flag)
+  * to skip firmware image verification. The SBF flag remains set when the application is entered
+  * after a wake-up from standby mode. This allows the application to handle its own software
+  * context restoration. To maintain a secure execution environment, the user application must
+  * clear the SBF flag after it is processed.
+  *
+  * In this example, the SBF flag is simply cleared without any processing.
+  */
+  __HAL_PWR_CLEAR_FLAG(PWR_FLAG_SBF);
+
   /*  set example to const : this const changes in binary without rebuild */
   pUserAppId = (uint8_t *)&UserAppId;
 
@@ -184,6 +196,9 @@ int main(void)
 #endif /* GPIOF */
   __HAL_RCC_GPIOG_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
+
+  /* Initialize ICACHE */
+  MX_ICACHE_Init();
 
   /* Secure SysTick should rather be suspended before calling non-secure  */
   /* in order to avoid wake-up from sleep mode entered by non-secure      */
@@ -318,6 +333,29 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(LED2_GPIO_Port, &GPIO_InitStruct);
+}
+
+/**
+  * @brief ICACHE Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_ICACHE_Init(void)
+{
+  /* Disable the Instruction Cache */
+  HAL_ICACHE_Disable();
+
+  /* Enable instruction cache in 1-way (direct mapped cache) */
+  if (HAL_ICACHE_ConfigAssociativityMode(ICACHE_1WAY) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /* Enable instruction cache */
+  if (HAL_ICACHE_Enable() != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
 /**

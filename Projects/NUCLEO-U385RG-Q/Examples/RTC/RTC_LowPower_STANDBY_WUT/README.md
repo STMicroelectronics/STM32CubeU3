@@ -15,6 +15,11 @@ The program enters again in STANDBY mode after each wake-up.
 After 5 wake-up (5 * 3 seconds = 15 seconds), the program checks that the RTC seconds value is also 15 seconds.
 It means that the test is OK.
 
+#### <b>Current</b>
+
+ - Current consumption during standby mode - 1.54 uA
+ - Current Consumption during run mode - 1996 uA
+
 One of the below scenario can occur :
 
  - LD2 toggles for ever : an error occurs.

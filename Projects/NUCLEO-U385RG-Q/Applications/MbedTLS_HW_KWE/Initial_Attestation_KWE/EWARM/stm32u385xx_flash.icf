@@ -11,8 +11,8 @@ define symbol __ICFEDIT_region_RAM_end__   = 0x2002FFFF;
 define symbol __region_SRAM2_start__       = 0x20030000;
 define symbol __region_SRAM2_end__         = 0x2003FFFF;
 
-define symbol __wrapped_keys_start__ = 0x080FF000;
-define symbol __wrapped_keys_end__   = 0x080FFFFF;
+define symbol __wrapped_keys_start__ = 0x080FD000;
+define symbol __wrapped_keys_end__   = 0x080FDFFF;
 
 /*-Sizes-*/
 define symbol __ICFEDIT_size_cstack__ = 0xA000;

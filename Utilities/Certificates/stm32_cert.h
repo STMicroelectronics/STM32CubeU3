@@ -28,15 +28,15 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stdint.h"
 
-#if defined STM32U375xx
-#include "stm32u375xx.h"
-#define DUA_USE_ECC_CURVE_SECP256R1
-#elif defined STM32U385xx
-#include "stm32u385xx.h"
-#define DUA_USE_ECC_CURVE_SECP256R1
+#if defined STM32U385xx
+#include "./STM32U385/cert_stm32u385xx.h"
+#elif defined STM32U3C5xx
+#include "./STM32U3C5/cert_stm32u3c5xx.h"
+#elif defined STM32U366xx
+#include "./STM32U366/cert_stm32u366xx.h"
 #else
 #error "Target not defined in the preprocessor setting or target not supported"
-#endif /* STM32U375xx */
+#endif /* STM32U385xx || STM32U3C5xx || STM32U366xx */
 
 /* Enable / disable required elliptic curves here (multiple curves support allowed) */
 #ifdef DUA_USE_ECC_CURVE_SECP521R1

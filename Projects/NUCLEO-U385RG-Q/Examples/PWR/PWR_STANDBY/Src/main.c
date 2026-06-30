@@ -120,6 +120,9 @@ int main(void)
     }
   }
 
+  /* Enable ULPMEN bit for lower consumption */
+  HAL_PWREx_EnableUltraLowPowerMode();
+
   /* Insert 5 seconds delay */
   HAL_Delay(5000);
 

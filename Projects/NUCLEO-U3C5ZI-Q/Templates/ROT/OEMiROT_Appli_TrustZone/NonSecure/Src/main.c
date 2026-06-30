@@ -70,6 +70,17 @@ int main(void)
   GPIO_InitTypeDef GPIO_Structure_Init = {0};
   /* USER CODE END 1 */
 
+ /*
+  * When OEMIROT_FAST_WAKE_UP is enabled, the OEMiRoT relies on the hardware SBF (standby flag)
+  * to skip firmware image verification. The SBF flag remains set when the application is entered
+  * after a wake-up from standby mode. This allows the application to handle its own software
+  * context restoration. To maintain a secure execution environment, the user application must
+  * clear the SBF flag after it is processed.
+  *
+  * In this example, the SBF flag is simply cleared without any processing.
+  */
+  __HAL_PWR_CLEAR_FLAG(PWR_FLAG_SBF);
+
   /* MCU Configuration--------------------------------------------------------*/
 
   /* STM32U3xx **NON-SECURE** HAL library initialization:

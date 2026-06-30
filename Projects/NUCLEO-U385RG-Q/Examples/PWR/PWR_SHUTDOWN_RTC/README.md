@@ -38,6 +38,10 @@ These steps are repeated in an infinite loop.
 **Note:** The application needs to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
 
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during (SHUTDOWN + RTC) - 0.56 uA
+- Current Consumption during RUN Mode - 1890 uA
+
 ### <b>Keywords</b>
 
 Power, PWR, SHUTDOWN mode, Interrupt, Wakeup, Low Power, RTC

@@ -82,7 +82,7 @@
  /* Definitions of internal temperature sensor */
  #define INTERNAL_TEMPSENSOR_AVGSLOPE   ((int32_t) 2500)        /* Internal temperature sensor, parameter Avg_Slope (unit: uV/DegCelsius). Refer to device datasheet for min/typ/max values. */
  #define INTERNAL_TEMPSENSOR_V30        ((((int32_t)*TEMPSENSOR_CAL1_ADDR) \
-                                        * TEMPSENSOR_CAL_VREFANALOG) / __LL_ADC_DIGITAL_SCALE(LL_ADC_RESOLUTION_12B)) /* Internal temperature sensor, parameter V30 (unit: mV), using calibration data (alternate solution possible with datasheet parameter: V30=760mV typ for STM32C0) */
+                                        * TEMPSENSOR_CAL_VREFANALOG) / __LL_ADC_DIGITAL_SCALE(LL_ADC_RESOLUTION_12B)) /* Internal temperature sensor, parameter V30 (unit: mV), using calibration data (alternate solution possible with datasheet parameter: V30=760mV typ for STM32U3) */
 #define INTERNAL_TEMPSENSOR_V30_TEMP   (TEMPSENSOR_CAL1_TEMP)
 /* USER CODE END PD */
 

@@ -420,6 +420,11 @@
               <FilePath>../USBX/App/app_usbx_host.c</FilePath>
             </File>
             <File>
+              <FileName>app_usbx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../USBX/App/app_usbx.c</FilePath>
+            </File>
+            <File>
               <FileName>ux_host_keyboard.c</FileName>
               <FileType>1</FileType>
               <FilePath>../USBX/App/ux_host_keyboard.c</FilePath>

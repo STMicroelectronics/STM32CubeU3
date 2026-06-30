@@ -38,7 +38,7 @@
 <li>Examples</li>
 <li>Examples_LL</li>
 <li>Examples_MIX</li>
-<li>ROT Provisionning</li>
+<li>ROT Provisioning</li>
 <li>Templates</li>
 <li>Templates_LL</li>
 <li>Templates_Boards</li>
@@ -49,9 +49,342 @@
 <div class="col-sm-12 col-lg-8">
 <h1 id="update-history">Update History</h1>
 <div class="collapse">
-<input type="checkbox" id="collapse-section4" checked aria-hidden="true"> <label for="collapse-section4" aria-hidden="true"><strong>V1.3.0 / 04-February-2026</strong></label>
+<input type="checkbox" id="collapse-section5" checked aria-hidden="true"> <label for="collapse-section5" aria-hidden="true"><strong>V1.4.0 / 03-June-2026</strong></label>
 <div>
 <h2 id="contents">Contents</h2>
+<p>Official release of STM32CubeU3 Projects :</p>
+<ul>
+<li><strong>Applications</strong> updates
+<ul>
+<li>Add applications for STM32U3 256K/512K
+<ul>
+<li>FileX, ThreadX, USBX , MbedTLS &amp; ROT Applications</li>
+<li>TouchSensing_1touchkey_LowPower for U3 512K DK board</li>
+</ul></li>
+</ul></li>
+<li><strong>Improve power consumption</strong>
+<ul>
+<li>Deploy HAL_SuspendTick/HAL_ResumeTick() to avoid immediate wakeup in low power</li>
+<li>Exact low power mode mentioned in the readme files</li>
+<li>ULPMEN bit setting in Standby examples</li>
+<li>Low Power Communication examples
+<ul>
+<li>LPUART_WakeUpFromStop2, I2C_TwoBoards_ComDMA_Autonomous_LowPower_Master/Slave</li>
+<li>UART_TwoBoards_ComDMA_stop1_autonomous, LPUART_WakeUpFromStop(stop2)</li>
+</ul></li>
+</ul></li>
+<li><strong>ROT_Provisioning</strong> updates
+<ul>
+<li>Update ROT applications for STM32U3 1M &amp; 2M</li>
+<li>Add ROT applications for STM32U3 256K &amp; 512K</li>
+</ul></li>
+<li><strong>Examples</strong> update
+<ul>
+<li>Add HAL Examples for STM32U3 256K
+<ul>
+<li>CORTEXM_SysTick, FLASH_EraseProgram, GPIO_EXTI, GPIO_IOToggle</li>
+<li>I2C_TwoBoards_ComDMA_Autonomous_Master, I2C_TwoBoards_ComDMA_Autonomous_Slave</li>
+<li>I3C_Controller_ResetPattern_WakeUpFromLowPower, I3C_Controller_WakeUpFromStop</li>
+<li>I3C_Target_ResetPattern_WakeUpFromStandBy, I3C_Target_WakeUpFromStop,</li>
+<li>PWR_ModesSelection, RCC_ClockConfig, SPI_FullDuplex_ComDMA_LowPower_Master</li>
+<li>SPI_FullDuplex_ComDMA_LowPower_Slave, TIM_WakeUpFromSleep, LPUART_WakeUpFromStop</li>
+</ul></li>
+<li>Add HAL Examples for STM32U3 512K
+<ul>
+<li>CORTEXM_SysTick FLASH_EraseProgram, GPIO_EXTI, GPIO_IOToggle</li>
+<li>I2C_TwoBoards_ComDMA_Autonomous_Master, I2C_TwoBoards_ComDMA_Autonomous_Slave</li>
+<li>LPTIM_Timeout, PWR_ModesSelection, RCC_ClockConfig, UART_Printf</li>
+</ul></li>
+<li>Add HAL Examples for STM32U3 512K DK board
+<ul>
+<li>LCD_Blink_Frequency, LCD_Contrast_Control, LCD_SegmentsDrive, GPIO_IOToggle</li>
+</ul></li>
+</ul></li>
+<li><strong>Examples_LL update</strong>
+<ul>
+<li>Add USART_WakeUpFromStop1_Init for STM32U3 256K</li>
+</ul></li>
+<li><strong>Templates</strong> updates
+<ul>
+<li>Add template projects for STM32U3 256K &amp; 512K</li>
+<li>Add ROT template projects for STM32U3 256K &amp; 512K</li>
+</ul></li>
+<li><strong>Templates_Board</strong> updates
+<ul>
+<li>Add template_board project for STM32U3 256K &amp; 512K Nucleo board</li>
+</ul></li>
+<li><strong>Templates_LL</strong> updates
+<ul>
+<li>Add template_ll projects for STM32U3 256K &amp; 512K</li>
+</ul></li>
+<li><strong>Demonstration</strong> updates
+<ul>
+<li>Add Demo app for STM32U3 512K DK board</li>
+</ul></li>
+</ul>
+<h2 id="projects">Projects</h2>
+<p><small>The Project categories flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Board</th>
+<th style="text-align: left;">Project category</th>
+<th style="text-align: left;">Path</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U385RG-Q</td>
+<td style="text-align: left;">Applications <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U385RG-Q\Applications</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U385RG-Q</td>
+<td style="text-align: left;">HAL Examples <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U385RG-Q\Examples</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U385RG-Q</td>
+<td style="text-align: left;">LL Examples <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U385RG-Q\Examples_LL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U385RG-Q</td>
+<td style="text-align: left;">MIX Examples</td>
+<td style="text-align: left;">Projects\NUCLEO-U385RG-Q\Examples_MIX</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U385RG-Q</td>
+<td style="text-align: left;">HAL Template <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U385RG-Q\Templates</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U385RG-Q</td>
+<td style="text-align: left;">LL Template</td>
+<td style="text-align: left;">Projects\NUCLEO-U385RG-Q\Templates_LL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U385RG-Q</td>
+<td style="text-align: left;">Start from board Template <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U385RG-Q\Templates_Board</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U385RG-Q</td>
+<td style="text-align: left;">ROT Provisioning <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U385RG-Q\ROT_Provisioning</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U345RC-Q</td>
+<td style="text-align: left;">Applications <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U345RC-Q\Applications</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U345RC-Q</td>
+<td style="text-align: left;">HAL Examples <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U345RC-Q\Examples</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U345RC-Q</td>
+<td style="text-align: left;">LL Examples <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U345RC-Q\Examples_LL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U345RC-Q</td>
+<td style="text-align: left;">HAL Template <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U345RC-Q\Templates</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U345RC-Q</td>
+<td style="text-align: left;">LL Template <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U345RC-Q\Templates_LL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U345RC-Q</td>
+<td style="text-align: left;">Start from board Template <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U345RC-Q\Templates_Board</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U345RC-Q</td>
+<td style="text-align: left;">ROT Provisioning <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U345RC-Q\ROT_Provisioning</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U366RE-Q</td>
+<td style="text-align: left;">Applications <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U366RE-Q\Applications</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U366RE-Q</td>
+<td style="text-align: left;">HAL Examples <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U366RE-Q\Examples</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U366RE-Q</td>
+<td style="text-align: left;">HAL Template <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U366RE-Q\Templates</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U366RE-Q</td>
+<td style="text-align: left;">LL Template <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U366RE-Q\Templates_LL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U366RE-Q</td>
+<td style="text-align: left;">Start from board Template <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U366RE-Q\Templates_Board</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U366RE-Q</td>
+<td style="text-align: left;">ROT Provisioning <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U366RE-Q\ROT_Provisioning</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U3C5ZI-Q</td>
+<td style="text-align: left;">Applications <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U3C5ZI-Q\Applications</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U3C5ZI-Q</td>
+<td style="text-align: left;">HAL Examples <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U3C5ZI-Q\Examples</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U3C5ZI-Q</td>
+<td style="text-align: left;">LL Examples <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U3C5ZI-Q\Examples_LL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U3C5ZI-Q</td>
+<td style="text-align: left;">HAL Template <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U3C5ZI-Q\Templates</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U3C5ZI-Q</td>
+<td style="text-align: left;">LL Template <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U3C5ZI-Q\Templates_LL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO-U3C5ZI-Q</td>
+<td style="text-align: left;">Start from board Template</td>
+<td style="text-align: left;">Projects\NUCLEO-U3C5ZI-Q\Templates_Board</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NUCLEO-U3C5ZI-Q</td>
+<td style="text-align: left;">ROT Provisioning <span class="icon-st-update"></span></td>
+<td style="text-align: left;">Projects\NUCLEO-U3C5ZI-Q\ROT_Provisioning</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32U366E-DK</td>
+<td style="text-align: left;">Applications <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\STM32U366E-DK\Applications</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32U366E-DK</td>
+<td style="text-align: left;">HAL Examples <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\STM32U366E-DK\Examples</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32U366E-DK</td>
+<td style="text-align: left;">HAL Template <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\STM32U366E-DK\Templates</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32U366E-DK</td>
+<td style="text-align: left;">Demonstration <span class="icon-st-add"></span></td>
+<td style="text-align: left;">Projects\STM32U366E-DK\Demonstration</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NUCLEO_CUSTOM_HW</td>
+<td style="text-align: left;">HAL Examples</td>
+<td style="text-align: left;">Projects\NUCLEO_CUSTOM_HW\Examples</td>
+</tr>
+</tbody>
+</table>
+<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Toolchain + ST-Link</th>
+<th>Version</th>
+<th style="text-align: left;">Patch (if available)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">IAR Embedded Workbench for ARM (EWARM)</td>
+<td>V9.20.1</td>
+<td style="text-align: left;"><a href="../Utilities/PC_Software/EWARMv9_STM32U37x-38x_V1.0.0.zip">STM32U3 1M Patch EWARM</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td>V9.20.1</td>
+<td style="text-align: left;"><a href="../Utilities/PC_Software/EWARMv9_STM32U3Bx-3Cx_V1.0.0.zip">STM32U3 2M Patch EWARM</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td>V9.20.1</td>
+<td style="text-align: left;"><a href="../Utilities/PC_Software/EWARMv9_STM32U35x-36x_V1.0.0.zip">STM32U3 512K Patch EWARM</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td>V9.20.1</td>
+<td style="text-align: left;"><a href="../Utilities/PC_Software/EWARMv9_STM32U33x-34x_V1.0.0.zip">STM32U3 256K Patch EWARM</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RealView Microcontroller Development Kit (MDK-ARM)</td>
+<td>V5.39 (U335xx/U345xx/U356xx/U366xx/</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td>U375xx/U385xx/U3B5xx/U3C5xx)</td>
+<td style="text-align: left;"><a href="../Utilities/PC_Software/Keil.STM32U3xx_DFP.1.3.0.zip">Patch MDK-ARM</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32CubeIDE</td>
+<td>V2.2.0</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="supported-devices-and-boards">Supported Devices and boards</h2>
+<ul>
+<li>STM32U335xx/STM32U345xx/STM32U356xx/STM32U366xx/STM32U375xx/STM32U385xx/STM32U3B5xx/STM32U3C5xx devices</li>
+<li>NUCLEO-U345RC-Q board</li>
+<li>NUCLEO-U366RE-Q board</li>
+<li>STM32U366E-DK board</li>
+<li>NUCLEO-U385RG-Q (Rev.E) board</li>
+<li>NUCLEO-U3C5ZI-Q (Rev.B) board</li>
+<li>STM32U3_CUSTOM_HW board</li>
+</ul>
+<h2 id="known-limitations">Known Limitations</h2>
+<ul>
+<li>The USBX applications Ux_Host_HID and Ux_Host_HID_Standalone may not operate correctly on MDK-ARM v5.39 (AC6 compiler) when compiled with the -O3 optimization level.</li>
+<li>HSP_HW_IF_WaitEndOfDirectCommand : Clang warning: dereferencing type-punned pointer will break strict-aliasing rules</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>STM32CubeMX V6.18.0
+<ul>
+<li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.18.0)</li>
+</ul></li>
+</ul>
+<h2 id="backward-compatibility">Backward compatibility</h2>
+<ul>
+<li>Not applicable</li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>None</li>
+</ul>
+<p><br />
+</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section4"  aria-hidden="true"> <label for="collapse-section4" aria-hidden="true"><strong>V1.3.0 / 04-February-2026</strong></label>
+<div>
+<h2 id="contents-1">Contents</h2>
 <p>Official release of STM32CubeU3 Projects :</p>
 <ul>
 <li><strong>Applications</strong> updates
@@ -60,12 +393,12 @@
 <li>Applications for ThreadX, FileX, USBX applications ported to STM32U3 2M</li>
 <li>New Applications for HSP - biquad_acc, cfft_acc, fir_acc, fir_rfft_seq, fir_seq and rfft_acc</li>
 </ul></li>
-<li>Improve power conumption
+<li><strong>Improve power consumption</strong>
 <ul>
 <li>Enabled SMPS for all Applications for the improvement in low power consumption</li>
 <li>Enabled ICACHE-1WAY for HSP, Filex, ThreadX and USBX applications for the improvement in low power consumption</li>
 </ul></li>
-<li><strong>ROT_Provisionning</strong> updates
+<li><strong>ROT_Provisioning</strong> updates
 <ul>
 <li>Update OEMiROT and OEMiRoT_OEMuRoT for STM32U3 2M</li>
 </ul></li>
@@ -102,7 +435,7 @@
 <li>Enabled ICACHE-1WAY for the improvement in low power consumption</li>
 </ul></li>
 </ul>
-<h2 id="projects">Projects</h2>
+<h2 id="projects-1">Projects</h2>
 <p><small>The Project categories flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <table>
 <thead>
@@ -150,7 +483,7 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">NUCLEO-U385RG-Q</td>
-<td style="text-align: left;">ROT Provisionning <span class="icon-st-update"></span></td>
+<td style="text-align: left;">ROT Provisioning <span class="icon-st-update"></span></td>
 <td style="text-align: left;">Projects\NUCLEO-U385RG-Q\ROT_Provisioning</td>
 </tr>
 <tr class="odd">
@@ -185,7 +518,7 @@
 </tr>
 <tr class="odd">
 <td style="text-align: left;">NUCLEO-U3C5ZI-Q</td>
-<td style="text-align: left;">ROT Provisionning <span class="icon-st-add"></span></td>
+<td style="text-align: left;">ROT Provisioning <span class="icon-st-add"></span></td>
 <td style="text-align: left;">Projects\NUCLEO-U3C5ZI-Q\ROT_Provisioning</td>
 </tr>
 <tr class="even">
@@ -195,7 +528,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-1">Development Toolchains and Compilers</h2>
 <table>
 <thead>
 <tr class="header">
@@ -227,30 +560,30 @@
 </tr>
 </tbody>
 </table>
-<h2 id="supported-devices-and-boards">Supported Devices and boards</h2>
+<h2 id="supported-devices-and-boards-1">Supported Devices and boards</h2>
 <ul>
 <li>STM32U375xx/STM32U385xx/STM32U3B5xx/STM32U3C5xx devices</li>
 <li>NUCLEO-U385RG-Q (Rev.E) board</li>
 <li>NUCLEO-U3C5ZI-Q board</li>
 <li>STM32U3_CUSTOM_HW board</li>
 </ul>
-<h2 id="known-limitations">Known Limitations</h2>
+<h2 id="known-limitations-1">Known Limitations</h2>
 <ul>
 <li>The USBX applications Ux_Host_HID and Ux_Host_HID_Standalone may not operate correctly on MDK-ARM v5.39 (AC6 compiler) when compiled with the -O3 optimization level.</li>
 <li>Some non-critical Clang warnings remain in the HSP_HW_IF_SEQ_EVENT_SetConfig_Trigger() function. These warnings have been reviewed and do not affect the functional behavior of the application.</li>
 </ul>
-<h2 id="dependencies">Dependencies</h2>
+<h2 id="dependencies-1">Dependencies</h2>
 <ul>
 <li>STM32CubeMX V6.17.0
 <ul>
 <li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.17.0</li>
 </ul></li>
 </ul>
-<h2 id="backward-compatibility">Backward compatibility</h2>
+<h2 id="backward-compatibility-1">Backward compatibility</h2>
 <ul>
 <li>Not applicable</li>
 </ul>
-<h2 id="notes">Notes</h2>
+<h2 id="notes-1">Notes</h2>
 <ul>
 <li>None</li>
 </ul>
@@ -261,14 +594,14 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section3" aria-hidden="true"> <label for="collapse-section3" aria-hidden="true"><strong>V1.2.0 / 04-June-2025</strong></label>
 <div>
-<h2 id="contents-1">Contents</h2>
+<h2 id="contents-2">Contents</h2>
 <p>Maintenance release of STM32CubeU3 Projects :</p>
 <ul>
 <li><strong>Applications</strong> updates
 <ul>
 <li>Update OEMiROT_Appli, OEMiROT_Appli_TrustZone, and OEMiROT_Boot</li>
 </ul></li>
-<li><strong>ROT_Provisionning</strong> updates
+<li><strong>ROT_Provisioning</strong> updates
 <ul>
 <li>Update OEMiROT and OEMiRoT_OEMuRoT</li>
 </ul></li>
@@ -339,7 +672,7 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">NUCLEO-U385RG-Q</td>
-<td style="text-align: left;">ROT Provisionning <span class="icon-st-update"></span></td>
+<td style="text-align: left;">ROT Provisioning <span class="icon-st-update"></span></td>
 <td style="text-align: left;">Projects\NUCLEO-U385RG-Q\ROT_Provisioning</td>
 </tr>
 <tr class="odd">
@@ -349,7 +682,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="development-toolchains-and-compilers-1">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
 <table>
 <thead>
 <tr class="header">
@@ -376,28 +709,28 @@
 </tr>
 </tbody>
 </table>
-<h2 id="supported-devices-and-boards-1">Supported Devices and boards</h2>
+<h2 id="supported-devices-and-boards-2">Supported Devices and boards</h2>
 <ul>
 <li>STM32U375xx/STM32U385xx devices</li>
 <li>NUCLEO-U385RG-Q (Rev.E) board</li>
 <li>STM32U3_CUSTOM_HW board</li>
 </ul>
-<h2 id="known-limitations-1">Known Limitations</h2>
+<h2 id="known-limitations-2">Known Limitations</h2>
 <ul>
 <li>None</li>
 </ul>
-<h2 id="dependencies-1">Dependencies</h2>
+<h2 id="dependencies-2">Dependencies</h2>
 <ul>
 <li>STM32CubeMX V6.15.0
 <ul>
 <li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.15.0</li>
 </ul></li>
 </ul>
-<h2 id="backward-compatibility-1">Backward compatibility</h2>
+<h2 id="backward-compatibility-2">Backward compatibility</h2>
 <ul>
 <li>Not applicable</li>
 </ul>
-<h2 id="notes-1">Notes</h2>
+<h2 id="notes-2">Notes</h2>
 <ul>
 <li>None</li>
 </ul>
@@ -408,7 +741,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section2"  aria-hidden="true"> <label for="collapse-section2" aria-hidden="true"><strong>V1.1.0 / 05-February-2025</strong></label>
 <div>
-<h2 id="contents-2">Contents</h2>
+<h2 id="contents-3">Contents</h2>
 <p>Maintenance release of STM32CubeU3 Projects :</p>
 <ul>
 <li><strong>Applications</strong> updates
@@ -491,7 +824,7 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">NUCLEO-U385RG-Q</td>
-<td style="text-align: left;">ROT Provisionning <span class="icon-st-update"></span></td>
+<td style="text-align: left;">ROT Provisioning <span class="icon-st-update"></span></td>
 <td style="text-align: left;">Projects\NUCLEO-U385RG-Q\ROT_Provisioning</td>
 </tr>
 <tr class="odd">
@@ -501,7 +834,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
 <table>
 <thead>
 <tr class="header">
@@ -528,28 +861,28 @@
 </tr>
 </tbody>
 </table>
-<h2 id="supported-devices-and-boards-2">Supported Devices and boards</h2>
+<h2 id="supported-devices-and-boards-3">Supported Devices and boards</h2>
 <ul>
 <li>STM32U375xx/STM32U385xx devices</li>
 <li>NUCLEO-U385RG-Q (Rev.E) board</li>
 <li>STM32U3_CUSTOM_HW board</li>
 </ul>
-<h2 id="known-limitations-2">Known Limitations</h2>
+<h2 id="known-limitations-3">Known Limitations</h2>
 <ul>
 <li>None</li>
 </ul>
-<h2 id="dependencies-2">Dependencies</h2>
+<h2 id="dependencies-3">Dependencies</h2>
 <ul>
 <li>STM32CubeMX V6.14.0
 <ul>
 <li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.14.0</li>
 </ul></li>
 </ul>
-<h2 id="backward-compatibility-2">Backward compatibility</h2>
+<h2 id="backward-compatibility-3">Backward compatibility</h2>
 <ul>
 <li>Not applicable</li>
 </ul>
-<h2 id="notes-2">Notes</h2>
+<h2 id="notes-3">Notes</h2>
 <ul>
 <li>None</li>
 </ul>
@@ -560,7 +893,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section1"  aria-hidden="true"> <label for="collapse-section1" aria-hidden="true"><strong>V1.0.0 / 30-October-2024</strong></label>
 <div>
-<h2 id="contents-3">Contents</h2>
+<h2 id="contents-4">Contents</h2>
 <p>First official release of STM32CubeU3 Projects</p>
 <p><small>The Project categories flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p>Projects</p>
@@ -610,8 +943,8 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">NUCLEO-U385RG-Q</td>
-<td style="text-align: left;">ROT Provisionning</td>
-<td style="text-align: left;">Projects\NUCLEO-U385RG-Q\ROT_Provisioning</td>
+<td style="text-align: left;">ROT Provisioning P</td>
+<td style="text-align: left;">rojects\NUCLEO-U385RG-Q\ROT_Provisioning</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">NUCLEO_CUSTOM_HW</td>
@@ -620,7 +953,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-4">Development Toolchains and Compilers</h2>
 <table>
 <thead>
 <tr class="header">
@@ -647,28 +980,28 @@
 </tr>
 </tbody>
 </table>
-<h2 id="supported-devices-and-boards-3">Supported Devices and boards</h2>
+<h2 id="supported-devices-and-boards-4">Supported Devices and boards</h2>
 <ul>
 <li>STM32U375xx/STM32U385xx devices</li>
 <li>NUCLEO-U385RG-Q (Rev.E) board</li>
 <li>STM32U3_CUSTOM_HW board</li>
 </ul>
-<h2 id="known-limitations-3">Known Limitations</h2>
+<h2 id="known-limitations-4">Known Limitations</h2>
 <ul>
 <li>None</li>
 </ul>
-<h2 id="dependencies-3">Dependencies</h2>
+<h2 id="dependencies-4">Dependencies</h2>
 <ul>
 <li>STM32CubeMX V6.13.0
 <ul>
 <li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.13.0.</li>
 </ul></li>
 </ul>
-<h2 id="backward-compatibility-3">Backward compatibility</h2>
+<h2 id="backward-compatibility-4">Backward compatibility</h2>
 <ul>
 <li>Not applicable</li>
 </ul>
-<h2 id="notes-3">Notes</h2>
+<h2 id="notes-4">Notes</h2>
 <ul>
 <li>None</li>
 </ul>

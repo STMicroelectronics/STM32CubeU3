@@ -461,6 +461,10 @@ void OPAMP_Config_Power(void)
   HAL_DBGMCU_DisableDBGStopMode();
   
   /* Enter in low power mode(STOP1) and wait USER Button event to wakeup from stop mode */
+  /* Suspend Tick increment to prevent wakeup by Systick interrupt.         */
+  /* Otherwise the Systick interrupt will wake up the device within 1ms     */
+  /* (HAL time base).                                                       */
+  HAL_SuspendTick();
   HAL_PWR_EnterSTOPMode(PWR_LOWPOWERMODE_STOP1, PWR_SLEEPENTRY_WFI);
   
   /* Re-configure the system clock and resume Tick increment */

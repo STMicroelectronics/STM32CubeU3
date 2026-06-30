@@ -95,7 +95,9 @@ void HAL_DAC_MspInit(DAC_HandleTypeDef* hdac)
 
   /** Initializes the peripherals clock
   */
-    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_DAC1SH;
+    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_DAC1SH|RCC_PERIPHCLK_ADCDAC;
+    PeriphClkInit.AdcDacClockSelection = RCC_ADCDACCLKSOURCE_HCLK;
+    PeriphClkInit.AdcDacClockDivider = RCC_ADCDACCLK_DIV1;
     PeriphClkInit.Dac1SampleHoldClockSelection = RCC_DAC1SHCLKSOURCE_LSI;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
     {

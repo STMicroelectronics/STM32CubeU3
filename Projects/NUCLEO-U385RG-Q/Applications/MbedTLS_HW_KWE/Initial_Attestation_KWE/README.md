@@ -84,7 +84,7 @@ Cryptography, authentication, ECDSA, wrap, Cryptographic
 
 In order to make the program work, you must do the following :
 
- - Download the Rsse package from st.com : X-CUBE-RSSe (STM32CubeExpansion_RSSe_V1.1.0 or greater and update the path accordingly in export_DUA_key.bat).
+ - Download the Rsse package from st.com : X-CUBE-RSSe (STM32CubeExpansion_RSSe_V2.0.0 or greater and update the path accordingly in export_DUA_key.bat).
  - Download the tool STM32CubeProgrammer software for all STM32 from st.com (V2.19.0 or greater and update the path accordingly in export_DUA_key.bat).
 
  - Run the script export_DUA_key.bat (to export the DUA wrapped private key and save it under Wrapped_Keys directory)

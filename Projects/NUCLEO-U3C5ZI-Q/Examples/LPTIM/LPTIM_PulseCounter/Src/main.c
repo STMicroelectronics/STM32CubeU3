@@ -118,7 +118,13 @@ int main(void)
   __HAL_LPTIM_DISABLE_IT(&hlptim2, LPTIM_IT_ARROK);
 
   /* ### Enter in Stop mode ########################################### */
+  /* Suspend Tick increment to prevent wakeup by Systick interrupt.         */
+  /* Otherwise the Systick interrupt will wake up the device within 1ms     */
+  /* (HAL time base).                                                       */
+  HAL_SuspendTick();
   HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI); 
+  /* Resume Tick interrupt if disabled prior to STOP mode entry */
+  HAL_ResumeTick();
 
   /* USER CODE END 2 */
 
@@ -259,7 +265,6 @@ static void MX_LPTIM2_Init(void)
   hlptim2.Init.UpdateMode = LPTIM_UPDATE_IMMEDIATE;
   hlptim2.Init.CounterSource = LPTIM_COUNTERSOURCE_EXTERNAL;
   hlptim2.Init.Input1Source = LPTIM_INPUT1SOURCE_GPIO;
-  hlptim2.Init.Input2Source = LPTIM_INPUT2SOURCE_GPIO;
   hlptim2.Init.RepetitionCounter = 0;
   if (HAL_LPTIM_Init(&hlptim2) != HAL_OK)
   {

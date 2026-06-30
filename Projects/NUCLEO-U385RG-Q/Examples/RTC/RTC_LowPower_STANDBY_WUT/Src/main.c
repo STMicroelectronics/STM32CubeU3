@@ -90,6 +90,9 @@ int main(void)
   /* LED Init */
   BSP_LED_Init(LD2);
 
+  /* Enable ULPMEN bit for lower consumption */
+  HAL_PWREx_EnableUltraLowPowerMode();
+
   /* Enable Backup domain access */
   HAL_PWR_EnableBkUpAccess();
 

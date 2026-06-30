@@ -357,7 +357,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-
   if (HAL_PWREx_EnableEpodBooster() != HAL_OK)
   {
     Error_Handler();
@@ -609,8 +608,7 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.

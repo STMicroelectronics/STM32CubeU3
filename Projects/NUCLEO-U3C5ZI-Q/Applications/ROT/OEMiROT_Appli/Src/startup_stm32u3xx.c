@@ -65,14 +65,14 @@ DEFAULT_IRQ_HANDLER(SysTick_Handler)
 DEFAULT_IRQ_HANDLER(WWDG_IRQHandler)
 DEFAULT_IRQ_HANDLER(PVD_PVM_IRQHandler)
 DEFAULT_IRQ_HANDLER(RTC_IRQHandler)
-DEFAULT_IRQ_HANDLER(RTC_IRQHandler_S)
+DEFAULT_IRQ_HANDLER(RTC_S_IRQHandler)
 DEFAULT_IRQ_HANDLER(TAMP_IRQHandler)
 DEFAULT_IRQ_HANDLER(RAMCFG_IRQHandler)
 DEFAULT_IRQ_HANDLER(FLASH_IRQHandler)
-DEFAULT_IRQ_HANDLER(FLASH_IRQHandler_S)
+DEFAULT_IRQ_HANDLER(FLASH_S_IRQHandler)
 DEFAULT_IRQ_HANDLER(GTZC_IRQHandler)
 DEFAULT_IRQ_HANDLER(RCC_IRQHandler)
-DEFAULT_IRQ_HANDLER(RCC_IRQHandler_S)
+DEFAULT_IRQ_HANDLER(RCC_S_IRQHandler)
 DEFAULT_IRQ_HANDLER(EXTI0_IRQHandler)
 DEFAULT_IRQ_HANDLER(EXTI1_IRQHandler)
 DEFAULT_IRQ_HANDLER(EXTI2_IRQHandler)
@@ -100,24 +100,21 @@ DEFAULT_IRQ_HANDLER(GPDMA1_Channel5_IRQHandler)
 DEFAULT_IRQ_HANDLER(GPDMA1_Channel6_IRQHandler)
 DEFAULT_IRQ_HANDLER(GPDMA1_Channel7_IRQHandler)
 DEFAULT_IRQ_HANDLER(ADC1_IRQHandler)
-DEFAULT_IRQ_HANDLER(ADC1_2_IRQHandler)
 DEFAULT_IRQ_HANDLER(DAC1_IRQHandler)
 DEFAULT_IRQ_HANDLER(FDCAN1_IT0_IRQHandler)
 DEFAULT_IRQ_HANDLER(FDCAN1_IT1_IRQHandler)
-DEFAULT_IRQ_HANDLER(TIM1_BRK_IRQHandler)
+DEFAULT_IRQ_HANDLER(TIM1_BRK_TERR_IERR_IRQHandler)
 DEFAULT_IRQ_HANDLER(TIM1_UP_IRQHandler)
-DEFAULT_IRQ_HANDLER(TIM1_TRG_COM_IRQHandler)
+DEFAULT_IRQ_HANDLER(TIM1_TRG_COM_DIR_IDX_IRQHandler)
 DEFAULT_IRQ_HANDLER(TIM1_CC_IRQHandler)
 DEFAULT_IRQ_HANDLER(TIM2_IRQHandler)
 DEFAULT_IRQ_HANDLER(TIM3_IRQHandler)
 DEFAULT_IRQ_HANDLER(TIM4_IRQHandler)
-DEFAULT_IRQ_HANDLER(TIM5_IRQHandler)
 DEFAULT_IRQ_HANDLER(TIM6_IRQHandler)
 DEFAULT_IRQ_HANDLER(TIM7_IRQHandler)
-DEFAULT_IRQ_HANDLER(TIM8_BRK_IRQHandler)
-DEFAULT_IRQ_HANDLER(TIM8_UP_IRQHandler)
-DEFAULT_IRQ_HANDLER(TIM8_TRG_COM_IRQHandler)
-DEFAULT_IRQ_HANDLER(TIM8_CC_IRQHandler)
+DEFAULT_IRQ_HANDLER(TIM12_IRQHandler)
+DEFAULT_IRQ_HANDLER(I3C1_EV_IRQHandler)
+DEFAULT_IRQ_HANDLER(I3C1_ER_IRQHandler)
 DEFAULT_IRQ_HANDLER(I2C1_EV_IRQHandler)
 DEFAULT_IRQ_HANDLER(I2C1_ER_IRQHandler)
 DEFAULT_IRQ_HANDLER(I2C2_EV_IRQHandler)
@@ -136,28 +133,18 @@ DEFAULT_IRQ_HANDLER(TIM15_IRQHandler)
 DEFAULT_IRQ_HANDLER(TIM16_IRQHandler)
 DEFAULT_IRQ_HANDLER(TIM17_IRQHandler)
 DEFAULT_IRQ_HANDLER(COMP_IRQHandler)
-DEFAULT_IRQ_HANDLER(USB_IRQHandler)
-DEFAULT_IRQ_HANDLER(OTG_FS_IRQHandler)
-DEFAULT_IRQ_HANDLER(OTG_HS_IRQHandler)
+DEFAULT_IRQ_HANDLER(USB_FS_IRQHandler)
 DEFAULT_IRQ_HANDLER(CRS_IRQHandler)
-DEFAULT_IRQ_HANDLER(FMC_IRQHandler)
 DEFAULT_IRQ_HANDLER(OCTOSPI1_IRQHandler)
-DEFAULT_IRQ_HANDLER(PWR_S3WU_IRQHandler)
+DEFAULT_IRQ_HANDLER(HSP1_IRQHandler)
 DEFAULT_IRQ_HANDLER(SDMMC1_IRQHandler)
-DEFAULT_IRQ_HANDLER(SDMMC2_IRQHandler)
-DEFAULT_IRQ_HANDLER(DMA2_Channel1_IRQHandler)
 DEFAULT_IRQ_HANDLER(GPDMA1_Channel8_IRQHandler)
 DEFAULT_IRQ_HANDLER(GPDMA1_Channel9_IRQHandler)
 DEFAULT_IRQ_HANDLER(GPDMA1_Channel10_IRQHandler)
 DEFAULT_IRQ_HANDLER(GPDMA1_Channel11_IRQHandler)
-DEFAULT_IRQ_HANDLER(GPDMA1_Channel12_IRQHandler)
-DEFAULT_IRQ_HANDLER(GPDMA1_Channel13_IRQHandler)
-DEFAULT_IRQ_HANDLER(GPDMA1_Channel14_IRQHandler)
-DEFAULT_IRQ_HANDLER(GPDMA1_Channel15_IRQHandler)
 DEFAULT_IRQ_HANDLER(I2C3_EV_IRQHandler)
 DEFAULT_IRQ_HANDLER(I2C3_ER_IRQHandler)
 DEFAULT_IRQ_HANDLER(SAI1_IRQHandler)
-DEFAULT_IRQ_HANDLER(SAI2_IRQHandler)
 DEFAULT_IRQ_HANDLER(TSC_IRQHandler)
 DEFAULT_IRQ_HANDLER(AES_IRQHandler)
 DEFAULT_IRQ_HANDLER(RNG_IRQHandler)
@@ -166,54 +153,23 @@ DEFAULT_IRQ_HANDLER(HASH_IRQHandler)
 DEFAULT_IRQ_HANDLER(PKA_IRQHandler)
 DEFAULT_IRQ_HANDLER(LPTIM3_IRQHandler)
 DEFAULT_IRQ_HANDLER(SPI3_IRQHandler)
-DEFAULT_IRQ_HANDLER(I2C4_ER_IRQHandler)
-DEFAULT_IRQ_HANDLER(I2C4_EV_IRQHandler)
-DEFAULT_IRQ_HANDLER(MDF1_FLT0_IRQHandler)
-DEFAULT_IRQ_HANDLER(MDF1_FLT1_IRQHandler)
-DEFAULT_IRQ_HANDLER(MDF1_FLT2_IRQHandler)
-DEFAULT_IRQ_HANDLER(MDF1_FLT3_IRQHandler)
-DEFAULT_IRQ_HANDLER(UCPD1_IRQHandler)
-DEFAULT_IRQ_HANDLER(ICACHE_IRQHandler)
-DEFAULT_IRQ_HANDLER(OTFDEC1_IRQHandler)
-DEFAULT_IRQ_HANDLER(OTFDEC2_IRQHandler)
-DEFAULT_IRQ_HANDLER(LPTIM4_IRQHandler)
-DEFAULT_IRQ_HANDLER(DCACHE1_IRQHandler)
-DEFAULT_IRQ_HANDLER(ADF1_IRQHandler)
-DEFAULT_IRQ_HANDLER(ADC4_IRQHandler)
-DEFAULT_IRQ_HANDLER(LPDMA1_Channel0_IRQHandler)
-DEFAULT_IRQ_HANDLER(LPDMA1_Channel1_IRQHandler)
-DEFAULT_IRQ_HANDLER(LPDMA1_Channel2_IRQHandler)
-DEFAULT_IRQ_HANDLER(LPDMA1_Channel3_IRQHandler)
-DEFAULT_IRQ_HANDLER(DMA2D_IRQHandler)
-DEFAULT_IRQ_HANDLER(DCMI_PSSI_IRQHandler)
-DEFAULT_IRQ_HANDLER(OCTOSPI2_IRQHandler)
-DEFAULT_IRQ_HANDLER(MDF1_FLT4_IRQHandler)
-DEFAULT_IRQ_HANDLER(MDF1_FLT5_IRQHandler)
-DEFAULT_IRQ_HANDLER(CORDIC_IRQHandler)
-DEFAULT_IRQ_HANDLER(FMAC_IRQHandler)
-DEFAULT_IRQ_HANDLER(LSECSSD_IRQHandler)
-DEFAULT_IRQ_HANDLER(USART6_IRQHandler)
-DEFAULT_IRQ_HANDLER(I2C5_ER_IRQHandler)
-DEFAULT_IRQ_HANDLER(I2C5_EV_IRQHandler)
-DEFAULT_IRQ_HANDLER(I2C6_ER_IRQHandler)
-DEFAULT_IRQ_HANDLER(I2C6_EV_IRQHandler)
-DEFAULT_IRQ_HANDLER(HSPI1_IRQHandler)
-DEFAULT_IRQ_HANDLER(GPU2D_IRQHandler)
-DEFAULT_IRQ_HANDLER(GPU2D_ER_IRQHandler)
-DEFAULT_IRQ_HANDLER(GFXMMU_IRQHandler)
-DEFAULT_IRQ_HANDLER(LTDC_IRQHandler)
-DEFAULT_IRQ_HANDLER(LTDC_ER_IRQHandler)
-DEFAULT_IRQ_HANDLER(DSI_IRQHandler)
-DEFAULT_IRQ_HANDLER(DCACHE2_IRQHandler)
-DEFAULT_IRQ_HANDLER(GFXTIM_IRQHandler)
-DEFAULT_IRQ_HANDLER(JPEG_IRQHandler)
-DEFAULT_IRQ_HANDLER(I3C1_EV_IRQHandler)
-DEFAULT_IRQ_HANDLER(I3C1_ER_IRQHandler)
-DEFAULT_IRQ_HANDLER(I3C2_EV_IRQHandler)
-DEFAULT_IRQ_HANDLER(ADC2_IRQHandler)
 DEFAULT_IRQ_HANDLER(I3C2_ER_IRQHandler)
+DEFAULT_IRQ_HANDLER(I3C2_EV_IRQHandler)
+DEFAULT_IRQ_HANDLER(TIM8_BRK_IRQHandler)
+DEFAULT_IRQ_HANDLER(TIM8_UP_IRQHandler)
+DEFAULT_IRQ_HANDLER(TIM8_TRG_COM_IRQHandler)
+DEFAULT_IRQ_HANDLER(TIM8_CC_IRQHandler)
+DEFAULT_IRQ_HANDLER(ICACHE_IRQHandler)
+DEFAULT_IRQ_HANDLER(LPTIM4_IRQHandler)
+DEFAULT_IRQ_HANDLER(ADF1_IRQHandler)
+DEFAULT_IRQ_HANDLER(ADC2_IRQHandler)
+DEFAULT_IRQ_HANDLER(FDCAN2_IT0_IRQHandler)
+DEFAULT_IRQ_HANDLER(FDCAN2_IT1_IRQHandler)
+DEFAULT_IRQ_HANDLER(I2C4_EV_IRQHandler)
+DEFAULT_IRQ_HANDLER(I2C4_ER_IRQHandler)
+DEFAULT_IRQ_HANDLER(SPI4_IRQHandler)
 DEFAULT_IRQ_HANDLER(PWR_IRQHandler)
-DEFAULT_IRQ_HANDLER( PWR_S_IRQHandler)
+DEFAULT_IRQ_HANDLER(PWR_S_IRQHandler)
 /*----------------------------------------------------------------------------
   Exception / Interrupt Vector table
  *----------------------------------------------------------------------------*/
@@ -228,11 +184,11 @@ extern const pFunc __VECTOR_TABLE[];
   (pFunc)(&__INITIAL_SP),           /*      Initial Stack Pointer */
   Reset_Handler,                    /*      Reset Handler */
   NMI_Handler,                      /* -14: NMI Handler */
-  HardFault_Handler,                 /*Hard Fault Handler*/
-  MemManage_Handler,                 /*MPU Fault Handler*/
-  BusFault_Handler,                /* -11: Bus Fault Handler */
-  UsageFault_Handler ,                    /* -10: Usage Fault Handler */
-  SecureFault_Handler,                    /*  -9: Secure Fault Handler */
+  HardFault_Handler,                /*      Hard Fault Handler*/
+  MemManage_Handler,                /*      MPU Fault Handler*/
+  BusFault_Handler,                 /* -11: Bus Fault Handler */
+  UsageFault_Handler ,              /* -10: Usage Fault Handler */
+  SecureFault_Handler,              /*  -9: Secure Fault Handler */
   0,                                /*      Reserved */
   0,                                /*      Reserved */
   0,                                /*      Reserved */
@@ -242,32 +198,32 @@ extern const pFunc __VECTOR_TABLE[];
   PendSV_Handler,                   /*  -2: PendSV Handler */
   SysTick_Handler,                  /*  -1: SysTick Handler */
   WWDG_IRQHandler,                  /*   0: Window WatchDog */
-  PVD_PVM_IRQHandler,               /*   1: PVD/AVD through EXTI Line detection Interrupt */
+  PVD_PVM_IRQHandler,               /*   1: PVD/PVM through EXTI Line 16 detection Interrupt */
   RTC_IRQHandler,                   /*   2: RTC non-secure interrupt */
-  RTC_IRQHandler_S,                 /*   3: RTC secure interrupt */
-  TAMP_IRQHandler,                  /*   4: Tamper non-secure interrupt  */
-  RAMCFG_IRQHandler,                /*   5: RAMCFG global */
+  RTC_S_IRQHandler,                 /*   3: RTC secure interrupt */
+  TAMP_IRQHandler,                  /*   4: Tamper interrupt */
+  RAMCFG_IRQHandler,                /*   5: RAMCFG global interrupt */
   FLASH_IRQHandler,                 /*   6: FLASH non-secure global interrupt */
-  FLASH_IRQHandler_S,               /*   7: FLASH secure global interrupt */
+  FLASH_S_IRQHandler,               /*   7: FLASH secure global interrupt */
   GTZC_IRQHandler,                  /*   8: Global TrustZone Controller interrupt */
   RCC_IRQHandler,                   /*   9: RCC non-secure global interrupts */
-  RCC_IRQHandler_S,                 /*  10: RCC secure global interrupts */
-  EXTI0_IRQHandler,                 /*  11: EXTI Line0 */
-  EXTI1_IRQHandler,                 /*  12: EXTI Line1 */
-  EXTI2_IRQHandler,                 /*  13: EXTI Line2 */
-  EXTI3_IRQHandler,                 /*  14: EXTI Line3 */
-  EXTI4_IRQHandler,                 /*  15: EXTI Line4 */
-  EXTI5_IRQHandler,                 /*  16: EXTI Line5 */
-  EXTI6_IRQHandler,                 /*  17: EXTI Line6 */
-  EXTI7_IRQHandler,                 /*  18: EXTI Line7 */
-  EXTI8_IRQHandler,                 /*  19: EXTI Line8 */
-  EXTI9_IRQHandler,                 /*  20: EXTI Line9 */
-  EXTI10_IRQHandler,                /*  21: EXTI Line10 */
-  EXTI11_IRQHandler,                /*  22: EXTI Line11 */
-  EXTI12_IRQHandler,                /*  23: EXTI Line12 */
-  EXTI13_IRQHandler,                /*  24: EXTI Line13 */
-  EXTI14_IRQHandler,                /*  25: EXTI Line14 */
-  EXTI15_IRQHandler,                /*  26: EXTI Line15 */
+  RCC_S_IRQHandler,                 /*  10: RCC secure global interrupts */
+  EXTI0_IRQHandler,                 /*  11: EXTI Line 0 interrupt */
+  EXTI1_IRQHandler,                 /*  12: EXTI Line 1 interrupt */
+  EXTI2_IRQHandler,                 /*  13: EXTI Line 2 interrupt */
+  EXTI3_IRQHandler,                 /*  14: EXTI Line 3 interrupt */
+  EXTI4_IRQHandler,                 /*  15: EXTI Line 4 interrupt */
+  EXTI5_IRQHandler,                 /*  16: EXTI Line 5 interrupt */
+  EXTI6_IRQHandler,                 /*  17: EXTI Line 6 interrupt */
+  EXTI7_IRQHandler,                 /*  18: EXTI Line 7 interrupt */
+  EXTI8_IRQHandler,                 /*  19: EXTI Line 8 interrupt */
+  EXTI9_IRQHandler,                 /*  20: EXTI Line 9 interrupt */
+  EXTI10_IRQHandler,                /*  21: EXTI Line 10 interrupt */
+  EXTI11_IRQHandler,                /*  22: EXTI Line 11 interrupt */
+  EXTI12_IRQHandler,                /*  23: EXTI Line 12 interrupt */
+  EXTI13_IRQHandler,                /*  24: EXTI Line 13 interrupt */
+  EXTI14_IRQHandler,                /*  25: EXTI Line 14 interrupt */
+  EXTI15_IRQHandler,                /*  26: EXTI Line 15 interrupt */
   IWDG_IRQHandler,                  /*  27: IWDG global interrupt */
   SAES_IRQHandler,                  /*  28:Secure AES global interrupt */
   GPDMA1_Channel0_IRQHandler,       /*  29: GPDMA1 Channel 0 global interrupt */
@@ -280,92 +236,92 @@ extern const pFunc __VECTOR_TABLE[];
   GPDMA1_Channel7_IRQHandler,       /*  36: GPDMA1 Channel 7 global interrupt */
   ADC1_IRQHandler,                  /*  37: ADC1 global interrupt  */
   DAC1_IRQHandler,                  /*  38: DAC1 global interrupt */
-  FDCAN1_IT0_IRQHandler,            /*  39: FDCAN1 Interrupt 0 */
-  FDCAN1_IT1_IRQHandler,            /*  40: FDCAN1 Interrupt 1 */
-  TIM1_BRK_IRQHandler,              /*  41: TIM1 Break */
-  TIM1_UP_IRQHandler,               /*  42: TIM1 Update */
-  TIM1_TRG_COM_IRQHandler,          /*  43: TIM1 Trigger and Commutation */
-  TIM1_CC_IRQHandler,               /*  44: TIM1 Capture Compare */
-  TIM2_IRQHandler,                  /*  45: TIM2 */
-  TIM3_IRQHandler,                  /*  46: TIM3 */
-  TIM4_IRQHandler,                  /*  47: TIM4 */
-  0,                                 /*  48: TIM5 */
-  TIM6_IRQHandler,                  /*  49: TIM6 */
-  TIM7_IRQHandler,                  /*  50: TIM7 */
-  0,                                 /*  51: TIM8 Break */
-  0,                                 /*  52: TIM8 Update */
-  I3C1_EV_IRQHandler,               /*  55: I3C1 Event */
-  I3C1_ER_IRQHandler,               /*  56: I3C1 Error */
-  I2C1_EV_IRQHandler,               /*  55: I2C1 Event */
-  I2C1_ER_IRQHandler,               /*  56: I2C1 Error */
-  I2C2_EV_IRQHandler,               /*  57: I2C2 Event */
-  I2C2_ER_IRQHandler,               /*  58: I2C2 Error */
-  SPI1_IRQHandler,                  /*  59: SPI1 */
-  SPI2_IRQHandler,                  /*  60: SPI2 */
-  USART1_IRQHandler,                /*  61: USART1 */
-  0,                                /*  62: Reserved */
-  USART3_IRQHandler,                /*  63: USART3 */
-  UART4_IRQHandler,                 /*  64: UART4 */
-  UART5_IRQHandler,                 /*  65: UART5 */
-  LPUART1_IRQHandler,               /*  66: LP UART1 */
-  LPTIM1_IRQHandler,                /*  67: LP TIM1 */
-  LPTIM2_IRQHandler,                /*  68: LP TIM2 */
-  TIM15_IRQHandler,                 /*  69: TIM15 */
-  TIM16_IRQHandler,                 /*  70: TIM16 */
-  TIM17_IRQHandler,                 /*  71: TIM17 */
-  COMP_IRQHandler,                  /*  72: COMP1&2 */
-  USB_IRQHandler,                   /*  73, USB global interrupt */
-  CRS_IRQHandler,                   /*  74: CRS */
+  FDCAN1_IT0_IRQHandler,            /*  39: FDCAN1 interrupt 0 */
+  FDCAN1_IT1_IRQHandler,            /*  40: FDCAN1 interrupt 1 */
+  TIM1_BRK_TERR_IERR_IRQHandler,    /*  41: TIM1 Break, Transition error and Index error interrupt */
+  TIM1_UP_IRQHandler,               /*  42: TIM1 Update interrupt */
+  TIM1_TRG_COM_DIR_IDX_IRQHandler,  /*  43: TIM1 Trigger, Commutation, Direction change and Index interrupt */
+  TIM1_CC_IRQHandler,               /*  44: TIM1 Capture Compare interrupt */
+  TIM2_IRQHandler,                  /*  45: TIM2 global interrupt */
+  TIM3_IRQHandler,                  /*  46: TIM3 global interrupt */
+  TIM4_IRQHandler,                  /*  47: TIM4 global interrupt */
+  0,                                /*  48: Reserved */
+  TIM6_IRQHandler,                  /*  49: TIM6 global interrupt */
+  TIM7_IRQHandler,                  /*  50: TIM7 global interrupt */
+  TIM12_IRQHandler,                 /*  51: TIM12 global interrupt */
+  0,                                /*  52: Reserved */
+  I3C1_EV_IRQHandler,               /*  53: I3C1 event interrupt */
+  I3C1_ER_IRQHandler,               /*  54: I3C1 error interrupt */
+  I2C1_EV_IRQHandler,               /*  55: I2C1 Event interrupt */
+  I2C1_ER_IRQHandler,               /*  56: I2C1 Error interrupt */
+  I2C2_EV_IRQHandler,               /*  57: I2C2 Event interrupt */
+  I2C2_ER_IRQHandler,               /*  58: I2C2 Error interrupt */
+  SPI1_IRQHandler,                  /*  59: SPI1 global interrupt */
+  SPI2_IRQHandler,                  /*  60: SPI2 global interrupt */
+  USART1_IRQHandler,                /*  61: USART1 global interrupt */
+  USART2_IRQHandler,                /*  62: USART2 global interrupt */
+  USART3_IRQHandler,                /*  63: USART3 global interrupt */
+  UART4_IRQHandler,                 /*  64: UART4 global interrupt */
+  UART5_IRQHandler,                 /*  65: UART5 global interrupt */
+  LPUART1_IRQHandler,               /*  66: LPUART1 global interrupt */
+  LPTIM1_IRQHandler,                /*  67: LPTIM1 global interrupt */
+  LPTIM2_IRQHandler,                /*  68: LPTIM2 global interrupt */
+  TIM15_IRQHandler,                 /*  69: TIM15 global interrupt */
+  TIM16_IRQHandler,                 /*  70: TIM16 global interrupt */
+  TIM17_IRQHandler,                 /*  71: TIM17 global interrupt */
+  COMP_IRQHandler,                  /*  72: COMP1 and COMP2 through EXTI Lines interrupt */
+  USB_FS_IRQHandler,                /*  73, USB FS global interrupt */
+  CRS_IRQHandler,                   /*  74: CRS global interrupt */
   0,                                /*  75: Reserved */
   OCTOSPI1_IRQHandler,              /*  76: OctoSPI1 global interrupt */
-  0,
+  HSP1_IRQHandler,                  /*  77: HSP1 global interrupt */
   SDMMC1_IRQHandler,                /*  78: SDMMC1 global interrupt */
   0,                                /*  79: Reserved */
-  GPDMA1_Channel8_IRQHandler,       /*  80: GPDMA1 Channel 8 global interrupt*/
-  GPDMA1_Channel9_IRQHandler,       /*  81: GPDMA1 Channel 9 global interrupt*/
-  GPDMA1_Channel10_IRQHandler,      /*  82: GPDMA1 Channel 10 global interrupt*/
-  GPDMA1_Channel11_IRQHandler,      /*  83: GPDMA1 Channel 11 global interrupt*/
-  0,                                /*  84: GPDMA1 Channel 12 global interrupt*/
-  0,                                /*  85: GPDMA1 Channel 13 global interrupt*/
-  0,                                /*  86: GPDMA1 Channel 14 global interrupt*/
-  0,                                /*  87: GPDMA1 Channel 15 global interrupt*/
-  I2C3_EV_IRQHandler,               /*  88: I2C3 event */
-  I2C3_ER_IRQHandler,               /*  89: I2C3 error */
+  GPDMA1_Channel8_IRQHandler,       /*  80: GPDMA1 Channel 8 global interrupt */
+  GPDMA1_Channel9_IRQHandler,       /*  81: GPDMA1 Channel 9 global interrupt */
+  GPDMA1_Channel10_IRQHandler,      /*  82: GPDMA1 Channel 10 global interrupt */
+  GPDMA1_Channel11_IRQHandler,      /*  83: GPDMA1 Channel 11 global interrupt */
+  0,                                /*  84: Reserved */
+  0,                                /*  85: Reserved */
+  0,                                /*  86: Reserved */
+  0,                                /*  87: Reserved */
+  I2C3_EV_IRQHandler,               /*  88: I2C3 event interrupt */
+  I2C3_ER_IRQHandler,               /*  89: I2C3 error interrupt */
   SAI1_IRQHandler,                  /*  90: Serial Audio Interface 1 global interrupt */
   0,                                /*  91: Reserved */
   TSC_IRQHandler,                   /*  92: Touch Sense Controller global interrupt */
   AES_IRQHandler,                   /*  93: AES global interrupt */
   RNG_IRQHandler,                   /*  94: RNG global interrupt */
-  FPU_IRQHandler,                   /*  95: FPU */
+  FPU_IRQHandler,                   /*  95: FPU global interrupt */
   HASH_IRQHandler,                  /*  96: HASH global interrupt */
   PKA_IRQHandler,                   /*  97: PKA global interrupt */
-  LPTIM3_IRQHandler,                /*  98: LP TIM3 */
-  SPI3_IRQHandler,                  /*  99: SPI3 */
-  I3C2_ER_IRQHandler,               /* 100: I2C2 error */
-  I3C2_EV_IRQHandler,               /* 101: I2C2 event */
-  0,                                  /* 102: MDF1 Filter 0 global interrupt */
-  0,                                  /* 103: MDF1 Filter 1 global interrupt */
-  0,                                /* 104: Reserved */
-  0,                                /* 105: Reserved */
+  LPTIM3_IRQHandler,                /*  98: LPTIM3 global interrupt */
+  SPI3_IRQHandler,                  /*  99: SPI3 global interrupt */
+  I3C2_EV_IRQHandler,               /* 100: I3C2 Event interrupt */
+  I3C2_ER_IRQHandler,               /* 101: I3C2 Error interrupt */
+  TIM8_BRK_IRQHandler,              /* 102: TIM8 Break interrupt */
+  TIM8_UP_IRQHandler,               /* 103: TIM8 Update interrupt */
+  TIM8_TRG_COM_IRQHandler,          /* 104: TIM8 Trigger and Commutation interrupt */
+  TIM8_CC_IRQHandler,               /* 105: TIM8 Capture Compare interrupt */
   0,                                /* 106: Reserved */
   ICACHE_IRQHandler,                /* 107: Instruction cache global interrupt*/
-  0,                                /* 108: OTFDEC1 global interrupt */
-  0,                                /* 109: OTFDEC2 global interrupt */
+  0,                                /* 108: Reserved */
+  0,                                /* 109: Reserved */
   LPTIM4_IRQHandler,                /* 110: LPTIM4 global interrupt */
-  0,               /* 111: Data cache global interrupt */
+  0,                                /* 111: Reserved */
   ADF1_IRQHandler,                  /* 112: ADF interrupt */
-  ADC2_IRQHandler,                  /* 113: ADC2 (12bits) global interrupt */
-  0,                                /* 114: LPDMA1 SmartRun Channel 0 global interrupt */
-  0,                                /* 115: LPDMA1 SmartRun Channel 0 global interrupt */
-  0,                                /* 116: LPDMA1 SmartRun Channel 0 global interrupt */
-  0,                                /* 117: LPDMA1 SmartRun Channel 0 global interrupt */
+  ADC2_IRQHandler,                  /* 113: ADC2 global interrupt */
+  FDCAN2_IT0_IRQHandler,            /* 114: FDCAN2 Interrupt 0 */
+  FDCAN2_IT1_IRQHandler,            /* 115: FDCAN2 Interrupt 1 */
+  I2C4_EV_IRQHandler,               /* 116: I2C4 event interrupt */
+  I2C4_ER_IRQHandler,               /* 117: I2C4 error interrupt */
   0,                                /* 118: Reserved */
+  SPI4_IRQHandler,                  /* 119: SPI4 global interrupt */  
   0,                                /* 120: Reserved */
   0,                                /* 121: Reserved */
   0,                                /* 122: Reserved */
-  0,                                /* 123: CORDIC global interrupt */
-  PWR_IRQHandler,                   /*PWR non-secure interrupt*/
-  PWR_S_IRQHandler,                 /*PWR secure interrupt*/
+  PWR_IRQHandler,                   /* 123: PWR non-secure interrupt */
+  PWR_S_IRQHandler,                 /* 124: PWR secure interrupt */
 };
 
 #if defined ( __GNUC__ )

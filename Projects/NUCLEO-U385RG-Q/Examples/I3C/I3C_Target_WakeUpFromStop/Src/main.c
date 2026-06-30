@@ -149,7 +149,13 @@ int main(void)
   *  - Following procedure describe in STM32U3xx Reference Manual
   *  - See PWR part, section Low-power modes, STOP mode
   */
+  /* Suspend Tick increment to prevent wakeup by Systick interrupt.         */
+  /* Otherwise the Systick interrupt will wake up the device within 1ms     */
+  /* (HAL time base).                                                       */
+  HAL_SuspendTick();
   HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+  /* Resume Tick interrupt if disabled prior to STOP mode entry */
+  HAL_ResumeTick();
 
   /*##- Wait for the end of the transfer #################################*/
   /*  Before starting a new communication transfer, you need to check the current

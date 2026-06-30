@@ -31,16 +31,6 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>Application/User/stm32u3xx_hal_msp.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Secure/Src/stm32u3xx_hal_msp.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/stm32u3xx_it.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Secure/Src/stm32u3xx_it.c</locationURI>
-		</link>
-		<link>
 			<name>Application/User/low_level_device.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Secure/Src/low_level_device.c</locationURI>
@@ -59,6 +49,16 @@
 			<name>Application/User/secure_nsc.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Secure/Src/secure_nsc.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/stm32u3xx_hal_msp.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Secure/Src/stm32u3xx_hal_msp.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/stm32u3xx_it.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Secure/Src/stm32u3xx_it.c</locationURI>
 		</link>
 		<link>
 			<name>Drivers/CMSIS/system_stm32u3xx_s.c</name>
@@ -109,6 +109,11 @@
 			<name>Drivers/STM32U3xx_HAL_Driver/stm32u3xx_hal_gtzc.c</name>
 			<type>1</type>
 			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_gtzc.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32U3xx_HAL_Driver/stm32u3xx_hal_icache.c</name>
+			<type>1</type>
+			<locationURI>PARENT-7-PROJECT_LOC/Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_icache.c</locationURI>
 		</link>
 		<link>
 			<name>Drivers/STM32U3xx_HAL_Driver/stm32u3xx_hal_pwr.c</name>

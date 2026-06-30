@@ -424,7 +424,6 @@
 #include "stm32u3xx_hal_xspi.h"
 #endif /* HAL_XSPI_MODULE_ENABLED */
 
-
 /* Exported macro ------------------------------------------------------------*/
 #ifdef  USE_FULL_ASSERT
 /**

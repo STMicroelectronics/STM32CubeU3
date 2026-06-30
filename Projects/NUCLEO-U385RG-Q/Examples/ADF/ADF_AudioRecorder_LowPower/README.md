@@ -1,6 +1,6 @@
 ## <b>ADF_AudioRecorder_LowPower Example Description</b>
 
-  This project demonstrates how to configure ADF to perform PCM record in low power STOP1 mode.
+  This project demonstrates how to configure ADF to perform PCM record in low power Stop 1 mode.
 
   One digital microphone of X-NUCLEO-CCA02M2 (digital mems microphone expansion board) is used on this example.
   X-NUCLEO-CCA02M2 is connected but not plugged on NUCLEO-U385RG-Q board.
@@ -23,7 +23,7 @@
   If error occurs during previous steps, green led toggles.
 
   In order to reduce power consumption, the system clock frequency is set to 12Mhz.
-  After each PCM samples reception, CPU enters in STOP1 mode until new DMA tranfert callback.
+  After each PCM samples reception, CPU enters in Stop 1 mode until new DMA tranfert callback.
   In addition, SMPS regulator is enabled and SysTick interrupt is disabled to avoid wake-up each millisecond.
 
   With ADF_AudioRecorder example, power consumption during audio record is around 6,2mA.

@@ -48,7 +48,7 @@ MEMORY
   RAM    (xrw)   : ORIGIN = 0x20000000,   LENGTH = 192K
   RAM2   (xrw)   : ORIGIN = 0x20030000,   LENGTH = 64K
   FLASH  (rx)    : ORIGIN = 0x08000000,   LENGTH = 1020K
-  WRAPPED_KEYS_REGION(rx) : ORIGIN = 0x080FF000, LENGTH = 4k
+  WRAPPED_KEYS_REGION(rx) : ORIGIN = 0x080FD000, LENGTH = 4k
 }
 
 TARGET(binary) /* specify the file format of binary file */

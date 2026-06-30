@@ -22,7 +22,7 @@
 #define __UX_DEVICE_DESCRIPTORS_H__
 
 #ifdef __cplusplus
-extern "C" {
+ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/

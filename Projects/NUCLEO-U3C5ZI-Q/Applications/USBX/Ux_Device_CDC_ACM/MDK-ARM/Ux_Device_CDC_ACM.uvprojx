@@ -440,6 +440,11 @@
               <FilePath>../USBX/App/app_usbx_device.c</FilePath>
             </File>
             <File>
+              <FileName>app_usbx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../USBX/App/app_usbx.c</FilePath>
+            </File>
+            <File>
               <FileName>ux_device_cdc_acm.c</FileName>
               <FileType>1</FileType>
               <FilePath>../USBX/App/ux_device_cdc_acm.c</FilePath>

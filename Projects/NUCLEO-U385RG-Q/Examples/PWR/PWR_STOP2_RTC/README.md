@@ -25,7 +25,7 @@ These steps are repeated in an infinite loop.
 
 #### <b>Notes</b>
 
-1- To measure the current consumption in STOP 2 mode, remove JP4 jumper
+1- To measure the current consumption in Stop 2 mode, remove JP4 jumper
       and connect an amperemeter to JP4 to measure IDD current.
 
 2- This example can not be used in DEBUG mode due to the fact
@@ -49,6 +49,10 @@ These steps are repeated in an infinite loop.
 6- A current leakage can be observed while supplying the MCU from an external source and not supplying
       the STLink (unplugged). To fix this leakage, you can configure the pin PA13 as Analog, however, the
       connection with the debugger is lost.
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption (Stop 2 + RTC) - 5.07 uA
+- Current Consumption during RUN Mode - 1890 uA
 
 ### <b>Keywords</b>
 

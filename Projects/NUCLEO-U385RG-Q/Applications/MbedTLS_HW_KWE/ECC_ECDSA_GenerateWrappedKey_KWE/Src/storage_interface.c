@@ -34,7 +34,15 @@
 #define FLASH_IF_MIN_WRITE_LEN (8U)     /* Flash programming by 64 bits */
 #define NB_PAGE_SECTOR_PER_ERASE  (2U)  /* Nb page erased per erase */
 
-#define ITS_LOCATION         ((uint32_t)0X080FC000) /* ITS start address */
+/*
+ * FLASH START is 0x08000000
+ * ITS_MAX_SIZE is 8K = 0X2000
+ * FLASH_SIZE is 1024K = 0x100000
+ * ITS_SLOT size is ITS_SLOT_MAX_NUMBER * ITS_SLOT_OFFSET = 16 * 128 = 2K = 0X800
+ * ITS_LOCATION = FLASH START + FLASH_SIZE - ITS_MAX_SIZE
+ * ITS_ENCRYPTION_KEY_LOCATION = ITS_LOCATION - ITS_SLOT size
+ */
+#define ITS_LOCATION         ((uint32_t)0X080FE000) /* ITS start address */
 #define ITS_MAX_SIZE         (8*1024U)  /* 8 KBytes */
 #define ITS_SLOT_MAX_NUMBER  (16U)
 #define ITS_SLOT_OFFSET      0x00000080 /* 128 words (32 bits)) */
@@ -43,7 +51,7 @@
 /* Encrypted ITS secret key Location
  * user should protect storage where the key is stored
  */
-#define ITS_ENCRYPTION_KEY_LOCATION    0X080FD000
+#define ITS_ENCRYPTION_KEY_LOCATION    0X080FD800
 #endif /* PSA_USE_ENCRYPTED_ITS */
 
 /* Private macro -------------------------------------------------------------*/

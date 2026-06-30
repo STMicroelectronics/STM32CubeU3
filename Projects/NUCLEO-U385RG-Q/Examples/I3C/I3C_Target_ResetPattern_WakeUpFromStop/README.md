@@ -1,6 +1,6 @@
 ## <b>I3C_Target_ResetPattern_WakeUpFromStop Example Description</b>
 
-How to handle I3C as Target to wake up from Stop, when Target receives a reset pattern.
+How to handle I3C as Target to wake up from Stop 3, when Target receives a reset pattern.
 
       - Board: NUCLEO-U385RG (embeds a STM32U385RG device)
       - SCL Pin: PB13 (Arduino D15/SCL CN5 pin 4, Morpho CN10 pin30)
@@ -29,7 +29,7 @@ On product STM32U3, the feature Reset Pattern is both functional on PWR peripher
 The PWR Reset Pattern detection is functional during low power phases.
 The I3C Reset Pattern detection is functional during run mode phases.
 
-The PWR Reset Pattern detection, help target to detect the Reset Pattern during the Stop, Standby mode.
+The PWR Reset Pattern detection helps target to detect the Reset Pattern during the Stop 3, Standby mode.
 
 The HAL_I3C_Tgt_Config(), the HAL_I3C_SetConfigFifo(), and the HAL_I3C_ActivateNotification() functions
 allow respectively the configuration of the Target descriptor,
@@ -46,17 +46,17 @@ User may update this function to change I3C configuration.
 The first step enable the wake up line 9 for I3C1 through HAL_PWR_EnableWakeUpLine(), then Enable I3C pull-up()
 for SCL and SDA pins through HAL_PWREx_EnableI3CPullUp().
 
-Then Target goes to Low power Stop Mode through HAL_PWR_EnterStopMode().
+Then Target goes to Low power Stop 3 Mode through HAL_PWR_EnterStopMode().
 
-The I3C Controller start the communication by sending the reset pattern through HAL_I3C_Ctrl_GeneratePatterns()
-to I3C Target which is in Low power mode, then the Target wakeup from Stop mode.
+The I3C Controller starts the communication by sending the reset pattern through HAL_I3C_Ctrl_GeneratePatterns()
+to I3C Target which is in Low power mode, then the Target wakes up from Stop 3 mode.
 
-After wake up from Stop, the __HAL_PWR_GET_FLAG() function check Stop flag.
+After wake up from Stop3, the __HAL_PWR_GET_FLAG() function checks Stop 3 flag.
 
 NUCLEO-U385RG's LEDs can be used to monitor the transfer status:
 
- - LD2 toggle slowly when there is an error in transmission/reception process.
- - LD2 ON when target wake up from Stop.
+ - LD2 toggles slowly when there is an error in transmission/reception process.
+ - LD2 is ON when target wake up from Stop 3.
 
 #### <b>Notes</b>
 
@@ -69,10 +69,18 @@ NUCLEO-U385RG's LEDs can be used to monitor the transfer status:
   2. The application need to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
 
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+1. Controller Board
+- Current Consumption during RUN Mode - 1444 uA
+
+2. Target Board
+- Current Consumption during RUN Mode - 1742 uA
+- Current Consumption during Stop 3 Mode - 300 uA
+
 ### <b>Keywords</b>
 
 Connectivity, Communication, I3C, Interrupt, Controller, Target, Dynamic Address Assignment,
-Transmission, Reception, Wakeup, ResetPattern, Stop mode.
+Transmission, Reception, Wakeup, ResetPattern, Stop 3 mode.
 
 ### <b>Directory contents</b>
 

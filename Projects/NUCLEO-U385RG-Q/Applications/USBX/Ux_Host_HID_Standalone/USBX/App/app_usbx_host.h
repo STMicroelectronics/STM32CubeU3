@@ -30,10 +30,11 @@ extern "C" {
 #include "main.h"
 #include "ux_host_mouse.h"
 #include "ux_host_keyboard.h"
+#include "ux_hcd_stm32.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "ux_hcd_stm32.h"
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -42,8 +43,6 @@ extern "C" {
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
-#define UX_HOST_APP_MEM_POOL_SIZE  1024*13
-#define USBX_HOST_MEMORY_STACK_SIZE     1024*13
 
 /* USER CODE BEGIN EC */
 
@@ -62,9 +61,10 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 UINT MX_USBX_Host_Init(VOID);
+UINT MX_USBX_Host_Stack_Init(VOID);
+UINT MX_USBX_Host_Stack_DeInit(VOID);
 
 /* USER CODE BEGIN EFP */
-VOID USBX_APP_Host_Init(VOID);
 VOID USBX_Host_Process(VOID *arg);
 
 /* USER CODE END EFP */

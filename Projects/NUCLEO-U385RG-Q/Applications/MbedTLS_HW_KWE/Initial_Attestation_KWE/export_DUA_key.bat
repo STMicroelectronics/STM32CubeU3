@@ -12,10 +12,10 @@ set stm32programmercli=%stm32tool_path%\STM32_Programmer_CLI.exe
 :: ==============================================================================
 
 :: Extract DUA_USER_LU
-::"%stm32programmercli%" -c port=SWD -rssekw ./STM32CubeExpansion_RSSe_V1.1.0/RSSe/STM32U3/RSSe_KW_U375_U385_v1.0.0.bin ./Wrapped_Keys/DUA_USLU_DHUK_Sign_NS_Priv.bin KeyType=eccchiplu ExportPublicKey=No WrappingKeySelect=DHUK KeyUsage=ECDSA_USAGE_SIGN SecAttr=NON_SECURE PrivAttr=PRIVILEGE
+::"%stm32programmercli%" -c port=SWD -rssekw ./STM32CubeExpansion_RSSe_V2.0.0/RSSe/STM32U3/RSSe_KW_U375_U385_v1.0.0.bin ./Wrapped_Keys/DUA_USLU_DHUK_Sign_NS_Priv.bin KeyType=eccchiplu ExportPublicKey=No WrappingKeySelect=DHUK KeyUsage=ECDSA_USAGE_SIGN SecAttr=NON_SECURE PrivAttr=PRIVILEGE
 
 :: Extract DUA_USER_FU
-"%stm32programmercli%" -c port=SWD -rssekw ./STM32CubeExpansion_RSSe_V1.1.0/RSSe/STM32U3/RSSe_KW_U375_U385_v1.0.0.bin ./Wrapped_Keys/DUA_USFU_DHUK_Sign_NS_Priv.bin KeyType=eccchipfu ExportPublicKey=No WrappingKeySelect=DHUK KeyUsage=ECDSA_USAGE_SIGN SecAttr=NON_SECURE PrivAttr=PRIVILEGE
+"%stm32programmercli%" -c port=SWD -rssekw ./STM32CubeExpansion_RSSe_V2.0.0/RSSe/STM32U3/RSSe_KW_U375_U385_v1.0.0.bin ./Wrapped_Keys/DUA_USFU_DHUK_Sign_NS_Priv.bin KeyType=eccchipfu ExportPublicKey=No WrappingKeySelect=DHUK KeyUsage=ECDSA_USAGE_SIGN SecAttr=NON_SECURE PrivAttr=PRIVILEGE
 
 :: ==============================================================================
 :: Reset the board options bytes using the STM32CubeProgrammer.

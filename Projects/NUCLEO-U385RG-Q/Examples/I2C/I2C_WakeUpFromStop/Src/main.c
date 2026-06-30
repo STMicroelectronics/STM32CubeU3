@@ -35,7 +35,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 /* Uncomment this line to use the board as master, if not it is used as slave */
-//#define MASTER_BOARD
+#define MASTER_BOARD
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -201,7 +201,13 @@ int main(void)
 
   /* Enable Power Control clock */
 
+  /* Suspend Tick increment to prevent wakeup by Systick interrupt.         */
+  /* Otherwise the Systick interrupt will wake up the device within 1ms     */
+  /* (HAL time base).                                                       */
+  HAL_SuspendTick();
   HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+  /* Resume Tick interrupt if disabled prior to STOP mode entry */
+  HAL_ResumeTick();
 
   /* ... STOP mode ... */
 
@@ -227,7 +233,13 @@ int main(void)
   }
 
   /* enter stop mode */
+  /* Suspend Tick increment to prevent wakeup by Systick interrupt.         */
+  /* Otherwise the Systick interrupt will wake up the device within 1ms     */
+  /* (HAL time base).                                                       */
+  HAL_SuspendTick();
   HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+  /* Resume Tick interrupt if disabled prior to STOP mode entry */
+  HAL_ResumeTick();
 
   /* ... STOP mode ... */
 
@@ -316,7 +328,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB3CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
     Error_Handler();
   }

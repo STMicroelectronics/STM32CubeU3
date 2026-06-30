@@ -1,28 +1,28 @@
 ## <b>PWR_STOP3_RTC Example Description</b>
 
-This example shows how to enter the system in STOP 3 mode and wake-up from this
+This example shows how to enter the system in Stop 3 mode and wake-up from this
 mode using the RTC Internal wake-up interrupt.
 
 In the associated software, the system clock is set to 96 MHz and RTC is configured to wake-up the CPU.
 The SysTick is programmed to generate an interrupt each 1 ms and in the SysTick
-interrupt handler, LD2 is toggled in order to indicate whether the MCU is in STOP 3 mode
+interrupt handler, LD2 is toggled in order to indicate whether the MCU is in Stop 3 mode
 or RUN mode.
 
-2 seconds after start-up, the system automatically enters STOP 3 mode and
+2 seconds after start-up, the system automatically enters Stop 3 mode and
 LD2 stops toggling.
 
-The CPU stays in STOP 3 mode until the RTC triggers the Internal WakeUp. The delay is manageable by changing the RTC_WAKEUP_DELAY define in main.c.
+The CPU stays in Stop 3 mode until the RTC triggers the Internal WakeUp. The delay is manageable by changing the RTC_WAKEUP_DELAY define in main.c.
 
-The software then comes back in RUN mode for 2 sec. before automatically entering STOP 3 mode again.
+The software then comes back in RUN mode for 2 sec. before automatically entering Stop 3 mode again.
 
 LD2 is used to monitor the system state as follows:
  - LD2 toggling: system in RUN mode
- - LD2 OFF : system in STOP 3 mode
+ - LD2 OFF : system in Stop 3 mode
  - LD2 ON : configuration failed (system will go to an infinite loop)
 
 These steps are repeated in an infinite loop.
 
-**Note:** To measure the current consumption in STOP 3 mode, remove JP5 jumper
+**Note:** To measure the current consumption in Stop 3 mode, remove JP5 jumper
       and connect an amperemeter to JP5 to measure IDD current.
 
 **Note:** This example can not be used in DEBUG mode due to the fact
@@ -38,9 +38,13 @@ These steps are repeated in an infinite loop.
 **Note:** The application needs to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
 
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption (Stop 3 + RTC) - 2.88 uA
+- Current Consumption during RUN Mode - 1890 uA
+
 ### <b>Keywords</b>
 
-Power, PWR, STOP 3 mode, Interrupt, Wakeup, Low Power, RTC
+Power, PWR, Stop 3 mode, Interrupt, Wakeup, Low Power, RTC
 
 ### <b>Directory contents</b>
 

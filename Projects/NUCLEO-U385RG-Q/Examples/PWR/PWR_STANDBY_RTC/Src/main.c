@@ -110,6 +110,9 @@ int main(void)
     __HAL_PWR_CLEAR_FLAG(PWR_FLAG_SBF);
   }
 
+  /* Enable ULPMEN bit for lower consumption */
+  HAL_PWREx_EnableUltraLowPowerMode();
+
   /* Insert 5 seconds delay */
   HAL_Delay(5000);
   HAL_SuspendTick();

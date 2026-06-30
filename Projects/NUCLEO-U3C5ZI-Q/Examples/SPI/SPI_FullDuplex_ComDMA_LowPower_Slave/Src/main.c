@@ -85,7 +85,7 @@ int main(void)
   /* STM32U3xx HAL library initialization:
        - Configure the Flash prefetch
        - Configure the Systick to generate an interrupt each 1 msec
-       - Set NVIC Group Priority to 4
+       - Set NVIC Group Priority to 3
        - Low Level Initialization
      */
   /* USER CODE END 1 */
@@ -103,9 +103,9 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  /* Configure LD1 and LD2 */
-  BSP_LED_Init(LD1);
+  /* Configure LED2 */
   BSP_LED_Init(LD2);
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -184,34 +184,23 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /** Enable Epod Booster
-  */
-  if (HAL_RCCEx_EpodBoosterClkConfig(RCC_EPODBOOSTER_SOURCE_MSIS, RCC_EPODBOOSTER_DIV1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_PWREx_EnableEpodBooster() != HAL_OK)
-  {
-    Error_Handler();
-  }
-
   /** Configure the main internal regulator output voltage
   */
-  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE2) != HAL_OK)
   {
     Error_Handler();
   }
-
-  /** Set Flash latency before increasing MSIS
-  */
-  __HAL_FLASH_SET_LATENCY(FLASH_LATENCY_3);
 
   /** Initializes the CPU, AHB and APB buses clocks
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSIS;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSIS|RCC_OSCILLATORTYPE_MSIK;
   RCC_OscInitStruct.MSISState = RCC_MSI_ON;
-  RCC_OscInitStruct.MSISSource = RCC_MSI_RC0;
+  RCC_OscInitStruct.MSISSource = RCC_MSI_RC1;
   RCC_OscInitStruct.MSISDiv = RCC_MSI_DIV1;
+  RCC_OscInitStruct.MSIKState = RCC_MSI_ON;
+  RCC_OscInitStruct.MSIKSource = RCC_MSI_RC1;
+  RCC_OscInitStruct.MSIKDiv = RCC_MSI_DIV1;
+
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -228,7 +217,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB3CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -360,14 +349,12 @@ static void MX_SPI1_Init(void)
 static void MX_GPIO_Init(void)
 {
   /* USER CODE BEGIN MX_GPIO_Init_1 */
-
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
-
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
@@ -381,8 +368,8 @@ static void MX_GPIO_Init(void)
   */
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 {
-  /* Turn LD1 on: Transfer in transmission/reception process is complete */
-  BSP_LED_On(LD1);
+  /* Turn LED2 on: Transfer in transmission/reception process is complete */
+  BSP_LED_On(LD2);
   wTransferState = TRANSFER_COMPLETE;
 }
 
@@ -419,6 +406,7 @@ static uint16_t Buffercmp(uint8_t *pBuffer1, uint8_t *pBuffer2, uint16_t BufferL
 
   return 0;
 }
+
 /* USER CODE END 4 */
 
 /**
@@ -429,9 +417,9 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-  /* Turn LD1 off */
-  BSP_LED_Off(LD1);
-  /* Toggle LD2 for error */
+  /* Turn LED2 off */
+  BSP_LED_Off(LD2);
+  /* Toggle LED2 for error */
   while(1)
   {
     BSP_LED_Toggle(LD2);

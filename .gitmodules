@@ -58,3 +58,7 @@
 	path = Middlewares/ST/netxduo
 	url = https://github.com/STMicroelectronics/stm32-mw-netxduo
 	branch = main
+[submodule "Drivers/BSP/STM32U366E-DK"]
+	path = Drivers/BSP/STM32U366E-DK
+	url = https://github.com/STMicroelectronics/stm32u366e-dk-bsp.git
+	branch = main

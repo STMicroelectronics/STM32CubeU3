@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>STM32U385RGTxQ</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32U3xx_DFP.0.2.0</PackID>
+          <PackID>Keil.STM32U3xx_DFP.1.2.0-A02</PackID>
           <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000-0x2002FFFF) IRAM2(0x20030000-0x2003FFFF) IROM(0x08000000-0x80FFFFF) CLOCK(8000000) FPU3(SFPU) CPUTYPE("Cortex-M33") ELITTLE TZ DSP</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -425,6 +425,11 @@
               <FilePath>../USBX/App/app_usbx_device.c</FilePath>
             </File>
             <File>
+              <FileName>app_usbx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../USBX/App/app_usbx.c</FilePath>
+            </File>
+            <File>
               <FileName>ux_device_mouse.c</FileName>
               <FileType>1</FileType>
               <FilePath>../USBX/App/ux_device_mouse.c</FilePath>
@@ -445,14 +450,24 @@
           <GroupName>Drivers/STM32U3xx_HAL_Driver</GroupName>
           <Files>
             <File>
-              <FileName>stm32u3xx_hal_cortex.c</FileName>
+              <FileName>stm32u3xx_hal_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_cortex.c</FilePath>
+              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_adc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32u3xx_hal_icache.c</FileName>
+              <FileName>stm32u3xx_hal_adc_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_icache.c</FilePath>
+              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_adc_ex.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32u3xx_hal_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32u3xx_hal_dma_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_dma_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32u3xx_hal.c</FileName>
@@ -470,6 +485,11 @@
               <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_rcc_ex.c</FilePath>
             </File>
             <File>
+              <FileName>stm32u3xx_hal_cortex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_cortex.c</FilePath>
+            </File>
+            <File>
               <FileName>stm32u3xx_hal_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_flash.c</FilePath>
@@ -483,16 +503,6 @@
               <FileName>stm32u3xx_hal_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32u3xx_hal_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32u3xx_hal_dma_ex.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_dma_ex.c</FilePath>
             </File>
             <File>
               <FileName>stm32u3xx_hal_exti.c</FileName>
@@ -513,6 +523,11 @@
               <FileName>stm32u3xx_hal_gtzc.c</FileName>
               <FileType>1</FileType>
               <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_gtzc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32u3xx_hal_icache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_icache.c</FilePath>
             </File>
             <File>
               <FileName>stm32u3xx_hal_tim.c</FileName>

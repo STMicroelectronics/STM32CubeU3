@@ -35,15 +35,26 @@ static void ICACHE_Init(void);
   */
 int main(void)
 {
+ /*
+  * When OEMIROT_FAST_WAKE_UP is enabled, the OEMiRoT relies on the hardware SBF (standby flag)
+  * to skip firmware image verification. The SBF flag remains set when the application is entered
+  * after a wake-up from standby mode. This allows the application to handle its own software
+  * context restoration. To maintain a secure execution environment, the user application must
+  * clear the SBF flag after it is processed.
+  *
+  * In this example, the SBF flag is simply cleared without any processing.
+  */
+  __HAL_PWR_CLEAR_FLAG(PWR_FLAG_SBF);
+
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
   /* !!! To boot in a secure way, the RoT has configured and activated the Memory Protection Unit
-      In order to keep a secure environment execution, you should reconfigure the
-      MPU to make it compatible with your application
-      In this example, MPU is disabled */
+     In order to keep a secure environment execution, you should reconfigure the
+     MPU to make it compatible with your application
+     In this example, MPU is disabled */
   HAL_MPU_Disable();
 
   /* Configure the system clock */
@@ -51,6 +62,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   GPIO_Init();
+
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
 
   /* ICACHE activation */

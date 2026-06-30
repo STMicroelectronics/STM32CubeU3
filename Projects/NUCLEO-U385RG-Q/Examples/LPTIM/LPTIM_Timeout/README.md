@@ -1,9 +1,9 @@
 ## <b>LPTIM_Timeout Example Description</b>
 
 How to implement, through the HAL LPTIM API, a timeout with the LPTIMER peripheral, to wake up
-the system from a low-power mode.
+the system from a low-power Stop 1 mode.
 
-The main() function configures the LPTIMER and goes in STOP mode.
+The main() function configures the LPTIMER and goes in Stop 1 mode.
 In order to start the timer a first trigger is needed on (PC3)(LPTIM_ETR).
 Any successive trigger event on (PC3) will reset the counter and the timer
 will restart. The timeout value corresponds to the compare value (32000).
@@ -33,9 +33,17 @@ Once the system is woken up it remains in run mode. The led keeps toggling each 
  3. This example needs to ensure that the SysTick time base is always set to 1 millisecond
     to have correct HAL operation.
 
+ 4. In this example SMPS is turned on for power supply.
+
+#### <b>Current Consumption</b>
+
+    Board@3.3V
+  - Current Consumption during Stop 1 Mode: 86 uA.
+  - Current Consumption during Run mode: 910 uA.
+
 ### <b>Keywords</b>
 
-Timer, Low Power Timer, Wake up, Stop mode, LSI, Run mode
+Timer, Low Power Timer, Wake up, Stop 1 mode, LSI, Run mode
 
 ### <b>Directory contents</b>
 
@@ -57,8 +65,8 @@ Timer, Low Power Timer, Wake up, Stop mode, LSI, Run mode
     board and can be easily tailored to any other supported device
     and development board.
 
-  - Connect an external trigger (ETR) to PC3 (pin 37 in CN7 connector). 
-    If the trigger is higher than 1Hz, the counter is regularly reset, the system stays in STOP mode.
+  - Connect an external trigger (ETR) to PC3 (pin 37 in CN7 connector).
+    If the trigger is higher than 1Hz, the counter is regularly reset, the system stays in Stop 1 mode.
     If the trigger is lower than 1Hz, the counter expires and the system is woken up.
 
 ### <b>How to use it ?</b>

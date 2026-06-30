@@ -8,7 +8,7 @@ all the peripherals, initialize the Flash interface and the systick.
 
 Then the *SystemClock_Config()* function is used to configure the system clock (SYSCLK) to run at 96 MHz.
 
-In this example, the LPTIM instance used is LPTIM1 and the low power mode is Stop mode.
+In this example, the LPTIM instance used is LPTIM1 and the low power mode is Stop 1 mode.
 
 The counter clock is LSE (32.768 KHz), Autoreload equal to 99 so the output
 frequency (FrequencyOutput) will be equal to 327.680.
@@ -23,7 +23,7 @@ Pulse value equal to 49 and the duty cycle (DutyCycle) is computed as follow:
     DutyCycle = 50%
 
 To minimize the power consumption, after starting generating the PWM signal,
-the MCU enters in Stop mode. Note that GPIOs are configured in Low Speed to
+the MCU enters in Stop 1 mode. Note that GPIOs are configured in Low Speed to
 enhance the consumption.
 
 User push-button pin (PC.13)is configured as input with external interrupt (External line 13),
@@ -47,9 +47,17 @@ If LD2 toggles with 1s delay, an error is occurred.
  3. This example needs to ensure that the SysTick time base is always set to 1 millisecond
     to have correct HAL operation.
 
+ 4. In this example SMPS is turned on for power supply.
+
+#### <b>Current Consumption</b>
+
+    Board@3.3V
+  - Current Consumption during Stop 1 Mode: 96 uA.
+  - Current Consumption during Run mode: 629 uA.
+
 ### <b>Keywords</b>
 
-Timer, Low Power, PWM, Stop mode, Interrupt, LSE, Output, Duty Cycle
+Timer, Low Power, PWM, Stop 1 mode, Interrupt, LSE, Output, Duty Cycle
 
 ### <b>Directory contents</b>
 

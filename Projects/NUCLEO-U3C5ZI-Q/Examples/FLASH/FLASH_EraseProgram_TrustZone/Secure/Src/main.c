@@ -304,16 +304,15 @@ int main(void)
   */
 static void NonSecure_Init(void)
 {
-  uint32_t vtor_ns;
   funcptr_NS NonSecure_ResetHandler;
 
-  vtor_ns = SCB_NS->VTOR;
+  SCB_NS->VTOR = VTOR_TABLE_NS_START_ADDR;
 
   /* Set non-secure main stack (MSP_NS) */
-  __TZ_set_MSP_NS((*(uint32_t *)vtor_ns));
+  __TZ_set_MSP_NS((*(uint32_t *)VTOR_TABLE_NS_START_ADDR));
 
   /* Get non-secure reset handler */
-  NonSecure_ResetHandler = (funcptr_NS)(*((uint32_t *)((vtor_ns) + 4U)));
+  NonSecure_ResetHandler = (funcptr_NS)(*((uint32_t *)((VTOR_TABLE_NS_START_ADDR) + 4U)));
 
   /* Start non-secure state software application */
   NonSecure_ResetHandler();

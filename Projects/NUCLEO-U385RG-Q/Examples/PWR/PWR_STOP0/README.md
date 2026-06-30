@@ -7,25 +7,25 @@ In the associated software, the system clock is set to 96 MHz, an EXTI line
 is connected to the user button through PC.13 and configured to generate an
 interrupt on rising edge upon key press.
 The SysTick is programmed to generate an interrupt each 1 ms and in the SysTick
-interrupt handler, LD2 is toggled in order to indicate whether the MCU is in stop 0 mode
+interrupt handler, LD2 is toggled in order to indicate whether the MCU is in Stop 0 mode
 or run mode.
 
-5 seconds after start-up, the system automatically enters STOP 0 mode and LD2 stops toggling.
+5 seconds after start-up, the system automatically enters Stop 0 mode and LD2 stops toggling.
 
 The User push-button can be pressed at any time to wake-up the system.
-The software then comes back in run mode for 5 sec. before automatically entering stop 0 mode again.
+The software then comes back in run mode for 5 sec. before automatically entering Stop 0 mode again.
 
 LD2 is used to monitor the system state as follows:
 
  - LD2 toggling: system in run mode
- - LD2 off : system in STOP 0 mode
+ - LD2 off : system in Stop 0 mode
  - LD2 on: configuration failed (system will go to an infinite loop)
 
 #### <b>Notes</b>
 
  1. These steps are repeated in an infinite loop.
 
- 2. To measure the current consumption in STOP 0 mode, remove JP4 jumper
+ 2. To measure the current consumption in Stop 0 mode, remove JP4 jumper
     and connect an amperemeter to JP4 to measure IDD current.
 
  3. This example can not be used in DEBUG mode due to the fact
@@ -44,6 +44,10 @@ LD2 is used to monitor the system state as follows:
  6. A current leakage can be observed while supplying the MCU from an external source and not supplying
     the STLink (unplugged). To fix this leakage, you can configure the pin PA13 as Analog, however, the
     connection with the debugger is lost.
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during Stop 0 Mode - 209.4 uA
+- Current Consumption during RUN Mode - 1890 uA
 
 ### <b>Keywords</b>
 

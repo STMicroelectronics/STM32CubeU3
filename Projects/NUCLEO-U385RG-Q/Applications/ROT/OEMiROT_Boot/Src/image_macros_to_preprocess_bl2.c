@@ -190,7 +190,7 @@ enum image_attributes
   RE_OVER_WRITE = (0x0),
   RE_CMSE_VENEER_REGION_SIZE = (0x2000),
 #endif
-#if defined(STM32U335xx) || defined(STM323545xx)
+#if defined(STM32U335xx) || defined(STM32U345xx)
   RE_FLASH_PAGE_NBR = (0x1F),
 #elif defined(STM32U385xx) || defined(STM32U375xx)
   RE_FLASH_PAGE_NBR = (0x7F),

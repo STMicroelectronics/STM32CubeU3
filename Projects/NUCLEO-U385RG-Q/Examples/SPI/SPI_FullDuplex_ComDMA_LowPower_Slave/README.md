@@ -59,6 +59,10 @@ STM32 board's LEDs can be used to monitor the transfer status:
  3. The application needs to ensure that the SysTick time base is always set to 1 millisecond
     to have correct HAL operation.
 
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during Stop 1 mode - 53.9 uA
+- Current Consumption during run mode - 760.8 uA
+
 ### <b>Keywords</b>
 
 Connectivity, SPI, Full-duplex, Interrupt, Transmission, Reception, Master, Slave, MISO, MOSI, DMA

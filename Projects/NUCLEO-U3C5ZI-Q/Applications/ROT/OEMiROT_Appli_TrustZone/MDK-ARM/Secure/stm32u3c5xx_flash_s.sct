@@ -2,6 +2,12 @@
 /*************************************************************************************************/
 #include "appli_region_defs.h"
 /*************************************************************************************************/
+#define __STACK_SIZE           0x0000C00
+#define __HEAP_SIZE            0x0000000
+
+#define __STACK_TOP            (SRAM2_BASE_S + SRAM2_SIZE)    /* starts at end of RAM */
+#define __HEAP_BASE            (AlignExpr(+0, 8))              /* starts after RW_RAM section, 8 byte aligned */
+
 #define ROM_S_START            S_CODE_START
 #define ROM_S_SIZE             S_CODE_SIZE
 
@@ -22,6 +28,14 @@ LR_IROM1 ROM_S_START   ROM_S_SIZE {
 
   RW_IRAM1 RAM_S_START RAM_S_SIZE  {  ; RW data
    .ANY (+RW +ZI)
+  }
+
+#if __HEAP_SIZE > 0
+  ARM_LIB_HEAP __HEAP_BASE EMPTY __HEAP_SIZE {      ; Reserve empty region for heap
+  }
+#endif
+
+  ARM_LIB_STACK __STACK_TOP EMPTY -__STACK_SIZE {   ; Reserve empty region for stack
   }
 }
 

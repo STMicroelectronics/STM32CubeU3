@@ -1,0 +1,10 @@
+[ProjectFiles]
+HeaderPath=..\..\..\..\..\..\Drivers\BSP\STM32U3xx_Nucleo
+[Others]
+Define=
+HALModule=EXTI
+[Groups]
+Doc=../README.md;
+Drivers/BSP/STM32U3xx_Nucleo=../../../../../../Drivers/BSP/STM32U3xx_Nucleo/stm32u3xx_nucleo.c;
+Drivers/STM32U3xx_HAL_Driver=../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_exti.c;
+Application/User=../Src/console.c; ../Src/lowpower_scenarios.c; ../Src/system_config.c;

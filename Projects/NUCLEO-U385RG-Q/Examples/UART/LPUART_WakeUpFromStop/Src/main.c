@@ -107,7 +107,6 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -173,6 +172,12 @@ int main(void)
   /* Disable Debug during Stop mode */
   HAL_DBGMCU_DisableDBGStopMode();
 
+  /* After STOP, use MSIS as temporary SYSCLK (matches RCC_STOP_WKUP_SYSCLK_MSIS) */
+  HAL_RCCEx_StopWakeupSysclkConfig(RCC_STOP_WKUP_SYSCLK_MSIS);
+
+  /* Make sure MSIK kernel clock is available in STOP (for LPUART) */
+  HAL_RCCEx_EnableKernelClkInStop(RCC_KERNELCLK_MSIK);
+
   /* Enable MCU wake-up by LPUART */
   HAL_UARTEx_EnableStopMode(&hlpuart1);
 
@@ -187,7 +192,13 @@ int main(void)
   BSP_LED_Off(LD2);
 
   /* enter STOP mode */
-  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+  /* Suspend Tick increment to prevent wakeup by Systick interrupt.         */
+  /* Otherwise the Systick interrupt will wake up the device within 1ms     */
+  /* (HAL time base).                                                       */
+  HAL_SuspendTick();
+  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERMODE_STOP2, PWR_STOPENTRY_WFI);
+  /* Resume Tick interrupt if disabled prior to STOP mode entry */
+  HAL_ResumeTick();
 
   /* The board receives the message from the other board. Message reception wakes up the board. */
   /* Switch On LD2 */
@@ -215,6 +226,7 @@ int main(void)
 
 #endif /* !BOARD_IN_STOP_MODE */
   /* USER CODE END 2 */
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -251,9 +263,13 @@ void SystemClock_Config(void)
 
   /** Initializes the CPU, AHB and APB buses clocks
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_MSIK;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.MSIKState = RCC_MSI_ON;
+  RCC_OscInitStruct.MSIKSource = RCC_MSI_RC1;
+  RCC_OscInitStruct.MSIKDiv = RCC_MSI_DIV4;
+
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -366,8 +382,8 @@ static void MX_LPUART1_UART_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
@@ -383,8 +399,8 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI13_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI13_IRQn);
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -508,8 +524,7 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.

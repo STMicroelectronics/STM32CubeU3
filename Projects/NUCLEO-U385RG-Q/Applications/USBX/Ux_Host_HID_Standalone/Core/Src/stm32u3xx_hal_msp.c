@@ -77,11 +77,11 @@ void HAL_MspInit(void)
 }
 
 /**
-* @brief UART MSP Initialization
-* This function configures the hardware resources used in this example
-* @param huart: UART handle pointer
-* @retval None
-*/
+  * @brief UART MSP Initialization
+  * This function configures the hardware resources used in this example
+  * @param huart: UART handle pointer
+  * @retval None
+  */
 void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -125,11 +125,11 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 }
 
 /**
-* @brief UART MSP De-Initialization
-* This function freeze the hardware resources used in this example
-* @param huart: UART handle pointer
-* @retval None
-*/
+  * @brief UART MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param huart: UART handle pointer
+  * @retval None
+  */
 void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 {
   if(huart->Instance==USART1)
@@ -154,11 +154,11 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 }
 
 /**
-* @brief HCD MSP Initialization
-* This function configures the hardware resources used in this example
-* @param hhcd: HCD handle pointer
-* @retval None
-*/
+  * @brief HCD MSP Initialization
+  * This function configures the hardware resources used in this example
+  * @param hhcd: HCD handle pointer
+  * @retval None
+  */
 void HAL_HCD_MspInit(HCD_HandleTypeDef* hhcd)
 {
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
@@ -194,11 +194,11 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef* hhcd)
 }
 
 /**
-* @brief HCD MSP De-Initialization
-* This function freeze the hardware resources used in this example
-* @param hhcd: HCD handle pointer
-* @retval None
-*/
+  * @brief HCD MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param hhcd: HCD handle pointer
+  * @retval None
+  */
 void HAL_HCD_MspDeInit(HCD_HandleTypeDef* hhcd)
 {
   if(hhcd->Instance==USB_DRD_FS)

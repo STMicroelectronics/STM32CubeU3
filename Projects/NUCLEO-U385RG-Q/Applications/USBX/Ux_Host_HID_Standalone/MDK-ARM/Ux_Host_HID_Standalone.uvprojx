@@ -420,6 +420,11 @@
               <FilePath>../USBX/App/app_usbx_host.c</FilePath>
             </File>
             <File>
+              <FileName>app_usbx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../USBX/App/app_usbx.c</FilePath>
+            </File>
+            <File>
               <FileName>ux_host_keyboard.c</FileName>
               <FileType>1</FileType>
               <FilePath>../USBX/App/ux_host_keyboard.c</FilePath>
@@ -750,9 +755,19 @@
               <FilePath>../../../../../../Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_transfer_abort.c</FilePath>
             </File>
             <File>
+              <FileName>ux_host_stack_enum_thread_entry.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../../../../../Middlewares/ST/usbx/common/core/src/ux_host_stack_enum_thread_entry.c</FilePath>
+            </File>
+            <File>
               <FileName>ux_host_stack_hcd_register.c</FileName>
               <FileType>1</FileType>
               <FilePath>../../../../../../Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c</FilePath>
+            </File>
+            <File>
+              <FileName>ux_host_stack_hcd_thread_entry.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../../../../../Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_thread_entry.c</FilePath>
             </File>
             <File>
               <FileName>ux_host_stack_hcd_transfer_request.c</FileName>
@@ -763,6 +778,11 @@
               <FileName>ux_host_stack_hcd_unregister.c</FileName>
               <FileType>1</FileType>
               <FilePath>../../../../../../Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_unregister.c</FilePath>
+            </File>
+            <File>
+              <FileName>ux_host_stack_hnp_polling_thread_entry.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../../../../../Middlewares/ST/usbx/common/core/src/ux_host_stack_hnp_polling_thread_entry.c</FilePath>
             </File>
             <File>
               <FileName>ux_host_stack_initialize.c</FileName>
@@ -1073,6 +1093,11 @@
               <FileName>ux_host_class_hid_keyboard_key_get.c</FileName>
               <FileType>1</FileType>
               <FilePath>../../../../../../Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_hid_keyboard_key_get.c</FilePath>
+            </File>
+            <File>
+              <FileName>ux_host_class_hid_keyboard_thread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../../../../../../Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_hid_keyboard_thread.c</FilePath>
             </File>
             <File>
               <FileName>ux_host_class_hid_keyboard_tasks_run.c</FileName>

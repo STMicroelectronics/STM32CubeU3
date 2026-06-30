@@ -1,28 +1,32 @@
 ## <b>PWR_STOP3_RTC Example Description</b>
 
-This example shows how to enter the system in STOP 3 mode and wake-up from this
+This example shows how to enter the system in Stop 3 mode and wake-up from this
 mode using the RTC Internal wake-up interrupt.
 
 In the associated software, the system clock is set to 96 MHz and RTC is configured to wake-up the CPU.
 The SysTick is programmed to generate an interrupt each 1 ms and in the SysTick
-interrupt handler, LD1 is toggled in order to indicate whether the MCU is in STOP 3 mode
+interrupt handler, LD1 is toggled in order to indicate whether the MCU is in Stop 3 mode
 or RUN mode.
 
-2 seconds after start-up, the system automatically enters STOP 3 mode and
+2 seconds after start-up, the system automatically enters Stop 3 mode and
 LD1 stops toggling.
 
-The CPU stays in STOP 3 mode until the RTC triggers the Internal WakeUp. The delay is manageable by changing the RTC_WAKEUP_DELAY define in main.c.
+The CPU stays in Stop 3 mode until the RTC triggers the Internal WakeUp. The delay is manageable by changing the RTC_WAKEUP_DELAY define in main.c.
 
-The software then comes back in RUN mode for 2 sec. before automatically entering STOP 3 mode again.
+The software then comes back in RUN mode for 2 sec. before automatically entering Stop 3 mode again.
 
 Two leds LD1 and LD2 are used to monitor the system state as following:
  - LD2 ON: configuration failed (system will go to an infinite loop)
  - LD1 toggling: system in RUN mode
- - LD1 OFF : system in STOP 3 mode
+ - LD1 OFF : system in Stop 3 mode
 
 These steps are repeated in an infinite loop.
 
-**Note:** To measure the current consumption in STOP 3 mode, please refer to
+### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during (Stop 3 + RTC) - 3.63 uA
+- Current Consumption during run mode - 2160 uA
+
+**Note:** To measure the current consumption in Stop 3 mode, please refer to
       @subpage PWR_CurrentConsumption example.
 
 **Note:** This example can not be used in DEBUG mode due to the fact

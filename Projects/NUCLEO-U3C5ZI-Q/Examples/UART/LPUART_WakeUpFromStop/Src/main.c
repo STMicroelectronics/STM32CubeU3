@@ -98,6 +98,11 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+  /* After STOP, use MSIS as temporary SYSCLK during wake-up. */
+  HAL_RCCEx_StopWakeupSysclkConfig(RCC_STOP_WKUP_SYSCLK_MSIS);
+
+  /* Keep MSIK available in STOP so LPUART1 can wake the device. */
+  HAL_RCCEx_EnableKernelClkInStop(RCC_KERNELCLK_MSIK);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -158,7 +163,13 @@ int main(void)
   /* about to enter STOP mode: switch off LD1 */
   BSP_LED_Off(LD1);
   /* enter STOP mode */
-  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+  /* Suspend Tick increment to prevent wakeup by Systick interrupt.         */
+  /* Otherwise the Systick interrupt will wake up the device within 1ms     */
+  /* (HAL time base).                                                       */
+  HAL_SuspendTick();
+  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERMODE_STOP2, PWR_STOPENTRY_WFI);
+  /* Resume Tick interrupt if disabled prior to STOP mode entry */
+  HAL_ResumeTick();
   /* The board receives the message from the other board. Message reception wakes up the board. */
   /* Switch On LD1 */
   BSP_LED_On(LD1);
@@ -216,9 +227,13 @@ void SystemClock_Config(void)
 
   /** Initializes the CPU, AHB and APB buses clocks
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_MSIK;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.MSIKState = RCC_MSI_ON;
+  RCC_OscInitStruct.MSIKSource = RCC_MSI_RC1;
+  RCC_OscInitStruct.MSIKDiv = RCC_MSI_DIV4;
+
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -284,7 +299,7 @@ static void MX_LPUART1_UART_Init(void)
   /* USER CODE BEGIN LPUART1_Init 1 */
   /* USER CODE END LPUART1_Init 1 */
   hlpuart1.Instance = LPUART1;
-  hlpuart1.Init.BaudRate = 209700;
+  hlpuart1.Init.BaudRate = 115200;
   hlpuart1.Init.WordLength = UART_WORDLENGTH_8B;
   hlpuart1.Init.StopBits = UART_STOPBITS_1;
   hlpuart1.Init.Parity = UART_PARITY_NONE;

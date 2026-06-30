@@ -530,6 +530,18 @@ void icache_init(void)
 #endif /* ICACHE_MONITOR */
   ICACHE_MONITOR_PRINT()
 
+  /* Disable ICache if it is already enabled before changing associativity */
+  if (HAL_ICACHE_Disable() != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /* Enable instruction cache in 1-way (direct mapped cache) */
+  if (HAL_ICACHE_ConfigAssociativityMode(ICACHE_1WAY) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
   /* Enable ICache */
   if (HAL_ICACHE_Enable() != HAL_OK)
   {

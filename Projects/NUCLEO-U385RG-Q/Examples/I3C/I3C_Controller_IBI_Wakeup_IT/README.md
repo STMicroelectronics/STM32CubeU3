@@ -49,7 +49,7 @@ Then when ENTDAA is terminated thanks to reception of the completion callback HA
 the controller store the Target capabilities in the peripheral hardware register side
 through HAL_I3C_Ctrl_ConfigBusDevices().
 
-Then Controller goes to Low Power Mode (STOP Mode).
+Then Controller goes to Low Power Mode (STOP1 Mode).
 
 Then, at reception of an In-Band-Interrupt event request from a Target,
 the I3C Controller wakeup and retrieve Target Dynamic Address through HAL_I3C_GetCCCInfo().
@@ -93,6 +93,10 @@ NUCLEO-U385RG-Q's LEDs can be used to monitor the transfer status:
 
   2. The application need to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during STOP1 Mode - 125 uA
+- Current Consumption during RUN Mode - 578 uA
 
 ### <b>Keywords</b>
 

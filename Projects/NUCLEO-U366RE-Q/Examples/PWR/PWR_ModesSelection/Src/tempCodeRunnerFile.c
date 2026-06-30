@@ -1,0 +1,1 @@
+__HAL_RCC_RTC_CONFIG

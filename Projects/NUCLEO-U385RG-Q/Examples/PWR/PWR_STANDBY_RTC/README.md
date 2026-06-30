@@ -8,11 +8,16 @@ In the associated software, the system clock is set to 96 MHz and the SysTick is
 programmed to generate an interrupt each 1 ms.
 The Low Speed Internal (LSI) clock is used as RTC clock source by default.
 RTC interrupt is internally connected to the RTC Wakeup event.
+Ultralow-power mode (ULPMEN) is also enabled to further reduce power consumption.
 
 The system automatically enters Standby mode 5 sec. after start-up. The RTC wake-up
 is configured to generate an interrupt on rising edge about 33 sec. afterwards.
 Current consumption in Standby mode with RTC feature enabled can be measured during that time.
 More than half a minute is chosen to ensure current convergence to its lowest operating point.
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during (STANDBY + RTC)- 0.85 uA
+- Current Consumption during RUN Mode - 1890 uA
 
 After wake-up from Standby mode, program execution restarts in the same way as after
 a software RESET.

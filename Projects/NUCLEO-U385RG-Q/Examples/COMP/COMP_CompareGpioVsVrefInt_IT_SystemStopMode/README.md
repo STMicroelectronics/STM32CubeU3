@@ -1,7 +1,7 @@
 ## <b>COMP_CompareGpioVsVrefInt_IT_SystemStopMode Example Description</b>
 
 How to use a comparator peripheral to compare a voltage level applied on
-a GPIO pin to the internal voltage reference (VrefInt), in interrupt mode and during stop mode.
+a GPIO pin to the internal voltage reference (VrefInt), in interrupt mode and during stop2 mode.
 This example is based on the STM32U3xx COMP HAL API.
 
 Example configuration:

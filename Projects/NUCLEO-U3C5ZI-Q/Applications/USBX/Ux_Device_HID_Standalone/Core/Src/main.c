@@ -18,7 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "app_usbx_device.h"
+#include "app_usbx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -43,7 +43,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 PCD_HandleTypeDef hpcd_USB_DRD_FS;
-
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -91,7 +90,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_ICACHE_Init();
-  MX_USBX_Device_Init();
+  MX_USBX_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -254,7 +253,9 @@ void MX_USB_PCD_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USB_Init 2 */
-
+  HAL_PCDEx_PMAConfig(&hpcd_USB_DRD_FS, 0x00, PCD_SNG_BUF, 0x0C);
+  HAL_PCDEx_PMAConfig(&hpcd_USB_DRD_FS, 0x80, PCD_SNG_BUF, 0x4C);
+  HAL_PCDEx_PMAConfig(&hpcd_USB_DRD_FS, 0x81, PCD_SNG_BUF, 0x8C);
   /* USER CODE END USB_Init 2 */
 
 }
@@ -273,6 +274,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin : BUTTON_USER_Pin */
@@ -281,7 +283,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(BUTTON_USER_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : USBC_DETECT_Pin */
+  GPIO_InitStruct.Pin = USBC_DETECT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(USBC_DETECT_GPIO_Port, &GPIO_InitStruct);
+
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(USBC_DETECT_EXTI_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(USBC_DETECT_EXTI_IRQn);
+
   HAL_NVIC_SetPriority(BUTTON_USER_EXTI_IRQn, 7, 0);
   HAL_NVIC_EnableIRQ(BUTTON_USER_EXTI_IRQn);
 

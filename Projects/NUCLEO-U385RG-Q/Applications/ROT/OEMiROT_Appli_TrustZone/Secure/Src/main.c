@@ -51,6 +51,7 @@ static uint32_t SecureInitIODone = 0;
 static void NonSecure_Init(void);
 static void MX_GPIO_Init(void);
 static void MX_GTZC_Init(void);
+static void MX_ICACHE_Init(void);
 static void  unsecure_sram1(uint32_t start, uint32_t end);
 
 
@@ -135,6 +136,8 @@ int main(void)
   /* running to toggle the secure IO and the following is commented:      */
   /* HAL_SuspendTick(); */
 
+  /* Initialize ICACHE */
+  MX_ICACHE_Init();
 
   /*************** Setup and jump to non-secure *******************************/
 
@@ -269,6 +272,29 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(LED2_GPIO_Port, &GPIO_InitStruct);
+}
+
+/**
+  * @brief ICACHE Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_ICACHE_Init(void)
+{
+  /* Disable the Instruction Cache */
+  HAL_ICACHE_Disable();
+
+  /* Enable instruction cache in 1-way (direct mapped cache) */
+  if (HAL_ICACHE_ConfigAssociativityMode(ICACHE_1WAY) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /* Enable instruction cache */
+  if (HAL_ICACHE_Enable() != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
 /**

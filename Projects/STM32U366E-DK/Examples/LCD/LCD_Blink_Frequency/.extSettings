@@ -1,0 +1,8 @@
+[ProjectFiles]
+HeaderPath=..\..\..\..\..\..\Drivers\STM32U3xx_HAL_Driver\Inc;..\..\..\..\..\..\Drivers\STM32U3xx_HAL_Driver\Inc\Legacy;..\..\..\..\..\..\Drivers\CMSIS\Include;..\..\..\..\..\..\Drivers\CMSIS\Device\ST\STM32U3xx\Include;..\..\..\..\..\..\Drivers\BSP\STM32U366E-DK
+[Others]
+Define=
+HALModule=LCD
+[Groups]
+Doc=../README.md;
+Drivers/BSP/STM32U366E-DK=../../../../../../Drivers/BSP/STM32U366E-DK/stm32u366e_discovery_glass_lcd.c;../../../../../../Drivers/BSP/STM32U366E-DK/stm32u366e_discovery.c;

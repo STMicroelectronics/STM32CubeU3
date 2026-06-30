@@ -534,6 +534,11 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_hid_keyboard_tasks_run.c</locationURI>
 		</link>
 		<link>
+			<name>Middlewares/USBX/UX Host Class HID Keyboard/ux_host_class_hid_keyboard_thread.c</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_hid_keyboard_thread.c</locationURI>
+		</link>
+		<link>
 			<name>Middlewares/USBX/UX Host Class HID Mouse/ux_host_class_hid_mouse_activate.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/usbx_host_classes/src/ux_host_class_hid_mouse_activate.c</locationURI>
@@ -884,9 +889,19 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/core/src/ux_host_stack_endpoint_transfer_abort.c</locationURI>
 		</link>
 		<link>
+			<name>Middlewares/USBX/UX Host CoreStack/ux_host_stack_enum_thread_entry.c</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/core/src/ux_host_stack_enum_thread_entry.c</locationURI>
+		</link>
+		<link>
 			<name>Middlewares/USBX/UX Host CoreStack/ux_host_stack_hcd_register.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_register.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/USBX/UX Host CoreStack/ux_host_stack_hcd_thread_entry.c</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_thread_entry.c</locationURI>
 		</link>
 		<link>
 			<name>Middlewares/USBX/UX Host CoreStack/ux_host_stack_hcd_transfer_request.c</name>
@@ -897,6 +912,11 @@
 			<name>Middlewares/USBX/UX Host CoreStack/ux_host_stack_hcd_unregister.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/core/src/ux_host_stack_hcd_unregister.c</locationURI>
+		</link>
+		<link>
+			<name>Middlewares/USBX/UX Host CoreStack/ux_host_stack_hnp_polling_thread_entry.c</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/core/src/ux_host_stack_hnp_polling_thread_entry.c</locationURI>
 		</link>
 		<link>
 			<name>Middlewares/USBX/UX Host CoreStack/ux_host_stack_initialize.c</name>
@@ -1002,6 +1022,11 @@
 			<name>Middlewares/USBX/UX Host CoreStack/ux_host_stack_uninitialize.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/usbx/common/core/src/ux_host_stack_uninitialize.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USBX/App/app_usbx.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USBX/App/app_usbx.c</locationURI>
 		</link>
 		<link>
 			<name>Application/User/USBX/App/app_usbx_host.c</name>

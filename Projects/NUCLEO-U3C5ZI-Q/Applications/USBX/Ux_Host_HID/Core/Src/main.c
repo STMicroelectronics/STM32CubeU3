@@ -189,7 +189,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /** configure PLL mode
+  /** Configure MSI PLL mode
   */
   RCC_MSIRCxPLLStruct.State = RCC_MSIRCx_PLL_ON;
   RCC_MSIRCxPLLStruct.InputSrce = RCC_MSIRCx_PLL_INPUT_LSE;

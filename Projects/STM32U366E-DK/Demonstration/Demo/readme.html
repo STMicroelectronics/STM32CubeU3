@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../_htmresc/mini-st_2020.css" />
+</head>
+<body>
+<h2 id="demo-description"><b>Demo Description</b></h2>
+<p>The STM32Cube demonstration platform comes on top of STM32Cube as a
+firmware package that offers a full set of software components based on
+a modular architecture. All modules can be reused separately in
+standalone applications.</p>
+<p>This demonstration is based on the STM32Cube HAL, BSP, and Touch
+Sensing middleware components and runs on the STM32U366E-DK board.</p>
+<h3 id="demonstration-overview"><b>Demonstration Overview</b></h3>
+<p>At startup, once the “STM32U366E-DK DEMO” intro scroll completes, the
+supported demos are shown on the glass LCD.</p>
+<p>Use the joystick keys UP and DOWN to browse the demos. Use SEL or
+RIGHT to launch the selected demo.</p>
+<h3 id="menu-navigation"><b>Menu Navigation</b></h3>
+<p>Joystick actions:</p>
+<ul>
+<li>RIGHT or SEL: launch the selected application or enter a
+sub-menu.</li>
+<li>LEFT: return to the upper menu level or exit the running demo.</li>
+<li>DOWN: next menu item, for example switch temperature display to
+Fahrenheit.</li>
+<li>UP: previous menu item, for example switch temperature display to
+Celsius.</li>
+</ul>
+<p>Note: in the current code, returning to the main menu is detected by
+a short LEFT hold of about 250 ms, not by a multi-second press.</p>
+<h3 id="leds"><b>LEDs</b></h3>
+<ul>
+<li>LED1 is the green LED, LED2 is the red LED, and LED3 is the blue
+LED.</li>
+<li>During board-level hardware initialization, all three LEDs are
+turned ON.</li>
+<li>Entering the ultra-low-power demo turns all three LEDs OFF.</li>
+<li>In the TouchWakeup demo, LED3 turns ON when a touch is
+detected.</li>
+<li>In the TouchWakeup demo, LED3 turns OFF before the demo prints the
+STOP2 entry message and re-enters STOP2.</li>
+<li>In the ultra-low-power demo, LED3 is used as the activity indicator
+while the ULP mode selection screen is active and after wakeup
+processing resumes.</li>
+</ul>
+<h3 id="lcd-behavior"><b>LCD Behavior</b></h3>
+<ul>
+<li>LCD scrolling and explicit delays are blocking in this application
+flow.</li>
+<li>While a message is being scrolled or a delay is running, touch and
+joystick handling are not serviced by the demo logic.</li>
+<li>This is most visible in the TouchWakeup demo and during startup or
+intro text.</li>
+</ul>
+<p>======================================== APPLICATIONS LIST
+========================================</p>
+<ul>
+<li><h1 id="temperature-and-humidity-sensor-demo">Temperature and
+Humidity Sensor Demo</h1></li>
+</ul>
+<p>The Temperature and Humidity Sensor module measures temperature and
+humidity through the on-board I2C SHT40 sensor.</p>
+<p>At demo entry, the application performs a short blank LCD scroll and
+then waits about 2 seconds before the first value is shown. This delay
+is part of the current implementation and explains why temperature does
+not appear immediately after entering the demo from the main menu.</p>
+<p>After startup delay, the application continuously reads sensor values
+and shows them on the glass LCD:</p>
+<ul>
+<li><p>Temperature is displayed in Celsius or Fahrenheit.</p></li>
+<li><p>Humidity is displayed as percentage.</p></li>
+<li><p>UP selects Celsius.</p></li>
+<li><p>DOWN selects Fahrenheit.</p></li>
+<li><p>SEL toggles between temperature and humidity display.</p></li>
+<li><p>LEFT returns to the main menu after the short hold described
+above.</p></li>
+<li><h1 id="touchwakeuptouchsensing-demo">TouchWakeup/Touchsensing
+Demo</h1></li>
+</ul>
+<p>The TouchWakeup demo detects a touch on touch sensor button TS1.</p>
+<p>The current LCD sequence is:</p>
+<ul>
+<li>” TOUCH SETUP ”</li>
+<li>” TOUCH SETUP COMPLETE ”</li>
+<li>” RUN MODE”</li>
+</ul>
+<p>Touch detection should be considered active only after setup has
+completed and the ” RUN MODE” message has been printed.</p>
+<p>The touch flow is:</p>
+<ol type="1">
+<li>Touch, comparator, RTC, and Touch Sensing middleware are
+initialized.</li>
+<li>The demo runs its setup and calibration loop.</li>
+<li>After setup completes, the demo enters run mode and starts the RTC
+wakeup timer with a 250 ms interval.</li>
+<li>On wakeup, touch state is checked.</li>
+<li>If touch is detected:</li>
+</ol>
+<ul>
+<li>LED3 turns ON.</li>
+<li>The LCD scrolls “WAKEUP TOUCH DETECTED”.</li>
+<li>The demo waits 5 seconds.</li>
+</ul>
+<ol start="6" type="1">
+<li>If touch is released after a detected touch:</li>
+</ol>
+<ul>
+<li>LED3 turns OFF.</li>
+<li>The LCD scrolls ” STOP2 MODE ENTERING”.</li>
+</ul>
+<ol start="7" type="1">
+<li>The MCU then re-enters STOP2 and waits for the next RTC wakeup.</li>
+</ol>
+<p>Because the LCD scroll calls and the 5-second delay are blocking,
+touch and joystick input are effectively not handled while those
+messages are being printed.</p>
+<p>LEFT returns to the main menu after the short hold described above,
+but only when the demo loop is actively polling the joystick. While LCD
+messages are scrolling, that polling is paused.</p>
+<ul>
+<li><h1 id="ultra-low-power-demo">Ultra Low Power Demo</h1></li>
+</ul>
+<p>Users can switch between ULP modes using the UP and DOWN joystick
+keys. RIGHT or SEL selects the highlighted mode.</p>
+<p>The current ULP mode list in the project is:</p>
+<ul>
+<li>STDBY</li>
+<li>SLEEP</li>
+<li>LP SLP</li>
+<li>STOP2</li>
+<li>STOP3</li>
+</ul>
+<p>The LCD first shows the selected mode name. When a mode is entered,
+the glass LCD displays the typical current value associated with that
+mode in the current source code:</p>
+<ul>
+<li>STDBY: 2 uA</li>
+<li>SLEEP: 188 uA</li>
+<li>LP SLP: 185 uA</li>
+<li>STOP2: 15 uA</li>
+<li>STOP3: 14 uA</li>
+</ul>
+<p>Before entering the selected ULP mode, the demo configures the RTC
+wakeup timer to 0xFFFF with DIV16, which corresponds to about 33
+seconds.</p>
+<p>In the current implementation, wakeup for the ULP demo is therefore
+driven by the RTC timer configured for about 33 seconds. Returning to
+the main menu is checked only after execution returns to the ULP menu
+loop after wakeup; it is not serviced while the MCU is still inside the
+low-power mode.</p>
+<p>LEFT returns to the main menu after the short hold described above,
+once the demo is back in the ULP mode selection loop.</p>
+<h4 id="notes"><b>Notes</b></h4>
+<ol type="1">
+<li><p>Care must be taken when using HAL_Delay(). This function provides
+accurate delay in milliseconds based on a variable incremented in the
+SysTick ISR. If HAL_Delay() is called from a peripheral ISR process,
+then the SysTick interrupt must have higher priority (numerically lower)
+than the peripheral interrupt. Otherwise the caller ISR process will be
+blocked.</p></li>
+<li><p>The application must keep the SysTick time base at 1 millisecond
+to ensure correct HAL operation.</p></li>
+</ol>
+<h3 id="keywords"><b>Keywords</b></h3>
+<p>LCD, BSP, RTC, low power modes, touch sensing, temperature,
+humidity</p>
+<h3 id="directory-contents"><b>Directory Contents</b></h3>
+<ul>
+<li>Demo/Src/main.c main program entry point</li>
+<li>Demo/Src/system_stm32u3xx.c STM32U3xx system clock configuration
+file</li>
+<li>Demo/Src/stm32u3xx_it.c interrupt handlers</li>
+<li>Demo/Src/stm32u3xx_hal_msp.c HAL MSP module</li>
+<li>Demo/Inc/main.h main program header file</li>
+<li>Demo/Inc/stm32u3xx_hal_conf.h HAL configuration file</li>
+<li>Demo/Inc/stm32u3xx_it.h interrupt handlers header file</li>
+<li>main_app/app_main.c demo menu and application implementation</li>
+<li>main_app/touchsensing.c touch middleware initialization wrapper</li>
+</ul>
+<h3 id="hardware-and-software-environment"><b>Hardware And Software
+Environment</b></h3>
+<ul>
+<li>This demonstration runs on STM32U366xx devices.</li>
+<li>This demonstration has been compiled with EWARM 9.20.1.</li>
+<li>This demonstration has been tested with the STMicroelectronics
+STM32U366E-DK board.</li>
+</ul>
+<h3 id="how-to-use-it"><b>How To Use It</b></h3>
+<p>To run the demonstration:</p>
+<ul>
+<li>Open the project in your preferred toolchain.</li>
+<li>Rebuild all files and load the image into target memory.</li>
+<li>Run the application.</li>
+</ul>
+</body>
+</html>

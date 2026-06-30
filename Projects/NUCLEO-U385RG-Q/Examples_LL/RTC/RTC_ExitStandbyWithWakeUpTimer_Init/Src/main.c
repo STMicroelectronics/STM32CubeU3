@@ -389,7 +389,7 @@ void Configure_RTC(void)
     
     /*##-3- Enable RTC peripheral Clocks #######################################*/
     /* Enable RTC Clock */
-    LL_RCC_RTC_ClockEnable();
+    LL_RCC_EnableRTC();
 
   }
 #elif defined(RTC_CLOCK_SOURCE_LSI)
@@ -418,7 +418,7 @@ void Configure_RTC(void)
     
     /*##-3- Enable RTC peripheral Clocks #######################################*/
     /* Enable RTC Clock */
-    LL_RCC_RTC_ClockEnable();
+    LL_RCC_EnableRTC();
 
   }
 #else

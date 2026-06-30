@@ -37,8 +37,9 @@
 #define NOR_SECTOR_BUFFER_SIZE 512
 #endif
 
+#ifndef LX_DIRECT_READ
 static ULONG nor_sector_memory[NOR_SECTOR_BUFFER_SIZE];
-
+#endif
 /* USER CODE BEGIN PV */
 extern SPI_HandleTypeDef hspi2;
 static ULONG nor_flash_timeout = 2000;

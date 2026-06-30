@@ -1,7 +1,7 @@
 ## <b>I2C_WakeUpFromStop Example Description</b>
 
 How to handle I2C data buffer transmission/reception between two boards,
-using an interrupt when the device is in Stop mode.
+using an interrupt when the device is in Stop1 mode.
 
        Board: NUCLEO-U385RG-Q (embeds a STM32U385RGTxQ device)
        - SCL Pin: PB10 (Arduino D6 CN9 pin 7, Morpho CN10 pin 25)
@@ -10,7 +10,7 @@ using an interrupt when the device is in Stop mode.
 At the beginning of the main program the HAL_Init() function is called to reset
 all the peripherals, initialize the Flash interface and the systick.
 Then the SystemClock_Config() function is used to configure the system
-clock (SYSCLK) to run at 16 MHz (HSI16). When The system is wakeup from Stop mode,
+clock (SYSCLK) to run at 16 MHz (HSI16). When The system is wakeup from Stop1 mode,
 system clock is 16 Mhz. The I2C peripheral is directly clocked by MSIK.
 
 The I2C peripheral configuration is ensured by the HAL_I2C_Init() function.
@@ -41,10 +41,10 @@ For this example the aTxBuffer is predefined and the aRxBuffer size is same as a
 
 In a first step after the user presses the User push-button on the Master Board, I2C Master
 starts the communication by sending aTxBuffer through HAL_I2C_Master_Transmit_IT() to
-I2C Slave which wakes up from Stop mode and receives aRxBuffer through HAL_I2C_Slave_Receive_IT().
+I2C Slave which wakes up from Stop1 mode and receives aRxBuffer through HAL_I2C_Slave_Receive_IT().
 
 The second step starts when the user presses the User push-button on the Master Board,
-the I2C Slave after wake up from Stop mode at address match, sends aTxBuffer through HAL_I2C_Slave_Transmit_IT()
+the I2C Slave after wake up from Stop1 mode at address match, sends aTxBuffer through HAL_I2C_Slave_Transmit_IT()
 to the I2C Master which receives aRxBuffer through HAL_I2C_Master_Receive_IT().
 
 The end of this two steps are monitored through the HAL_I2C_GetState() function
@@ -70,6 +70,20 @@ transmission/reception process
 
  2. The application needs to ensure that the SysTick time base is always set to 1 millisecond
     to have correct HAL operation.
+
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+1. Master Board
+- Current Consumption during RUN Mode (transmission) - 813.2 uA
+- Current Consumption during RUN Mode (Reception) - 713.2 uA
+
+2. Slave Board
+- Before Pressing User button (first time) on Master board
+- Current Consumption during RUN Mode - 813.2 uA
+- Current Consumption during Stop 1 Mode in Slave board - 65.42 uA
+- After pressing User button (first time) on Master board
+- Transmission complete and current consumption in slave board(LED2 is ON on both boards) - 101.2 uA
+- Second time pressing User button on master board for reception
+- Current consumption on reception completion (both LEDs are off) - 280.2 uA
 
 ### <b>Keywords</b>
 

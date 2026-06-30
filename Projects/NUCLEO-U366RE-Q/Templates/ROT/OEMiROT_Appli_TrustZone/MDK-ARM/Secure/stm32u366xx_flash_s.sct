@@ -1,0 +1,32 @@
+#! armclang --target=arm-arm-none-eabi -march=armv8-m.main -E -xc
+/*************************************************************************************************/
+#include "appli_region_defs.h"
+/*************************************************************************************************/
+#define ROM_S_START            S_CODE_START
+#define ROM_S_SIZE             S_CODE_SIZE
+
+#define ROM_NSC_START          NSC_CODE_START
+#define ROM_NSC_SIZE           NSC_CODE_SIZE
+
+#define RAM_S_START            S_RAM_START
+#define RAM_S_SIZE             S_RAM_SIZE
+
+/*************************************************************************************************/
+LR_IROM1 ROM_S_START   ROM_S_SIZE {
+  ER_IROM1 ROM_S_START ROM_S_SIZE {
+   *.o (RESET, +First)
+   *(InRoot$$Sections)
+   .ANY (+RO)
+   .ANY (+XO)
+  }
+
+  RW_IRAM1 RAM_S_START RAM_S_SIZE  {  ; RW data
+   .ANY (+RW +ZI)
+  }
+}
+
+LR_IROM2 ROM_NSC_START ROM_NSC_SIZE  {
+  ER_IROM2 ROM_NSC_START ROM_NSC_SIZE  {
+   *(Veneer$$CMSE)
+  }
+}

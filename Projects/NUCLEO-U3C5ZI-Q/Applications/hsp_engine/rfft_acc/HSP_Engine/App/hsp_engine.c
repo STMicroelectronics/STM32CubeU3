@@ -85,8 +85,10 @@ void MX_HSP_Engine_Init(void)
     Error_Handler();
   }
 
-  /* USER CODE BEGIN HSP_Engine_Init_PostTreatment */
   MX_HSP_BRAM_Allocation(&hmw);
+
+  /* USER CODE BEGIN HSP_Engine_Init_PostTreatment */
+
   /* USER CODE END HSP_Engine_Init_PostTreatment */
 
 }

@@ -54,6 +54,10 @@ These steps are repeated in an infinite loop.
  4. The application need to ensure that the SysTick time base is always set to 1 millisecond
     to have correct HAL operation.
 
+#### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+- Current Consumption during SHUTDOWN Mode - 0.343 uA
+- Current Consumption during RUN Mode - 1890 uA
+
 ### <b>Keywords</b>
 
 Power, PWR, EXTI, Shutdown mode, Interrupt, Wakeup, External reset, WKUP line

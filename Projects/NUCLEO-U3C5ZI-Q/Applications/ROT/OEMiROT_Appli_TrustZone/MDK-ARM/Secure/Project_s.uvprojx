@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>STM32U3C5ZITxQ</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32U3xx_DFP.1.1.0-A01</PackID>
+          <PackID>Keil.STM32U3xx_DFP.1.5.0-A01</PackID>
           <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00040000) IROM(0x08000000,0x00100000) CPUTYPE("Cortex-M33") FPU3(SFPU) DSP TZ CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -461,6 +461,11 @@
               <FileType>1</FileType>
               <FilePath>../../../../../../../Drivers/STM32U3xx_HAL_Driver/Src/stm32u3xx_hal_rcc_ex.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32u3xx_hal_icache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\..\Drivers\STM32U3xx_HAL_Driver\Src\stm32u3xx_hal_icache.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -502,9 +507,9 @@
               <FilePath>../../Secure/Src/low_level_device.c</FilePath>
             </File>
             <File>
-              <FileName>startup_stm32u3c5xx.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>../startup_stm32u3c5xx.s</FilePath>
+              <FileName>startup_stm32u3xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Secure\Src\startup_stm32u3xx.c</FilePath>
             </File>
             <File>
               <FileName>stm32u3xx_hal_msp.c</FileName>

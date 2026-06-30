@@ -1,6 +1,6 @@
 ## <b>DAC_GenerateConstantSignal_SystemStopMode Example Description</b>
 
-How to use the DAC peripheral to do a simple conversion with the MCU in STOP mode.
+How to use the DAC peripheral to do a simple conversion with the MCU in STOP1 mode.
 This example is based on the STM32U3xx DAC HAL API.
 
 Example configuration:
@@ -10,15 +10,15 @@ connecting PA4(A2 Arduino CN8 pin 3, Morpho CN7 pin32) to an oscilloscope.
 
 Example execution:
 From the main program execution, DAC  is enabled and do a constant voltage.
-- After 5 seconds, the MCU enter in STOP mode.
+- After 5 seconds, the MCU enter in STOP1 mode.
 - The observed value remains at 3.3V
-- Press user button to generate an interrupt and exit STOP mode.
+- Press user button to generate an interrupt and exit STOP1 mode.
 - Repeat the example execution. 
 
 LD2 is used to monitor program execution status:
 - Normal operation:
   - LD2 turned on if the MCU is in Normal mode
-  - LD2 turned off if the MCU is in STOP mode
+  - LD2 turned off if the MCU is in STOP1 mode
 - Error: LD2 remaining turned on
 
 #### <b>Notes</b>

@@ -60,15 +60,462 @@
 <div class="col-sm-12 col-lg-8">
 <h1 id="update-history">Update History</h1>
 <div class="collapse">
-<input type="checkbox" id="collapse-section4" checked aria-hidden="true"> <label for="collapse-section4" aria-hidden="true"><strong>V1.3.0 / 04-February-2026</strong></label>
+<input type="checkbox" id="collapse-section5" checked aria-hidden="true"> <label for="collapse-section5" aria-hidden="true"><strong>V1.4.0 / 03-June-2026</strong></label>
 <div>
 <h2 id="official-release">Official Release</h2>
+<p>Official release of <strong>STM32CubeU3</strong> (STM32Cube for STM32U3 Series) supporting <strong>STM32U335xx/STM32U345xx/STM32U356xx/STM32U366xx/STM32U375xx/STM32U385xx/STM32U3B5xx/STM32U3C5xx</strong> devices.</p>
+<ul>
+<li>Added Support of new device STM32U3 256K &amp; 512K</li>
+</ul>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><strong>SBOM</strong>
+<ul>
+<li>Deliver SBOM in <a href="./sbom_cdx.json">CycloneDX v1.5 format</a></li>
+</ul></li>
+<li><strong>CMSIS Devices Drivers</strong> updates (Please refer to the <a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/cmsis-device-u3/blob/main/Release_Notes.html">release notes</a> for details)
+<ul>
+<li>Support of <strong>STM32U335xx/STM32U345xx/STM32U356xx/STM32U366xx/STM32U375xx/STM32U385xx/STM32U3B5xx/STM32U3C5xx</strong> devices</li>
+<li>Update CMSIS devices to include latest corrections</li>
+</ul></li>
+<li><strong>HAL/LL Drivers</strong> (Please Refer to the <a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32u3xx-hal-driver/blob/main/Release_Notes.html">release notes</a> for details)
+<ul>
+<li>HAL and LL drivers are available for all peripherals:
+<ul>
+<li><strong>HAL Drivers</strong>: ADC, CCB, COMP, CORTEX, CRC, CRS, CRYP, DAC, DELAYBLOCK, DMA, EXTI, FDCAN, FLASH, GPIO, GTZC, HASH, HSP, I2C, I3C, ICACHE, IRDA, IWDG, LCD, LPTIM, MDF, OPAMP, PKA, PWR, RAMCFG, RCC, RNG, RTC, SAI, SDMMC, SMARTCARD, SPI, TIM, TSC, UART, USART, USB, WWDG, XSPI</li>
+<li><strong>LL Drivers</strong> : ADC, COMP, CRC, CRS, DAC, DELAYBLOCK, DMA, EXTI, GPIO, I2C, I3C, ICACHE, LPTIM, OPAMP, PKA, PWR, RCC, RNG, RTC, SDMMC, SPI, TIM, UART, USART, USB</li>
+</ul></li>
+<li>Update HAL/LL drivers to include latest corrections</li>
+<li>SA0076 fixed in HAL_CRYP</li>
+</ul></li>
+<li><strong>BSP drivers</strong> update
+<ul>
+<li>Update BSP component for STM32U335/45, STM32U356/66 devices</li>
+</ul></li>
+<li><strong>Middlewares</strong> updates
+<ul>
+<li>Update <strong>touchsensing library</strong> version to <strong>v2.2.14</strong></li>
+<li>Update <strong>ThreadX</strong> version to <strong>threadx-6.4.0.260327</strong></li>
+<li>Update <strong>USBX</strong> version to <strong>usbx-6.4.0.260508</strong></li>
+<li>Update <strong>NetX Duo</strong> version to <strong>netxduo-6.4.0.260325</strong></li>
+<li>Update <strong>FileX</strong> version to <strong>filex-6.4.0.260403</strong></li>
+<li>Update <strong>LevelX</strong> version to <strong>levelx-6.4.0.260403</strong></li>
+<li>Update <strong>CMSIS-RTOS ThreadX wrapper</strong> version to <strong>tx-cmsis-1.4.1.260410</strong></li>
+<li>Update <strong>USBX STM32 Host Controllers</strong> version to <strong>usbx-6.4.0.260508</strong></li>
+<li>Update <strong>USBX STM32 Device Controllers</strong> version to <strong>usbx-6.4.0.260508</strong></li>
+<li>Update <strong>NetX Drivers</strong> version to <strong>netxduo-6.4.0.260325</strong></li>
+<li>Update <strong>FileX Drivers</strong> version to <strong>filex-6.4.0.260403</strong></li>
+<li>Update <strong>LevelX Drivers</strong> version to <strong>levelx-6.4.0.260403</strong></li>
+<li>Update <strong>mbed-crypto</strong> version to <strong>mbed-tls-v3.6.6_20260511</strong></li>
+<li>Update <strong>mbed-crypto-alt</strong> version to <strong>v1.2.1</strong></li>
+<li>Update <strong>psa_crypton_driver</strong> version to <strong>v1.0.4</strong></li>
+<li>Update <strong>mcuboot</strong> version to <strong>v1.7.2.40</strong></li>
+<li>Update <strong>OpenBootloader</strong> version to <strong>v6.1.3</strong></li>
+<li>Update <strong>STM32_Audio PDM</strong> version to <strong>v3.7.1</strong></li>
+<li>Update <strong>hsp_engine</strong> version to <strong>v1.0.1</strong></li>
+</ul></li>
+<li><strong>Utilities</strong> updates
+<ul>
+<li>Update <strong>ROT_AppliConfig </strong> version to <strong>v1.1.6</strong></li>
+</ul></li>
+<li><strong>Applications</strong> updates
+<ul>
+<li>Add applications for STM32U3 256K/512K
+<ul>
+<li>FileX, ThreadX, USBX , MbedTLS &amp; ROT Applications</li>
+<li>TouchSensing_1touchkey_LowPower for U3 512K DK board</li>
+</ul></li>
+</ul></li>
+<li><strong>Improve power consumption</strong>
+<ul>
+<li>Deploy HAL_SuspendTick/HAL_ResumeTick() to avoid immediate wakeup in low power</li>
+<li>Exact low power mode mentioned in the readme files</li>
+<li>ULPMEN bit setting in Standby examples</li>
+<li>Low Power Communication examples
+<ul>
+<li>LPUART_WakeUpFromStop2, I2C_TwoBoards_ComDMA_Autonomous_LowPower_Master/Slave</li>
+<li>UART_TwoBoards_ComDMA_stop1_autonomous, LPUART_WakeUpFromStop(stop2)</li>
+</ul></li>
+</ul></li>
+<li><strong>ROT_Provisioning</strong> updates
+<ul>
+<li>Update ROT applications for STM32U3 1M &amp; 2M</li>
+<li>Add ROT applications for STM32U3 256K &amp; 512K</li>
+</ul></li>
+<li><strong>Examples</strong> update
+<ul>
+<li>Add HAL Examples for STM32U3 256K
+<ul>
+<li>CORTEXM_SysTick, FLASH_EraseProgram, GPIO_EXTI, GPIO_IOToggle</li>
+<li>I2C_TwoBoards_ComDMA_Autonomous_Master, I2C_TwoBoards_ComDMA_Autonomous_Slave</li>
+<li>I3C_Controller_ResetPattern_WakeUpFromLowPower, I3C_Controller_WakeUpFromStop</li>
+<li>I3C_Target_ResetPattern_WakeUpFromStandBy, I3C_Target_WakeUpFromStop,</li>
+<li>PWR_ModesSelection, RCC_ClockConfig, SPI_FullDuplex_ComDMA_LowPower_Master</li>
+<li>SPI_FullDuplex_ComDMA_LowPower_Slave, TIM_WakeUpFromSleep, LPUART_WakeUpFromStop</li>
+</ul></li>
+<li>Add HAL Examples for STM32U3 512K
+<ul>
+<li>CORTEXM_SysTick FLASH_EraseProgram, GPIO_EXTI, GPIO_IOToggle</li>
+<li>I2C_TwoBoards_ComDMA_Autonomous_Master, I2C_TwoBoards_ComDMA_Autonomous_Slave</li>
+<li>LPTIM_Timeout, PWR_ModesSelection, RCC_ClockConfig, UART_Printf</li>
+</ul></li>
+<li>Add HAL Examples for STM32U3 512K DK board
+<ul>
+<li>LCD_Blink_Frequency, LCD_Contrast_Control, LCD_SegmentsDrive, GPIO_IOToggle</li>
+</ul></li>
+</ul></li>
+<li><strong>Examples_LL</strong> update
+<ul>
+<li>Add USART_WakeUpFromStop1_Init for STM32U3 256K</li>
+</ul></li>
+<li><strong>Templates</strong> updates
+<ul>
+<li>Add template projects for STM32U3 256K &amp; 512K</li>
+<li>Add ROT template projects for STM32U3 256K &amp; 512K</li>
+</ul></li>
+<li><strong>Templates_Board</strong> updates
+<ul>
+<li>Add template_board project for STM32U3 256K &amp; 512K Nucleo board</li>
+</ul></li>
+<li><strong>Templates_LL</strong> updates
+<ul>
+<li>Add template_ll projects for STM32U3 256K &amp; 512K</li>
+</ul></li>
+<li><strong>Demonstration</strong> updates
+<ul>
+<li>Add Demo app for STM32U3 512K DK board</li>
+</ul></li>
+</ul>
+<p><br />
+</p>
+<h2 id="projects">Projects</h2>
+<p><small>The projects flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<p><br />
+</p>
+<ul>
+<li>The STM32CubeU3 Firmware package comes with a rich set of examples running on STMicroelectronics boards, organized by board and provided with preconfigured projects for the main supported toolchains.</li>
+<li><p>The exhaustive list of projects and their short description is provided in this table (<a href="Projects/STM32CubeProjectsList.html">STM32CubeProjectsList.html</a>).</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Release notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Projects</td>
+<td style="text-align: left;">V1.4.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="Projects/Release_Notes.html">release notes</a></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p><br />
+</p>
+<h2 id="components">Components</h2>
+<p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<p><br />
+</p>
+<p><strong>Drivers</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Release notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CMSIS</td>
+<td style="text-align: left;">V5.9.0</td>
+<td style="text-align: left;"><a href="Drivers/CMSIS/Documentation/index.html">release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32U3xx CMSIS</td>
+<td style="text-align: left;">V1.4.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/cmsis-device-u3/blob/main/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32U3xx_HAL_Driver</td>
+<td style="text-align: left;">V1.4.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32u3xx-hal-driver/blob/main/Release_Notes.html">release notes</a></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><strong>BSP Drivers</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th>Release notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">STM32U3xx_NUCLEO</td>
+<td style="text-align: left;">V1.2.0 <span class="icon-st-update"></span></td>
+<td><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32u3xx-nucleo-bsp/blob/main/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32U366E_DK</td>
+<td style="text-align: left;">V1.0.0 <span class="icon-st-add"></span></td>
+<td><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32u366e-dk-bsp/blob/main/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">V7.2.1</td>
+<td><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-bsp-common/blob/v7.2.1/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mx25lm51245g</td>
+<td style="text-align: left;">V3.0.3</td>
+<td><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mx25lm51245g/blob/v3.0.3/Release_Notes.html">release notes</a></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><strong>Middlewares</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Release notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">mcuboot</td>
+<td style="text-align: left;">V1.7.2</td>
+<td style="text-align: left;"><a href="Middlewares/Third_Party/mcuboot/docs/release-notes.md">release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ST modified 260330 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mcuboot/blob/v1.7.2.40/st_readme.txt">ST release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MbedTLS</td>
+<td style="text-align: left;">V3.6.6 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="Middlewares/Third_Party/mbedtls/README.md">release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ST modified 260511 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mbedtls/blob/v3.6.6_20260511/st_readme.txt">ST release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MbedTLS_KWE</td>
+<td style="text-align: left;">V1.0.4 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="Middlewares/ST/mbedtls_key_wrap_engine/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MbedTLS_ALT</td>
+<td style="text-align: left;">V1.2.1 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="Middlewares/ST/mbedtls_alt/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cmsis rtos threadx</td>
+<td style="text-align: left;">V1.4.1 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-cmsis-rtos-tx/blob/v1.4.1/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FileX</td>
+<td style="text-align: left;">V6.4.0</td>
+<td style="text-align: left;"><a href="Middlewares/ST/filex/README.md">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ST modified 260403 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-filex/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LevelX</td>
+<td style="text-align: left;">V6.4.0</td>
+<td style="text-align: left;"><a href="Middlewares/ST/levelx/README.md">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ST modified 260403 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-levelx/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ThreadX</td>
+<td style="text-align: left;">V6.4.0</td>
+<td style="text-align: left;"><a href="Middlewares/ST/threadx/README.md">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ST modified 260327 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-threadx/blob/v6.4.0_260327/st_readme.txt">ST release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">USBX</td>
+<td style="text-align: left;">V6.4.0</td>
+<td style="text-align: left;"><a href="Middlewares/ST/usbx/README.md">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ST modified 260508 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-usbx/blob/v6.4.0_260508/st_readme.txt">ST release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NetX duo</td>
+<td style="text-align: left;">V6.4.0</td>
+<td style="text-align: left;"><a href="Middlewares/ST/netxduo/README.md">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">ST modified 260325 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-netxduo/blob/v6.4.0_260415/st_readme.txt">ST release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32 TouchSensing Library</td>
+<td style="text-align: left;">V2.2.14 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-touchsensing/blob/v2.2.14/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32 Audio PDM</td>
+<td style="text-align: left;">V3.7.1 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_Audio/Addons/PDM/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">openBootloader</td>
+<td style="text-align: left;">V6.1.3 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-openbl/blob/v6.1.3/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HSP engine</td>
+<td style="text-align: left;">V1.0.1 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="Middlewares/ST/hsp_engine/Release_Notes.html">release notes</a></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><strong>Utilities</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th>Version</th>
+<th style="text-align: left;">Release notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ROT_AppliConfig</td>
+<td>V1.1.6 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="Utilities/PC_Software/ROT_AppliConfig/Release_Notes.html">release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Certificates</td>
+<td>V1.1.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="Utilities/Certificates/Release_Notes.html">release notes</a></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Toolchain + ST-Link</th>
+<th>Version</th>
+<th style="text-align: left;">Patch (if available)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">IAR Embedded Workbench for ARM (EWARM)</td>
+<td>V9.20.1</td>
+<td style="text-align: left;"><a href="Utilities/PC_Software/EWARMv9_STM32U37x-38x_V1.0.0.zip">STM32U3 1M Patch EWARM</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td>V9.20.1</td>
+<td style="text-align: left;"><a href="Utilities/PC_Software/EWARMv9_STM32U3Bx-3Cx_V1.0.0.zip">STM32U3 2M Patch EWARM</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td>V9.20.1</td>
+<td style="text-align: left;"><a href="Utilities/PC_Software/EWARMv9_STM32U35x-36x_V1.0.0.zip">STM32U3 512K Patch EWARM</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td>V9.20.1</td>
+<td style="text-align: left;"><a href="Utilities/PC_Software/EWARMv9_STM32U33x-34x_V1.0.0.zip">STM32U3 256K Patch EWARM</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RealView Microcontroller Development Kit (MDK-ARM)</td>
+<td>V5.39 (U335xx/U345xx/U356xx/U366xx/</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td>U375xx/U385xx/U3B5xx/U3C5xx)</td>
+<td style="text-align: left;"><a href="Utilities/PC_Software/Keil.STM32U3xx_DFP.1.3.0.zip">Patch MDK-ARM</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32CubeIDE</td>
+<td>V2.2.0</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="supported-devices-and-boards">Supported Devices and boards</h2>
+<ul>
+<li>STM32U335xx/STM32U345xx/STM32U356xx/STM32U366xx/STM32U375xx/STM32U385xx/STM32U3B5xx/STM32U3C5xx devices</li>
+<li>NUCLEO-U345RC-Q board</li>
+<li>NUCLEO-U366RE-Q board</li>
+<li>STM32U366E-DK board</li>
+<li>NUCLEO-U385RG-Q (Rev.E) board</li>
+<li>NUCLEO-U3C5ZI-Q (Rev.B) board</li>
+<li>STM32U3_CUSTOM_HW board</li>
+</ul>
+<h2 id="known-limitations">Known Limitations</h2>
+<ul>
+<li>The USBX applications Ux_Host_HID and Ux_Host_HID_Standalone may not operate correctly on MDK-ARM v5.39 (AC6 compiler) when compiled with the -O3 optimization level.</li>
+<li>HSP_HW_IF_WaitEndOfDirectCommand : Clang warning: dereferencing type-punned pointer will break strict-aliasing rules</li>
+<li>STM32CubeU3GettingStarted.pdf(UM-3427) incorrectly mentions STM32U366E-DK board as NUCLEO-U366E-DK</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>STM32CubeMX V6.18.0
+<ul>
+<li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.18.0)</li>
+</ul></li>
+</ul>
+<h2 id="backward-compatibility">Backward compatibility</h2>
+<ul>
+<li>Not applicable</li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>None</li>
+</ul>
+<p><br />
+</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section4"  aria-hidden="true"> <label for="collapse-section4" aria-hidden="true"><strong>V1.3.0 / 04-February-2026</strong></label>
+<div>
+<h2 id="official-release-1">Official Release</h2>
 <p>Official release of <strong>STM32CubeU3</strong> (STM32Cube for STM32U3 Series) supporting <strong>STM32U375xx/STM32U385xx/STM32U3B5xx/STM32U3C5xx</strong> devices.</p>
 <ul>
 <li>Added Support of new device STM32U3 2M</li>
 <li>Deliver new <strong>HSP</strong> HAL driver</li>
 </ul>
-<h2 id="contents">Contents</h2>
+<h2 id="contents-1">Contents</h2>
 <ul>
 <li><strong>SBOM</strong>
 <ul>
@@ -161,7 +608,7 @@
 </ul>
 <p><br />
 </p>
-<h2 id="projects">Projects</h2>
+<h2 id="projects-1">Projects</h2>
 <p><small>The projects flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p><br />
 </p>
@@ -187,7 +634,7 @@
 </ul>
 <p><br />
 </p>
-<h2 id="components">Components</h2>
+<h2 id="components-1">Components</h2>
 <p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p><br />
 </p>
@@ -243,7 +690,7 @@
 <tr class="odd">
 <td style="text-align: left;">mx25lm51245g</td>
 <td style="text-align: left;">V3.0.3</td>
-<td><a href="Drivers/BSP/Components/mx25lm51245g/Release_Notes.html">release notes</a></td>
+<td><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mx25lm51245g/blob/v3.0.3/Release_Notes.html">release notes</a></td>
 </tr>
 </tbody>
 </table>
@@ -267,7 +714,7 @@
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 250722 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/Third_Party/mcuboot/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mcuboot/blob/v1.7.2.26/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MbedTLS</td>
@@ -277,7 +724,7 @@
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 250701 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/Third_Party/mbedtls/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mbedtls/blob/TAG/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MbedTLS_KWE</td>
@@ -292,7 +739,7 @@
 <tr class="odd">
 <td style="text-align: left;">cmsis rtos threadx</td>
 <td style="text-align: left;">V1.4.0 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/ST/cmsis_rtos_threadx/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-cmsis-rtos-tx/blob/v1.4.1/Release_Notes.html">release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">FileX</td>
@@ -302,7 +749,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 251006 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/ST/filex/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-filex/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">LevelX</td>
@@ -312,7 +759,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 251006 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/ST/levelx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-levelx/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ThreadX</td>
@@ -322,7 +769,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 250822 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/ST/threadx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-threadx/blob/v6.4.0_260327/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">USBX</td>
@@ -332,7 +779,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 260116 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/ST/usbx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-usbx/blob/v6.4.0_260508/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">NetX duo</td>
@@ -342,12 +789,12 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 250619 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/ST/netxduo/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-netxduo/blob/v6.4.0_260415/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">STM32 TouchSensing Library</td>
 <td style="text-align: left;">V2.2.13 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/ST/STM32_TouchSensing_Library/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-touchsensing/blob/v2.2.14/Release_Notes.html">release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">STM32 Audio PDM</td>
@@ -357,7 +804,7 @@
 <tr class="even">
 <td style="text-align: left;">openBootloader</td>
 <td style="text-align: left;">V6.1.0</td>
-<td style="text-align: left;"><a href="Middlewares/ST/OpenBootloader/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-openbl/blob/v6.1.3/Release_Notes.html">release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">HSP engine</td>
@@ -392,7 +839,7 @@
 </table>
 <p><br />
 </p>
-<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-1">Development Toolchains and Compilers</h2>
 <table>
 <thead>
 <tr class="header">
@@ -424,26 +871,26 @@
 </tr>
 </tbody>
 </table>
-<h2 id="supported-devices-and-boards">Supported Devices and boards</h2>
+<h2 id="supported-devices-and-boards-1">Supported Devices and boards</h2>
 <ul>
 <li>STM32U375xx/STM32U385xx/STM32U3B5xx/STM32U3C5xx devices</li>
 <li>NUCLEO-U385RG-Q (Rev.E) board</li>
 <li>NUCLEO-U3C5ZI-Q board</li>
 <li>STM32U3_CUSTOM_HW board</li>
 </ul>
-<h2 id="known-limitations">Known limitations</h2>
+<h2 id="known-limitations-1">Known limitations</h2>
 <ul>
 <li>The USBX applications Ux_Host_HID and Ux_Host_HID_Standalone may not operate correctly on MDK-ARM v5.39 (AC6 compiler) when compiled with the -O3 optimization level.</li>
 <li>Some non-critical Clang warnings remain in the HSP_HW_IF_SEQ_EVENT_SetConfig_Trigger() function. These warnings have been reviewed and do not affect the functional behavior of the application.</li>
 </ul>
-<h2 id="dependencies">Dependencies</h2>
+<h2 id="dependencies-1">Dependencies</h2>
 <ul>
 <li>STM32CubeMX V6.17.0
 <ul>
 <li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.17.0.</li>
 </ul></li>
 </ul>
-<h2 id="backward-compatibility">Backward compatibility</h2>
+<h2 id="backward-compatibility-1">Backward compatibility</h2>
 <ul>
 <li>Not applicable</li>
 </ul>
@@ -456,7 +903,7 @@
 <div>
 <h2 id="maintenance-release">Maintenance Release</h2>
 <p>Maintenance release of <strong>STM32CubeU3</strong> (STM32Cube for STM32U3 Series) supporting <strong>STM32U385xx/STM32U375xx</strong> devices.</p>
-<h2 id="contents-1">Contents</h2>
+<h2 id="contents-2">Contents</h2>
 <ul>
 <li><strong>SBOM</strong>
 <ul>
@@ -532,7 +979,7 @@
 </ul>
 <p><br />
 </p>
-<h2 id="projects-1">Projects</h2>
+<h2 id="projects-2">Projects</h2>
 <p><small>The projects flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p><br />
 </p>
@@ -558,7 +1005,7 @@
 </ul>
 <p><br />
 </p>
-<h2 id="components-1">Components</h2>
+<h2 id="components-2">Components</h2>
 <p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p><br />
 </p>
@@ -614,7 +1061,7 @@
 <tr class="odd">
 <td style="text-align: left;">mx25lm51245g</td>
 <td style="text-align: left;">V3.0.3 <span class="icon-st-add"></span></td>
-<td><a href="Drivers/BSP/Components/mx25lm51245g/Release_Notes.html">release notes</a></td>
+<td><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mx25lm51245g/blob/v3.0.3/Release_Notes.html">release notes</a></td>
 </tr>
 </tbody>
 </table>
@@ -638,7 +1085,7 @@
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 250428 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/Third_Party/mcuboot/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mcuboot/blob/v1.7.2.26/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MbedTLS</td>
@@ -648,7 +1095,7 @@
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 250414 <span class="icon-st-update"></span></td>
-<td style="text-align: left;"><a href="Middlewares/Third_Party/mbedtls/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mbedtls/blob/TAG/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MbedTLS_KWE</td>
@@ -663,7 +1110,7 @@
 <tr class="odd">
 <td style="text-align: left;">cmsis rtos threadx</td>
 <td style="text-align: left;">V1.3.0</td>
-<td style="text-align: left;"><a href="Middlewares/ST/cmsis_rtos_threadx/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-cmsis-rtos-tx/blob/v1.4.1/Release_Notes.html">release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">FileX</td>
@@ -673,7 +1120,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/filex/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-filex/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">LevelX</td>
@@ -683,7 +1130,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/levelx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-levelx/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ThreadX</td>
@@ -693,7 +1140,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/threadx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-threadx/blob/v6.4.0_260327/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">USBX</td>
@@ -703,7 +1150,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/usbx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-usbx/blob/v6.4.0_260508/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">NetX duo</td>
@@ -713,12 +1160,12 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/netxduo/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-netxduo/blob/v6.4.0_260415/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">STM32 TouchSensing Library</td>
 <td style="text-align: left;">V2.2.12</td>
-<td style="text-align: left;"><a href="Middlewares/ST/STM32_TouchSensing_Library/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-touchsensing/blob/v2.2.14/Release_Notes.html">release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">STM32 Audio PDM</td>
@@ -728,7 +1175,7 @@
 <tr class="even">
 <td style="text-align: left;">openBootloader</td>
 <td style="text-align: left;">V6.1.0</td>
-<td style="text-align: left;"><a href="Middlewares/ST/OpenBootloader/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-openbl/blob/v6.1.3/Release_Notes.html">release notes</a></td>
 </tr>
 </tbody>
 </table>
@@ -758,7 +1205,7 @@
 </table>
 <p><br />
 </p>
-<h2 id="development-toolchains-and-compilers-1">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
 <table>
 <thead>
 <tr class="header">
@@ -781,24 +1228,24 @@
 </tr>
 </tbody>
 </table>
-<h2 id="supported-devices-and-boards-1">Supported Devices and boards</h2>
+<h2 id="supported-devices-and-boards-2">Supported Devices and boards</h2>
 <ul>
 <li>STM32U375xx/STM32U385xx devices</li>
 <li>NUCLEO-U385RG-Q (Rev.E) board</li>
 <li>STM32U3_CUSTOM_HW board</li>
 </ul>
-<h2 id="known-limitations-1">Known limitations</h2>
+<h2 id="known-limitations-2">Known limitations</h2>
 <ul>
 <li>None</li>
 </ul>
-<h2 id="dependencies-1">Dependencies</h2>
+<h2 id="dependencies-2">Dependencies</h2>
 <ul>
 <li>STM32CubeMX V6.15.0
 <ul>
 <li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.15.0.</li>
 </ul></li>
 </ul>
-<h2 id="backward-compatibility-1">Backward compatibility</h2>
+<h2 id="backward-compatibility-2">Backward compatibility</h2>
 <ul>
 <li>Not applicable</li>
 </ul>
@@ -811,7 +1258,7 @@
 <div>
 <h2 id="maintenance-release-1">Maintenance Release</h2>
 <p>Maintenance release of <strong>STM32CubeU3</strong> (STM32Cube for STM32U3 Series) supporting <strong>STM32U385xx/STM32U375xx</strong> devices.</p>
-<h2 id="contents-2">Contents</h2>
+<h2 id="contents-3">Contents</h2>
 <ul>
 <li><strong>CMSIS Devices Drivers</strong> (Please Refer to the <a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/cmsis-device-u3/blob/main/Release_Notes.html">release notes</a> for details)
 <ul>
@@ -918,7 +1365,7 @@
 <br />
 </p></li>
 </ul>
-<h2 id="projects-2">Projects</h2>
+<h2 id="projects-3">Projects</h2>
 <p><small>The projects flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p><br />
 </p>
@@ -944,7 +1391,7 @@
 </ul>
 <p><br />
 </p>
-<h2 id="components-2">Components</h2>
+<h2 id="components-3">Components</h2>
 <p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p><br />
 </p>
@@ -1019,7 +1466,7 @@
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 241009</td>
-<td style="text-align: left;"><a href="Middlewares/Third_Party/mcuboot/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mcuboot/blob/v1.7.2.26/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MbedTLS</td>
@@ -1029,7 +1476,7 @@
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 250124</td>
-<td style="text-align: left;"><a href="Middlewares/Third_Party/mbedtls/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mbedtls/blob/TAG/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MbedTLS_KWE</td>
@@ -1044,7 +1491,7 @@
 <tr class="odd">
 <td style="text-align: left;">cmsis rtos threadx</td>
 <td style="text-align: left;">V1.3.0</td>
-<td style="text-align: left;"><a href="Middlewares/ST/cmsis_rtos_threadx/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-cmsis-rtos-tx/blob/v1.4.1/Release_Notes.html">release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">FileX</td>
@@ -1054,7 +1501,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/filex/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-filex/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">LevelX</td>
@@ -1064,7 +1511,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/levelx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-levelx/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ThreadX</td>
@@ -1074,7 +1521,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/threadx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-threadx/blob/v6.4.0_260327/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">USBX</td>
@@ -1084,7 +1531,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/usbx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-usbx/blob/v6.4.0_260508/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">NetX duo</td>
@@ -1094,12 +1541,12 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/netxduo/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-netxduo/blob/v6.4.0_260415/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">STM32 TouchSensing Library</td>
 <td style="text-align: left;">V2.2.12</td>
-<td style="text-align: left;"><a href="Middlewares/ST/STM32_TouchSensing_Library/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-touchsensing/blob/v2.2.14/Release_Notes.html">release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">STM32 Audio PDM</td>
@@ -1109,7 +1556,7 @@
 <tr class="even">
 <td style="text-align: left;">openBootloader</td>
 <td style="text-align: left;">V6.1.0</td>
-<td style="text-align: left;"><a href="Middlewares/ST/OpenBootloader/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-openbl/blob/v6.1.3/Release_Notes.html">release notes</a></td>
 </tr>
 </tbody>
 </table>
@@ -1139,7 +1586,7 @@
 </table>
 <p><br />
 </p>
-<h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
 <table>
 <thead>
 <tr class="header">
@@ -1162,24 +1609,24 @@
 </tr>
 </tbody>
 </table>
-<h2 id="supported-devices-and-boards-2">Supported Devices and boards</h2>
+<h2 id="supported-devices-and-boards-3">Supported Devices and boards</h2>
 <ul>
 <li>STM32U375xx/STM32U385xx devices</li>
 <li>NUCLEO-U385RG-Q (Rev.E) board</li>
 <li>STM32U3_CUSTOM_HW board</li>
 </ul>
-<h2 id="known-limitations-2">Known limitations</h2>
+<h2 id="known-limitations-3">Known limitations</h2>
 <ul>
 <li>None</li>
 </ul>
-<h2 id="dependencies-2">Dependencies</h2>
+<h2 id="dependencies-3">Dependencies</h2>
 <ul>
 <li>STM32CubeMX V6.14.0
 <ul>
 <li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.14.0.</li>
 </ul></li>
 </ul>
-<h2 id="backward-compatibility-2">Backward compatibility</h2>
+<h2 id="backward-compatibility-3">Backward compatibility</h2>
 <ul>
 <li>Not applicable</li>
 </ul>
@@ -1194,7 +1641,7 @@
 <p>First official Release of <strong>STM32CubeU3</strong> (STM32Cube for STM32U3 Series) supporting <strong>STM32U385xx/STM32U375xx</strong> devices.</p>
 <p><br />
 </p>
-<h2 id="contents-3">Contents</h2>
+<h2 id="contents-4">Contents</h2>
 <ul>
 <li><strong>CMSIS Devices Drivers</strong>
 <ul>
@@ -1244,7 +1691,7 @@
 </ul>
 <p><br />
 </p>
-<h2 id="projects-3">Projects</h2>
+<h2 id="projects-4">Projects</h2>
 <p><small>The projects flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p><br />
 </p>
@@ -1270,7 +1717,7 @@
 </ul>
 <p><br />
 </p>
-<h2 id="components-3">Components</h2>
+<h2 id="components-4">Components</h2>
 <p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p><br />
 </p>
@@ -1345,7 +1792,7 @@
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 241009</td>
-<td style="text-align: left;"><a href="Middlewares/Third_Party/mcuboot/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mcuboot/blob/v1.7.2.26/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MbedTLS</td>
@@ -1355,7 +1802,7 @@
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240910</td>
-<td style="text-align: left;"><a href="Middlewares/Third_Party/mbedtls/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-mbedtls/blob/TAG/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MbedTLS_KWE</td>
@@ -1370,7 +1817,7 @@
 <tr class="odd">
 <td style="text-align: left;">cmsis rtos threadx</td>
 <td style="text-align: left;">V1.3.0</td>
-<td style="text-align: left;"><a href="Middlewares/ST/cmsis_rtos_threadx/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-cmsis-rtos-tx/blob/v1.4.1/Release_Notes.html">release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">FileX</td>
@@ -1380,7 +1827,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/filex/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-filex/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">LevelX</td>
@@ -1390,7 +1837,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/levelx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-levelx/blob/v6.4.0_260403/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ThreadX</td>
@@ -1400,7 +1847,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/threadx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-threadx/blob/v6.4.0_260327/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">USBX</td>
@@ -1410,7 +1857,7 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/usbx/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-usbx/blob/v6.4.0_260508/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">NetX duo</td>
@@ -1420,12 +1867,12 @@
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">ST modified 240906</td>
-<td style="text-align: left;"><a href="Middlewares/ST/netxduo/st_readme.txt">ST release notes</a></td>
+<td style="text-align: left;"><a href="https://github.com/STMicroelectronics/stm32-mw-netxduo/blob/v6.4.0_260415/st_readme.txt">ST release notes</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">STM32 TouchSensing Library</td>
 <td style="text-align: left;">V2.2.12</td>
-<td style="text-align: left;"><a href="Middlewares/ST/STM32_TouchSensing_Library/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-touchsensing/blob/v2.2.14/Release_Notes.html">release notes</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">STM32 Audio PDM</td>
@@ -1435,7 +1882,7 @@
 <tr class="even">
 <td style="text-align: left;">openBootloader</td>
 <td style="text-align: left;">V6.1.0</td>
-<td style="text-align: left;"><a href="Middlewares/ST/OpenBootloader/Release_Notes.html">release notes</a></td>
+<td style="text-align: left;"><a href="https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32-mw-openbl/blob/v6.1.3/Release_Notes.html">release notes</a></td>
 </tr>
 </tbody>
 </table>
@@ -1460,7 +1907,7 @@
 </table>
 <p><br />
 </p>
-<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-4">Development Toolchains and Compilers</h2>
 <table>
 <thead>
 <tr class="header">
@@ -1483,24 +1930,24 @@
 </tr>
 </tbody>
 </table>
-<h2 id="supported-devices-and-boards-3">Supported Devices and boards</h2>
+<h2 id="supported-devices-and-boards-4">Supported Devices and boards</h2>
 <ul>
 <li>STM32U375xx/STM32U385xx devices</li>
 <li>NUCLEO-U385RG-Q (Rev.E) board</li>
 <li>STM32U3_CUSTOM_HW board</li>
 </ul>
-<h2 id="known-limitations-3">Known limitations</h2>
+<h2 id="known-limitations-4">Known limitations</h2>
 <ul>
 <li>None</li>
 </ul>
-<h2 id="dependencies-3">Dependencies</h2>
+<h2 id="dependencies-4">Dependencies</h2>
 <ul>
 <li>STM32CubeMX V6.13.0
 <ul>
 <li>Projects (Examples and Applications) are generated using STM32CubeMX version V6.13.0.</li>
 </ul></li>
 </ul>
-<h2 id="backward-compatibility-3">Backward compatibility</h2>
+<h2 id="backward-compatibility-4">Backward compatibility</h2>
 <ul>
 <li>Not applicable</li>
 </ul>

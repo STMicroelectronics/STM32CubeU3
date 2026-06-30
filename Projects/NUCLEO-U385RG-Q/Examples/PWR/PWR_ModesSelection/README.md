@@ -25,6 +25,23 @@ The SysTick is programmed to generate an interrupt each 1 ms and in the SysTick 
   5. When unplugging the STLink while running a Low Power mode test case, with the MCU externally power supplied,
   a current leakage can be observed on PA13.
 
+### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+
+        Power mode : RUN - 96 MHz                                             1890 uA
+        Power mode : RUN - 48 MHz                                             775.8 uA
+        Power mode : SLEEP - 12 MHz                                           135.8 uA
+        Power mode : STOP1 - Full SRAM (SRAM 1 + 2 = 256KB)                   61.3 uA
+        Power mode : STOP1 - 8-KByte SRAM                                     53.46 uA
+        Power mode : STOP2 - Full SRAM (SRAM 1 + 2 = 256KB)                   3.150 uA
+        Power mode : STOP2 - 8-KByte SRAM                                     2.64 uA
+        Power mode : STOP3 - Full SRAM (SRAM 1 + 2 = 256KB)                   2.133 uA
+        Power mode : STOP3 - 8-KByte SRAM                                     1.64 uA
+        Power mode : STANDBY - 8-KByte SRAM retention + RTC + ULPMEN=1        1.03 uA
+        Power mode : STANDBY - No SRAM retention + RTC + ULPMEN=1             0.93 uA
+        Power mode : STANDBY - No SRAM retention + No RTC + ULPMEN=1          0.2 uA
+        Power mode : SHUTDOWN - w/ RTC                                        0.56 uA
+        Power mode : SHUTDOWN - wo/ RTC                                       0.343 uA
+
 ### <b>Keywords</b>
 
 Power, PWR, EXTI, Sleep mode, Stop Mode, Standby Mode, Shutdown mode, Interrupt, RTC, External reset, Memory retention, Cache, USART

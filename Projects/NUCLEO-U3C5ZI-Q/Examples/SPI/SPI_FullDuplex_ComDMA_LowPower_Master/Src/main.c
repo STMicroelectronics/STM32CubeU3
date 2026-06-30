@@ -88,7 +88,7 @@ int main(void)
   /* STM32U3xx HAL library initialization:
        - Configure the Flash prefetch
        - Configure the Systick to generate an interrupt each 1 msec
-       - Set NVIC Group Priority to 4
+       - Set NVIC Group Priority to 3
        - Low Level Initialization
      */
   /* USER CODE END 1 */
@@ -106,9 +106,9 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  /* Configure LD1 and LD2 */
-  BSP_LED_Init(LD1);
+  /* Configure LED2 */
   BSP_LED_Init(LD2);
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -119,13 +119,9 @@ int main(void)
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
 
-  /* Disable debug to avoid some buses to stay awake */
-  HAL_DBGMCU_DisableDBGStopMode();
+  __HAL_RTC_CLEAR_FLAG(hrtc, RTC_CLEAR_WUTF);
 
-  /* Enter in low power mode(STOP1) and wait RTC interrupt to wakeup from stop mode */
-  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERMODE_STOP1, PWR_STOPENTRY_WFI);
-  
-  /*##-2- Start the Full Duplex Communication process ########################*/
+    /*##-2- Start the Full Duplex Communication process ########################*/
   /* While the SPI in TransmitReceive process, user can transmit data through
      "aTxBuffer" buffer & receive data through "aRxBuffer" */
   if(HAL_SPI_TransmitReceive_DMA(&hspi1, (uint8_t*)aTxBuffer, (uint8_t *)aRxBuffer, BUFFERSIZE) != HAL_OK)
@@ -133,6 +129,20 @@ int main(void)
     /* Transfer error in transmission process */
     Error_Handler();
   }
+
+  /* Disable debug to avoid some buses to stay awake */
+  HAL_DBGMCU_DisableDBGStopMode();
+
+  /* Suspend Tick increment */
+  HAL_SuspendTick();
+
+  /* Enter in low power mode(STOP1) and wait for the SPI end of transfer interrupt to be awoken.
+    The DMA transfer is triggered by the RTC timer, the MCU is in low power mode during the RTC
+    count down and during the DMA transfer */
+  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERMODE_STOP1, PWR_STOPENTRY_WFI);
+
+  /* Resume Tick increment */
+  HAL_ResumeTick();
 
   /*##-3- Wait for the end of the transfer ###################################*/
   /*  Before starting a new communication transfer, you must wait the callback call
@@ -187,27 +197,12 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /** Enable Epod Booster
-  */
-  if (HAL_RCCEx_EpodBoosterClkConfig(RCC_EPODBOOSTER_SOURCE_MSIS, RCC_EPODBOOSTER_DIV1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_PWREx_EnableEpodBooster() != HAL_OK)
-  {
-    Error_Handler();
-  }
-
   /** Configure the main internal regulator output voltage
   */
-  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE2) != HAL_OK)
   {
     Error_Handler();
   }
-
-  /** Set Flash latency before increasing MSIS
-  */
-  __HAL_FLASH_SET_LATENCY(FLASH_LATENCY_3);
 
   /** Configure LSE Drive Capability
   */
@@ -216,11 +211,16 @@ void SystemClock_Config(void)
 
   /** Initializes the CPU, AHB and APB buses clocks
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSE|RCC_OSCILLATORTYPE_MSIS;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSE|RCC_OSCILLATORTYPE_MSIS
+                              |RCC_OSCILLATORTYPE_MSIK;
   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
   RCC_OscInitStruct.MSISState = RCC_MSI_ON;
-  RCC_OscInitStruct.MSISSource = RCC_MSI_RC0;
+  RCC_OscInitStruct.MSISSource = RCC_MSI_RC1;
   RCC_OscInitStruct.MSISDiv = RCC_MSI_DIV1;
+  RCC_OscInitStruct.MSIKState = RCC_MSI_ON;
+  RCC_OscInitStruct.MSIKSource = RCC_MSI_RC1;
+  RCC_OscInitStruct.MSIKDiv = RCC_MSI_DIV1;
+
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -237,7 +237,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB3CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -350,7 +350,7 @@ static void MX_RTC_Init(void)
 
   /** Enable the WakeUp
   */
-  if (HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 10240, RTC_WAKEUPCLOCK_RTCCLK_DIV16, 0) != HAL_OK)
+  if (HAL_RTCEx_SetWakeUpTimer(&hrtc, 10240, RTC_WAKEUPCLOCK_RTCCLK_DIV16) != HAL_OK)
   {
     Error_Handler();
   }
@@ -407,8 +407,8 @@ static void MX_SPI1_Init(void)
   {
     Error_Handler();
   }
-  HAL_SPI_AutonomousMode_Cfg_Struct.TriggerState = SPI_AUTO_MODE_DISABLE;
-  HAL_SPI_AutonomousMode_Cfg_Struct.TriggerSelection = SPI_GRP1_GPDMA_CH0_TCF_TRG;
+  HAL_SPI_AutonomousMode_Cfg_Struct.TriggerState = SPI_AUTO_MODE_ENABLE;
+  HAL_SPI_AutonomousMode_Cfg_Struct.TriggerSelection = SPI_GRP1_RTC_WUT_TRG;
   HAL_SPI_AutonomousMode_Cfg_Struct.TriggerPolarity = SPI_TRIG_POLARITY_RISING;
   if (HAL_SPIEx_SetConfigAutonomousMode(&hspi1, &HAL_SPI_AutonomousMode_Cfg_Struct) != HAL_OK)
   {
@@ -432,7 +432,6 @@ static void MX_GPIO_Init(void)
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
-
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
@@ -450,9 +449,10 @@ static void MX_GPIO_Init(void)
   */
 void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
 {
-  /* Turn LD1 on: Transfer in transmission/reception process is complete */
-  BSP_LED_On(LD1);
+  /* Turn LED2 on: Transfer in transmission/reception process is complete */
+  BSP_LED_On(LD2);
   wTransferState = TRANSFER_COMPLETE;
+
 }
 
 /**
@@ -498,15 +498,14 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-  /* Turn LD1 off */
-  BSP_LED_Off(LD1);
-  /* Toggle LD2 for error */
+  /* Turn LED2 off */
+  BSP_LED_Off(LD2);
+  /* Toggle LED2 for error */
   while(1)
   {
     BSP_LED_Toggle(LD2);
     HAL_Delay(1000);
   }
-
   /* USER CODE END Error_Handler_Debug */
 }
 #ifdef USE_FULL_ASSERT

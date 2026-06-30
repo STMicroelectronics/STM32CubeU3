@@ -30,6 +30,23 @@ The SysTick is programmed to generate an interrupt each 1 ms and in the SysTick 
   
 	- In Options for Target --> Debug --> Settings --> Connect & Reset Options --> Connect: under Reset
 
+### <b>Current Consumption(SMPS Enabled(@3.3V))</b>
+
+        Power mode : RUN - 96 MHz                                             2295 uA
+        Power mode : RUN - 48 MHz                                             866 uA
+        Power mode : SLEEP - 12 MHz                                           150 uA
+        Power mode : STOP1 - Full SRAM (SRAM 1 + 2 + 3 + 4 = 640KB)           62.55 uA
+        Power mode : STOP1 - 8-KByte SRAM2 Page3                              46.41 uA
+        Power mode : STOP2 - Full SRAM (SRAM 1 + 2 + 3 + 4 = 640KB)           2.62 uA
+        Power mode : STOP2 - 8-KByte SRAM2 Page3                             2.33 uA
+        Power mode : STOP3 - Full SRAM (SRAM 1 + 2 + 3 + 4 = 640KB)           1.52 uA
+        Power mode : STOP3 - 8-KByte SRAM2 Page3                              1.37 uA
+        Power mode : STANDBY - 8-KByte SRAM retention + RTC + ULPMEN=1        1.09 uA
+        Power mode : STANDBY - No SRAM retention + RTC + ULPMEN=1             0.85 uA
+        Power mode : STANDBY - No SRAM retention + No RTC + ULPMEN=1          0.38 uA
+        Power mode : SHUTDOWN - w/ RTC                                        0.82 uA
+        Power mode : SHUTDOWN - wo/ RTC                                       0.35 uA   
+
 ### <b>Keywords</b>
 
 Power, PWR, EXTI, Sleep mode, Stop Mode, Standby Mode, Shutdown mode, Interrupt, RTC, External reset, Memory retention, Cache, USART

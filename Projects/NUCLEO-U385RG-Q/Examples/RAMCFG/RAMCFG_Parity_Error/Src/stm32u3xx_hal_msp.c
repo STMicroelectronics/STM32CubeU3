@@ -1,4 +1,3 @@
-
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -18,7 +17,6 @@
   ******************************************************************************
   */
 /* USER CODE END Header */
-
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 /* USER CODE BEGIN Includes */
@@ -78,64 +76,64 @@ void HAL_MspInit(void)
 }
 
 /**
-* @brief RAMCFG MSP Initialization
-* This function configures the hardware resources used in this example
-* @param hramcfg: RAMCFG handle pointer
-* @retval None
-*/
+  * @brief RAMCFG MSP Initialization
+  * This function configures the hardware resources used in this example
+  * @param hramcfg: RAMCFG handle pointer
+  * @retval None
+  */
 void HAL_RAMCFG_MspInit(RAMCFG_HandleTypeDef* hramcfg)
 {
-  /* USER CODE BEGIN RAMCFG_MspInit 0 */
+    /* USER CODE BEGIN RAMCFG_MspInit 0 */
 
-  /* USER CODE END RAMCFG_MspInit 0 */
+    /* USER CODE END RAMCFG_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_RAMCFG_CLK_ENABLE();
     /* RAMCFG interrupt Init */
     HAL_NVIC_SetPriority(RAMCFG_IRQn, 7, 0);
     HAL_NVIC_EnableIRQ(RAMCFG_IRQn);
-  /* USER CODE BEGIN RAMCFG_MspInit 1 */
+    /* USER CODE BEGIN RAMCFG_MspInit 1 */
 
-  /* USER CODE END RAMCFG_MspInit 1 */
+    /* USER CODE END RAMCFG_MspInit 1 */
 
 }
 
 /**
-* @brief RAMCFG MSP De-Initialization
-* This function freeze the hardware resources used in this example
-* @param hramcfg: RAMCFG handle pointer
-* @retval None
-*/
+  * @brief RAMCFG MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param hramcfg: RAMCFG handle pointer
+  * @retval None
+  */
 void HAL_RAMCFG_MspDeInit(RAMCFG_HandleTypeDef* hramcfg)
 {
-  /* USER CODE BEGIN RAMCFG_MspDeInit 0 */
+    /* USER CODE BEGIN RAMCFG_MspDeInit 0 */
 
-  /* USER CODE END RAMCFG_MspDeInit 0 */
+    /* USER CODE END RAMCFG_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_RAMCFG_CLK_DISABLE();
 
     /* RAMCFG interrupt DeInit */
     HAL_NVIC_DisableIRQ(RAMCFG_IRQn);
-  /* USER CODE BEGIN RAMCFG_MspDeInit 1 */
+    /* USER CODE BEGIN RAMCFG_MspDeInit 1 */
 
-  /* USER CODE END RAMCFG_MspDeInit 1 */
+    /* USER CODE END RAMCFG_MspDeInit 1 */
 
 }
 
 /**
-* @brief RTC MSP Initialization
-* This function configures the hardware resources used in this example
-* @param hrtc: RTC handle pointer
-* @retval None
-*/
+  * @brief RTC MSP Initialization
+  * This function configures the hardware resources used in this example
+  * @param hrtc: RTC handle pointer
+  * @retval None
+  */
 void HAL_RTC_MspInit(RTC_HandleTypeDef* hrtc)
 {
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
   if(hrtc->Instance==RTC)
   {
-  /* USER CODE BEGIN RTC_MspInit 0 */
+    /* USER CODE BEGIN RTC_MspInit 0 */
 
-  /* USER CODE END RTC_MspInit 0 */
-    
+    /* USER CODE END RTC_MspInit 0 */
+
   /** Enable access to the backup domain
   */
     HAL_PWR_EnableBkUpAccess();
@@ -153,33 +151,33 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef* hrtc)
     /* Peripheral clock enable */
     __HAL_RCC_RTC_ENABLE();
     __HAL_RCC_RTCAPB_CLK_ENABLE();
-  /* USER CODE BEGIN RTC_MspInit 1 */
+    /* USER CODE BEGIN RTC_MspInit 1 */
 
-  /* USER CODE END RTC_MspInit 1 */
+    /* USER CODE END RTC_MspInit 1 */
 
   }
 
 }
 
 /**
-* @brief RTC MSP De-Initialization
-* This function freeze the hardware resources used in this example
-* @param hrtc: RTC handle pointer
-* @retval None
-*/
+  * @brief RTC MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param hrtc: RTC handle pointer
+  * @retval None
+  */
 void HAL_RTC_MspDeInit(RTC_HandleTypeDef* hrtc)
 {
   if(hrtc->Instance==RTC)
   {
-  /* USER CODE BEGIN RTC_MspDeInit 0 */
+    /* USER CODE BEGIN RTC_MspDeInit 0 */
 
-  /* USER CODE END RTC_MspDeInit 0 */
+    /* USER CODE END RTC_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_RTC_DISABLE();
     __HAL_RCC_RTCAPB_CLK_DISABLE();
-  /* USER CODE BEGIN RTC_MspDeInit 1 */
+    /* USER CODE BEGIN RTC_MspDeInit 1 */
 
-  /* USER CODE END RTC_MspDeInit 1 */
+    /* USER CODE END RTC_MspDeInit 1 */
   }
 
 }
